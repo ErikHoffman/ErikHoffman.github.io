@@ -1,16 +1,41 @@
-Hello World
-
+<!DOCTYPE html>
+<html>	
 	<head>
+		<link type="text/css" rel="style" href="style.css"/>
 		<link rel="shortcut icon" type="image/png" href="/favicon.png">
+		<title>Erik Hoffman's Website and Portfolio</title>
+		<meta charset="utf-8"/>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$("abt").click(function(){
+			});
+			$("portf").click(function(){
+			});
+		});
+		</script>
 	</head>
 	<body>
 		<div id="header"> 
 			<div id="navbar">
 				<ul>
-					<li id="alt1">Bio</li>
-					<li id ="alt2">Portfolio and Works in Progress</li>
-					<li id ="alt3">Contact Me</li>
-					<li id = "alt4"><a href="Resume.pdf">Resume</a></li>
+					<li class="link">
+						<div class="link">
+							<a rel="/" class="navlink active">The Front Page</a>
+						</div>
+					</li>
+					<li class="link">
+						<div class="link">
+							<a rel="/About" class="navlink">About Me</a>
+						</div>
+					</li>
+					<li class ="link">
+						<div class="link">
+							<a rel="/Portfolio" class="navlink">Portfolio</a>
+						</div>
+					</li>
+					<li id ="resume"><a href="Resume.pdf">Resume</a></li>
 				</ul>
 			</div> 
 		</div>
@@ -19,20 +44,23 @@ Hello World
 			<div id ="dialog">
 				<h1 id="name">Erik Hoffman</h1>
 				<div id = "about"><br>
-				Place bio here
+				Hi there! My name is Erik Hoffman and I am an Honours Computer Science Student currently in my final semester at The University
+				of Guelph. I fell in love with the area the minute I stepped foot into my grade 10 CS class and never looked back. I have a minor 
+				in mathematics as well as having completed a large variety of the electives in Computer Science offered at UofG. Check out my resume
+				for a list of all the great courses I have taken to broaden my knowledge!
 				</div>
 				<div id = "projects"><br>
 				Some of my personal projects can be found on my bitbucket page here:<br>
-				<br>
-				<a href="https://bitbucket.org/ErikHoffman/profile/repositories"><div id="github">Bitbucket
-				</div></a>
+				<a href="https://bitbucket.org/ErikHoffman/profile/repositories"><div id="bitbucket">Bitbucket</div></a>
 				<br>
 				This will contain most of the noteworthy coding projects I am working on as well as some self-research like an A* search implementation for AI movement.
 				</div>
 		</div>
 	   <div id = "footer"> 
-			Contact Me<br>
+			<br>This website is hosted on github pages <a href=https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a> 
+			<br>Contact Me<br>
 			Email: erik_hoffman@outlook.com<br>
 	    	Phone: 289-383-4992<br>
 	   </div>
 	</body>
+</html>

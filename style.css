@@ -1,0 +1,35 @@
+div {
+	border-radius: 5px;
+}
+
+#header {
+		z-index: 1;
+		position: fixed;
+		width: 100vw;
+		height: 16.7vh;
+		background-color: #262626;
+		margin-bottom: 10px;
+		text-align:center;
+		opacity: 0.9;
+	filter: alpha(opacity=70);
+}
+
+#navbar {
+		position:relative;
+		width: 100vw;
+		margin-top: 9vh;
+		left:33vw;
+}
+
+ul{
+		list-style-type: none;
+		position:fixed;
+}
+
+li{
+		display:inline;
+		padding:1.2vw;
+		font-family: "Book Antiqua", Palatino, serif;
+		font-size: 1.2vw;
+		color: #ffffff;
+}
