@@ -4,10 +4,10 @@ div {
 
 #header {
 		z-index: 1;
-		position: fixed;
+		position: absolute;
 		width: 100vw;
 		height: 16.7vh;
-		background-color: #262626;
+		background-color: #800000;
 		margin-bottom: 10px;
 		text-align:center;
 		opacity: 0.9;
@@ -15,21 +15,60 @@ div {
 }
 
 #navbar {
-		position:relative;
+		position:absolute;
 		width: 100vw;
 		margin-top: 9vh;
-		left:33vw;
+		left:25vw;
+		/*font-family: 'Josefin Sans', serif;*/
+		
+}
+
+#dialog {
+	width: 40vw;
+	height: 30vw;
+	background-color: #FF5733;
+	position: absolute;
+	top: 25vh;
+	left: 29vw;
+	text-align:center;
+	opacity: 0.7;
+}
+
+#footer {
+	width: 98vw;
+	height: 25vh;
+	background-color: #800000;
+	clear: both;
+	font-family: "Josefin Sans", serif;
+	font-weight:bold;
+	font-size:1.5vw;
+	text-align: center;
+	color: #CD5C5C;
 }
 
 ul{
 		list-style-type: none;
-		position:fixed;
+		position:absolute;
 }
 
 li{
 		display:inline;
-		padding:1.2vw;
-		font-family: "Book Antiqua", Palatino, serif;
-		font-size: 1.2vw;
-		color: #ffffff;
+		padding:1.5vw;
+		font-family: "Josefin Sans", Palatino, serif;
+		font-size: 1.8vw;
+		color: #CD5C5C;
+}
+
+
+li:link {
+	color: #CD5C5C;
+}
+
+li:visited {
+	color: green;
+}
+
+li:hover {
+	color: #FFA07A;
+	cursor: pointer;
 }
