@@ -2,6 +2,14 @@ div {
 	border-radius: 5px;
 }
 
+html { 
+  background: url(background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #header {
 		z-index: 1;
 		position: absolute;
@@ -57,6 +65,7 @@ li{
 		font-family: "Josefin Sans", Palatino, serif;
 		font-size: 1.8vw;
 		color: #CD5C5C;
+		text-decoration:none;
 }
 
 
@@ -65,10 +74,11 @@ li:link {
 }
 
 li:visited {
-	color: green;
+	color: ;
 }
 
 li:hover {
 	color: #FFA07A;
+	text-decoration:none;
 	cursor: pointer;
 }
