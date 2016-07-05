@@ -26,7 +26,7 @@ div {
 #dialog {
 	width: 40vw;
 	height: 30vw;
-	background-color: #FF5733;
+	background-color: #FF350A;
 	position: absolute;
 	top: 25vh;
 	left: 29vw;
@@ -35,8 +35,8 @@ div {
 }
 
 #footer {
-	width: 98vw;
-	height: 25vh;
+	width: 99vw;
+	height: 30vh;
 	background-color: #800000;
 	clear: both;
 	font-family: "Josefin Sans", serif;
