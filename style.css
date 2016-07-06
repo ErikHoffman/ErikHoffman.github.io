@@ -10,7 +10,7 @@ html {
   background-size: cover;
 }
 
-.hover_img a {position:relative; float:left;}
+.hover_img a {position:relative; width: 10vw; height: 10vh; right: 10.5vw; top: 1.5vh;}
 .hover_img a span {position:absolute; display:none; z-index:99;}
 .hover_img a:hover span {display:block;}
 
@@ -48,11 +48,12 @@ html {
 
 #bitbucket-link {
 	color:CD5C5C;
-	position: absolute;
-	width:10vw;
+	/*position: absolute;*/
+	background-color:black;
+	width:20vw;
 	height:15vw;
-	top:28vh;
-	left:15.3vw;
+	top:40vh;
+	/*right:30.3vw;*/
 	display:inline;
 	/*text-align:center;*/
 }
