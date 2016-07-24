@@ -57,7 +57,7 @@ html {
 	top: 25vh;
 	left: 29vw;
 	text-align:center;
-	opacity: 0.7;
+	/*opacity: 0.7;*/
 	-webkit-animation: fadein 2s;
 	-moz-animation: fadein 2s;
 	-ms-animation: fadein 2s;
