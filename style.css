@@ -92,6 +92,13 @@ html {
 	color: #CD5C5C;
 }
 
+#bottom-margin {
+	z-index:1;
+	position:relative;
+	width:100%;
+	height:0.5vh;
+	top:110vh;
+}
 ul{
 	display:inline-block;
 	list-style-type: none;
