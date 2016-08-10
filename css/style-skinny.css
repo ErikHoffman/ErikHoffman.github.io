@@ -3,7 +3,8 @@ div {
 }
 
 html { 
-  background: url(../background.jpg) no-repeat center center fixed; 
+  /*background: url(../background.jpg) no-repeat center center fixed; */
+  background-color: #BE0000;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -15,6 +16,10 @@ html {
 	animation: fadein 2;
 }
 
+body {
+	margin: 0;
+}
+
 .hover_img a {position:relative; width: 10vw; height: 10vh; right: 10.5vw; top: 1.5vh;}
 .hover_img a span {position:absolute; display:none; z-index:99;}
 .hover_img a:hover span {display:block;}
@@ -22,11 +27,12 @@ html {
 #header {
 	z-index: 1;
 	position:absolute;
-	width: 100.0%;
+	display:inline-block;
+	width: 100%;
+	margin:0 auto;
 	height: 135px;
 	background-color: #800000;
 	margin-bottom: 10px;
-	text-align:center;
 	opacity: 0.9;
 	margin-top:1px;
 	filter: alpha(opacity=70);
@@ -34,11 +40,13 @@ html {
 
 #navbar {
 	position:absolute;
-	height:100%;
+	vertical-align:center;
+	text-align: center;
+	display:inline-block;
+	margin: 0 auto;
 	width:100%;
-	right:4vw;
-	margin-top: 3vh;
-	/*left:23vw;*/
+	top:25%;
+	right:2%;
 	
 	/*font-family: 'Josefin Sans', serif;*/
 	-webkit-animation: fadein 2s;
@@ -54,9 +62,9 @@ html {
 	background-color: #FF350A;
 	position: absolute;
 	top: 200px;
-	left:5vw;
 	/*left: 29vw;*/
 	text-align:center;
+	margin:0 auto;
 	/*opacity: 0.7;*/
 	-webkit-animation: fadein 2s;
 	-moz-animation: fadein 2s;
@@ -103,7 +111,6 @@ ul{
 	display:inline-block;
 	list-style-type: none;
 	position:relative;
-	top:3vh;
 }
 
 li{

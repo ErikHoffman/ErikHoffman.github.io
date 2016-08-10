@@ -32,6 +32,7 @@ var GameState ={
 		
 		var pos = this.game.input.activePointer.position;
 		this.game.debug.text("x:" + pos.x + " y:" + pos.y, 55, 500);
+		this.game.debug.text(this.game.time.fps,55,600);
 		if(pos.x >= 200)
 			this.sector = this.game.add.sprite(200+Math.floor((pos.x-200)/80)*80+5,Math.floor(pos.y/80)*80+5,'orangesqr');
 	}
