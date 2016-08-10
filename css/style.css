@@ -108,14 +108,15 @@ body {
 ul{
 	display:inline-block;
 	list-style-type: none;
+	padding: 0;
 	position:relative;
-	right:1vw;
+	text-align:center;
 }
 
 li{
 	display:inline;
-	padding:1.5vw;
 	/*margin-left:auto;*/
+	padding:1vw;
 	margin-right:auto;
 	font-family: "Josefin Sans", Palatino, serif;
 	font-size: 1.8vw;
