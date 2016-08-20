@@ -3,6 +3,25 @@ create: create, update: update, render: render});
 
 var style = { font: "12px Arial", fill: "#ff0044" };
 
+var keys;
+var ismbDown = false;
+
+/*Library and helper functions*/
+function createEventListeners() {
+	game.input.mouse.capture = true;
+	game.input.onDown.add(onDown, this);
+	game.input.onUp.add(onUp, this);
+
+}
+
+function onDown(pointer) {
+}
+
+function onUp() {
+	isDown = false;
+}
+
+/*PhaserJS main functions*/
 function preload() {
 	this.load.image('background','assets/background.jpg');
 	this.load.image('greensqr', 'assets/greensqr.png');
@@ -34,7 +53,13 @@ function create() {
 
 function update() {
 	this.text = game.add.text(7,600,"FPS: " + game.time.fps,style);
+	
+	//Get the mouse position
 	var pos = this.game.input.activePointer.position;
+	
+	//Check if the mouse has left the current square
+	//So that we only need to draw that one
+	//Drawing the whole board on every frame obliterates the browser
 	this.game.debug.text("x:" + pos.x + " y:" + pos.y, 55, 500);
 	this.game.debug.text(this.game.time.fps,55,600);
 	if(pos.x >= 200)
