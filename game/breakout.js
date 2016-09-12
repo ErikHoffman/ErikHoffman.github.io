@@ -1,10 +1,10 @@
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update });
 
 function preload() {
 
-    game.load.atlas('breakout', 'assets/games/breakout/breakout.png', 'assets/games/breakout/breakout.json');
-    game.load.image('starfield', 'assets/misc/starfield.jpg');
+    game.load.atlas('breakout', 'breakout/breakout.png', 'breakout/breakout.json');
+    game.load.image('starfield', 'breakout/starfield.jpg');
 
 }
 

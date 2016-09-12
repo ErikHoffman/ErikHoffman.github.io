@@ -1,8 +1,19 @@
 var game = new Phaser.Game(1000, 800, Phaser.CANVAS, 'phaser-dfa', {preload: preload,
 create: create, update: update, render: render});
 
-var style = { font: "12px Arial", fill: "#ff0044" };
+var style = { font: "12px Arial", fill: "#000000" };
 
+/*CurrX/CurrY: Current x and y positions of mouse in terms of the grid for replacing
+gray squares after orange selector cursor
+
+fps crashses when replacing the whole board but better practice
+anyways to just replace the one square
+
+*/
+var currX = 0;
+var currY = 0;
+var pastX = 0;
+var pastY = 0;
 var keys;
 var ismbDown = false;
 
@@ -38,7 +49,7 @@ function create() {
 	this.text = game.add.text(34,10,"State Machine Creator",style);
 	this.text = game.add.text(7,44,"Left click on a square to add a state",style);
 	this.text = game.add.text(7,55,"\nLeft click on created state\nand select \"create edge\"\nto connect states",style);
-	this.game.time.advancedTiming = true;
+	//this.game.time.advancedTiming = true;
 	var xinc = 0;
 	var yinc = 0;
 	for(yinc = 0; yinc < 13; yinc++)
@@ -56,6 +67,16 @@ function update() {
 	
 	//Get the mouse position
 	var pos = this.game.input.activePointer.position;
+	currX = 200 + Math.floor((pos.x-200)/80);
+	currY = Math.floor(pos.y/80);
+	
+	if((currX != pastX) || (currY != pastY))
+	{
+		selector = this.game.add.sprite(200+pastX*80,pastY*80, 'sector');
+	}
+	
+	pastX = currX;
+	pastY = currY;
 	
 	//Check if the mouse has left the current square
 	//So that we only need to draw that one
