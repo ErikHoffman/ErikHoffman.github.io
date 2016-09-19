@@ -4,7 +4,7 @@ div {
 
 html { 
   /*background: url(../background.jpg) no-repeat center center fixed; */
-  background-color: #BE0000;
+  background-color:#062F4F;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -31,7 +31,7 @@ body {
 	width: 100%;
 	margin:0 auto;
 	height: 135px;
-	background-color: #800000;
+	background-color: #233237;
 	margin-bottom: 10px;
 	opacity: 0.9;
 	margin-top:1px;
@@ -58,7 +58,7 @@ body {
 #dialog {
 	width: 90%;
 	height:700px;
-	background-color: #FF350A;
+	background-color:#828081;
 	position: absolute;
 	top: 200px;
 	left:5%;
@@ -91,7 +91,7 @@ body {
 	width: 100%;
 	height: 275px;
 	top:975px;
-	background-color: #800000;
+	background-color: #233237;
 	clear: both;
 	font-family: "Josefin Sans", serif;
 	font-weight:bold;
@@ -126,15 +126,15 @@ li{
 
 
 li:link {
-	color: #CD5C5C;
+	color: #984B43;
 }
 
 li:visited {
-	color: #CD5C5C;
+	color: #984B43;
 }
 
 li:hover {
-	color: #FFA07A;
+	color: #EAC67A;
 	text-decoration:none;
 	cursor: pointer;
 }
