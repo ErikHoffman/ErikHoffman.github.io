@@ -19,6 +19,50 @@
 			});
 		});
 		
+		window.onload = function(){
+			var width = window.innerWidth ||
+					document.documentElement.clientWidth ||
+					document.body.clientWidth;
+					
+			var height = window.innerHeight ||
+					document.documentElement.clientHeight ||
+					document.body.clientHeight;
+					
+			if(width <= 700)
+			{
+				var bitbuck = document.getElementById('bitbucket-logo').style.width = '100px';
+				var bitbuck = document.getElementById('bitbucket-logo').style.height = '100px';
+				var bitbuck = document.getElementById('bitbucket-logo').src = "../images/bucket.png";
+				//$('bitbucket-logo').attr('width',100px);
+				//$('bitbucket-logo').attr('height',100px);*/
+			}
+		};
+		
+		window.addEventListener('resize', rsize);
+		
+		function rsize() {
+			var width = window.innerWidth ||
+					document.documentElement.clientWidth ||
+					document.body.clientWidth;
+					
+			var height = window.innerHeight ||
+					document.documentElement.clientHeight ||
+					document.body.clientHeight;
+			var img = document.getElementById('bitbucket-logo');
+			if(width <= 700)
+			{
+				img.src="../images/bucket.png";
+				img.style.width = "100px";
+				img.style.height = "100px";
+			}
+			else
+			{
+				img.src="../images/bitbucket_rgb_blue.png";
+				img.style.width = "350px";
+				img.style.height = "70px";
+			}
+		};
+		
 		</script>
 		
 		
@@ -62,17 +106,16 @@
 			<div id ="dialog">
 				<div id = "dialog-text">
 					<br><br>
+					<!-- Put </a> on same line as img or else you will have underline at bottom right of image-->
 					<a href="https://bitbucket.org/ErikHoffman/profile/repositories?visibility=all">
-					<img id ="bitbucket-logo" src="../images/bitbucket_rgb_blue.png" title="Link to my bitbucket" style="width:50%;height:7%;position:relative;">
-					</a>
+					<img id ="bitbucket-logo" src="../images/bitbucket_rgb_blue.png" title="Link to my bitbucket" style="width:350px;height:70px;position:relative;"></a>
 					<br><br>
 					On Bitbucket I have hosted some code that I've written for different projects, including the DFA/NFA state creator that you can access below.<br><br>
-					Why Bitbucket over github?<br><br>For personal projects that I can only really do in my free time I prefer bitbucket as it doesn't show me a grid of my commits over a period of time, only the ones I want to see, if I want to see them. This provides me with a 
-					less deadline based workflow and more of a learning environment.<br>
+					Why Bitbucket over github?<br><br>For individual use I enjoy the simple layout of the site enough to use it over github. I have experience using both however.<br>
 					<li id="link-game">
 					<a style="color:#FFA07A; text-decoration:none;" href="../game/game.html"><div id="DFACreate">State Machine Creator</div></a>
 					</li>
-					<br>A UI made in phaserJS that lets you create simple state machines and save them to a file
+					<br>A UI made in phaserJS that lets you create simple state machines and save them to a file.
 					<br>This is a work in progress as I want to keep up to date with javascript and also try different 2d engines for web.<br>
 				</div>
 		    </div>
@@ -81,7 +124,9 @@
 			<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href=https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a> 
 			<br>Contact Me:<br>
 			Email: erik_hoffman@outlook.com<br>
-	    	Phone: 289-383-4992<br><br>
+	    	Phone: 289-383-4992<br>
+			<a href="https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button">
+			<img id ="linkedinlogo" src="../images/linkedin.png" title="Link to my linkedin profile" style="height:45px;width:45px;position:relative;"></a>
 		</div>
 		<div id ="bottom-margin">
 		</div>
