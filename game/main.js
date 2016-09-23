@@ -17,6 +17,16 @@ var pastY = 0;
 var keys;
 var ismbDown = false;
 
+var textArea; 
+
+
+var selector;
+
+
+
+/*Testing i.e. FPS, mouse position, stats*/
+var positionTxt;
+
 /*Library and helper functions*/
 function createEventListeners() {
 	game.input.mouse.capture = true;
@@ -42,7 +52,9 @@ function preload() {
 }
 
 function create() {
-		
+	this.game.scale.pageAlignHorizontally = true;
+	this.game.scale.pageAlignVertically = true;
+	this.game.scale.refresh();
 	//this.greensqr.anchor.setTo(0.5, 0.5);
 	this.background = this.game.add.sprite(0, 0, 'background');
 
@@ -50,6 +62,8 @@ function create() {
 	this.text = game.add.text(7,44,"Left click on a square to add a state",style);
 	this.text = game.add.text(7,55,"\nLeft click on created state\nand select \"create edge\"\nto connect states",style);
 	//this.game.time.advancedTiming = true;
+	var pos = this.game.input.activePointer.position;
+	positionTxt = game.add.text(55,500,"x:" + pos.x + " y:" + pos.y, style);
 	var xinc = 0;
 	var yinc = 0;
 	for(yinc = 0; yinc < 13; yinc++)
@@ -60,35 +74,46 @@ function create() {
 		}
 		
 	}
+	
+	selector = this.game.add.sprite(0,0,'orangesqr');
+	selector.visible = false;
 }
 
 function update() {
-	this.text = game.add.text(7,600,"FPS: " + game.time.fps,style);
 	
 	//Get the mouse position
 	var pos = this.game.input.activePointer.position;
-	currX = 200 + Math.floor((pos.x-200)/80);
-	currY = Math.floor(pos.y/80);
 	
-	if((currX != pastX) || (currY != pastY))
-	{
-		selector = this.game.add.sprite(200+pastX*80,pastY*80, 'sector');
-	}
+	//[currX,currY] = the current square the mouse is hovering over
+	currX = 200 + Math.floor((pos.x-200)/80)*80+5;
+	currY = Math.floor(pos.y/80)*80+5;
 	
-	pastX = currX;
-	pastY = currY;
-	
-	//Check if the mouse has left the current square
-	//So that we only need to draw that one
-	//Drawing the whole board on every frame obliterates the browser
-	this.game.debug.text("x:" + pos.x + " y:" + pos.y, 55, 500);
-	this.game.debug.text(this.game.time.fps,55,600);
+	//Display for testing
+	//Position on grid
+	var txtX = 0;
+	var txtY = 0;
 	if(pos.x >= 200)
 	{
-		selector = this.game.add.sprite(200+Math.floor((pos.x-200)/80)*80+5,Math.floor(pos.y/80)*80+5,'orangesqr');
+		txtX = (currX-205)/80;
+		txtY = (currY-5)/80;
+		
+		selector.visible = true;
+		selector.x = currX;
+		selector.y = currY;
 	}
+	else
+	{
+		txtX = "NA";
+		txtY = "NA";		
+		selector.visible = false;
+	}
+	positionTxt.setText("x:" + txtX + " y:" + txtY);
+	
+	//textArea = new Phaser.Rectangle(0, 370, 200, 430);
+	//this.text = game.add.text(10,450,"State Machine Creator",style);
+	//this.text(this.game.time.fps,55,600);
 }
 
 function render() {
-
+	//this.game.debug.geom(textArea,'#ffffff');
 }
