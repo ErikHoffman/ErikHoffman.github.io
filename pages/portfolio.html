@@ -6,7 +6,7 @@
 		<link type="text/css" media='screen and (min-width: 1001px)' rel="stylesheet" href="../css/style.css"/>
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext'rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
-		<link rel="shortcut icon" type="image/png" href="/favicon.png">
+		<link rel="shortcut icon" type="image/png" href="../favicon.png">
 		<title>Erik Hoffman's Website and Portfolio</title>
 		<!--meta charset="utf-8"/-->
 		
@@ -20,6 +20,12 @@
 		});
 		
 		window.onload = function(){
+		
+			var truformDesc = document.getElementById('truformDesc');
+			truformDesc.style.display = 'none';
+			
+			var showLess = document.getElementById('showless');
+			showLess.style.display = 'none';
 			var width = window.innerWidth ||
 					document.documentElement.clientWidth ||
 					document.body.clientWidth;
@@ -33,9 +39,27 @@
 				var bitbuck = document.getElementById('bitbucket-logo').style.width = '100px';
 				var bitbuck = document.getElementById('bitbucket-logo').style.height = '100px';
 				var bitbuck = document.getElementById('bitbucket-logo').src = "../images/bucket.png";
-				//$('bitbucket-logo').attr('width',100px);
-				//$('bitbucket-logo').attr('height',100px);*/
 			}
+			
+			incHeight();
+		};
+		
+		function truformDesc(){
+			var showMore = document.getElementById('showmore');
+			showMore.style.display = 'none';
+			var truformDesc = document.getElementById('truformDesc');
+			truformDesc.style.display = 'block';
+			var showLess = document.getElementById('showless');
+			showLess.style.display = 'block';
+		};
+		
+		function showLess(){
+			var showMore = document.getElementById('showmore');
+			showMore.style.display = 'block';
+			var truformDesc = document.getElementById('truformDesc');
+			truformDesc.style.display = 'none';
+			var showLess = document.getElementById('showless');
+			showLess.style.display = 'none';
 		};
 		
 		window.addEventListener('resize', rsize);
@@ -62,6 +86,40 @@
 				img.style.height = "70px";
 			}
 		};
+		
+		function incHeight() {
+			var el = document.getElementById("dialog");
+			var height = el.offsetHeight;
+			var newHeight = height + 200;
+			el.style.height = newHeight + 'px';
+			var footer = document.getElementById('footer');
+			var toAddHeight = getStyle(footer, 'top');
+			toAddHeight = toAddHeight.replace('px','');
+			toAddHeight = parseInt(toAddHeight);
+			toAddHeight += 200;
+			toAddHeight = String(toAddHeight);
+			toAddHeight += 'px';
+			footer.style.top = toAddHeight;
+		}
+		
+		/***
+		 * get live runtime value of an element's css style
+		 *   http://robertnyman.com/2006/04/24/get-the-rendered-style-of-an-element
+		 *     note: "styleName" is in CSS form (i.e. 'font-size', not 'fontSize').
+		***/
+		var getStyle = function (e, styleName) {
+			var styleValue = "";
+			if(document.defaultView && document.defaultView.getComputedStyle) {
+				styleValue = document.defaultView.getComputedStyle(e, "").getPropertyValue(styleName);
+			}
+			else if(e.currentStyle) {
+				styleName = styleName.replace(/\-(\w)/g, function (strMatch, p1) {
+					return p1.toUpperCase();
+				});
+				styleValue = e.currentStyle[styleName];
+			}
+			return styleValue;
+		}
 		
 		</script>
 		
@@ -117,13 +175,23 @@
 					</li>
 					<br>A UI made in phaserJS that lets you create simple state machines and save them to a file.
 					<br>This is a work in progress as I want to keep up to date with javascript and also try different 2d engines for web.<br>
+					<div id="truformarea">
 					<li id="link-truform">
 					<a style="color:#FFA07A; text-decoration:none;" href="https://bitbucket.org/benbaird/truform"><div id="truform"><font size="6">Truform App</font></div></a>
 					</li>
-					<br>An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
-					meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
-					from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
-					workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.
+					<div id="truformDesc">
+						An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
+						meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
+						from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
+						workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br>
+					</div>
+						<div id="showmore">
+							<button class="button" onclick="truformDesc()">Show Description</button>
+						</div>
+						<div id="showless">
+							<button class="button" onclick="showLess()">Show Less</button>
+						</div>
+					</div>
 				</div>
 		    </div>
 		</div>
