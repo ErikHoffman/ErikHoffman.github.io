@@ -41,25 +41,29 @@
 				var bitbuck = document.getElementById('bitbucket-logo').src = "../images/bucket.png";
 			}
 			
-			incHeight();
+			//incHeight();
 		};
 		
 		function truformDesc(){
+			incHeight("dialog",200);
+			addToTop("footer",200);
 			var showMore = document.getElementById('showmore');
 			showMore.style.display = 'none';
 			var truformDesc = document.getElementById('truformDesc');
 			truformDesc.style.display = 'block';
-			var showLess = document.getElementById('showless');
-			showLess.style.display = 'block';
+			var showLessButton = document.getElementById('showless');
+			showLessButton.style.display = 'block';
 		};
 		
 		function showLess(){
+			incHeight("dialog",-200);
+			addToTop("footer",-200);
 			var showMore = document.getElementById('showmore');
 			showMore.style.display = 'block';
 			var truformDesc = document.getElementById('truformDesc');
 			truformDesc.style.display = 'none';
-			var showLess = document.getElementById('showless');
-			showLess.style.display = 'none';
+			var showLessButton = document.getElementById('showless');
+			showLessButton.style.display = 'none';
 		};
 		
 		window.addEventListener('resize', rsize);
@@ -87,19 +91,22 @@
 			}
 		};
 		
-		function incHeight() {
-			var el = document.getElementById("dialog");
+		function incHeight(e, addHeight) {
+			var el = document.getElementById(e);
 			var height = el.offsetHeight;
-			var newHeight = height + 200;
+			var newHeight = height + addHeight;
 			el.style.height = newHeight + 'px';
-			var footer = document.getElementById('footer');
-			var toAddHeight = getStyle(footer, 'top');
+		}
+		
+		function addToTop(e, addTop) {
+			var el = document.getElementById(e);
+			var toAddHeight = getStyle(el, 'top');
 			toAddHeight = toAddHeight.replace('px','');
 			toAddHeight = parseInt(toAddHeight);
-			toAddHeight += 200;
+			toAddHeight += addTop;
 			toAddHeight = String(toAddHeight);
 			toAddHeight += 'px';
-			footer.style.top = toAddHeight;
+			el.style.top = toAddHeight;
 		}
 		
 		/***
