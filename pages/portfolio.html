@@ -39,14 +39,16 @@
 				var bitbuck = document.getElementById('bitbucket-logo').style.width = '100px';
 				var bitbuck = document.getElementById('bitbucket-logo').style.height = '100px';
 				var bitbuck = document.getElementById('bitbucket-logo').src = "../images/bucket.png";
+				incHeight("dialog",300);
+				addToTop("footer",300);
 			}
 			
 			//incHeight();
 		};
 		
 		function truformDesc(){
-			incHeight("dialog",200);
-			addToTop("footer",200);
+			incHeight("dialog",300);
+			addToTop("footer",300);
 			var showMore = document.getElementById('showmore');
 			showMore.style.display = 'none';
 			var truformDesc = document.getElementById('truformDesc');
@@ -56,8 +58,8 @@
 		};
 		
 		function showLess(){
-			incHeight("dialog",-200);
-			addToTop("footer",-200);
+			incHeight("dialog",-300);
+			addToTop("footer",-300);
 			var showMore = document.getElementById('showmore');
 			showMore.style.display = 'block';
 			var truformDesc = document.getElementById('truformDesc');
@@ -146,24 +148,7 @@
 					<li id="link-about"><a href="about.html" style="text-decoration:none; color:inherit;">About Me</a></li>
 					<li style="color:#FFA07A" id="link-portfolio"><a href="portfolio.html" style="text-decoration:none; color:inherit;">Portfolio</a></li>
 					<li id="link-resume"><a href="../Erik_CIS_Resume.pdf" style="text-decoration:none; color:inherit;">Resume</a></li>
-				
-					<!--
-					<li class="link">
-						<div class="link">
-							<a rel="/" class="navlink active">The Front Page</a>
-						</div>
-					</li>
-					<li class="link">
-						<div class="link">
-							<a rel="/About" class="navlink">About Me</a>
-						</div>
-					</li>
-					<li class ="link ">
-						<div class="link">
-							<a rel="/Portfolio" class="navlink">Portfolio</a>
-						</div>
-					</li>
-					<li id ="resume"><a href="Erik_CIS_Resume.pdf">Resume</a></li-->
+			
 				</ul>
 			</div> 
 		</div>
@@ -182,6 +167,13 @@
 					</li>
 					<br>A UI made in phaserJS that lets you create simple state machines and save them to a file.
 					<br>This is a work in progress as I want to keep up to date with javascript and also try different 2d engines for web.<br>
+					
+					<div id="haskell">
+					<li id="link-haskell">
+					<a style="color:#FFA07A; text-decoration:none;" href="../haskell/haskell.html"><div id="HaskellCreate"><font size="6">Haskell web apps with Haste</font></div></a>
+					</li>
+					</div>
+					
 					<div id="truformarea">
 					<li id="link-truform">
 					<a style="color:#FFA07A; text-decoration:none;" href="https://bitbucket.org/benbaird/truform"><div id="truform"><font size="6">Truform App</font></div></a>
