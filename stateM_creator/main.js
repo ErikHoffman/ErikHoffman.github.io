@@ -2,14 +2,22 @@ var game = new Phaser.Game(1000, 800, Phaser.CANVAS, 'phaser-dfa', {preload: pre
 create: create, update: update, render: render});
 
 function preload() {
+	/*Various*/
 	this.load.image('background','assets/background.jpg');
+	
+	/*Grid and types of square*/
 	this.load.image('greensqr', 'assets/greensqr.png');
 	this.load.image('bluesqr', 'assets/bluesqr.png');
 	this.load.image('orangesqr', 'assets/orangesqr.png');
 	this.load.image('sector', 'assets/gridcomp.png');
+	
+	/*Menu*/
 	this.load.image('menu', 'assets/menu.png');
+	this.load.image('createSelect','assets/menu_createS_highlight.png');
+	this.load.image('infoSelect','assets/menu_info_highlight.png');
 }
 
+/*Font styles for text declared here*/
 var style = { font: "12px Arial", fill: "#000000" };
 
 /*CurrX/CurrY: Current x and y positions of mouse in terms of the grid for replacing
@@ -29,16 +37,19 @@ var ismbDown = false;
 var menuX = 0;
 var menuY = 0;
 
+
+
+/*Sprite variables*/
 var textArea; 
-
-
 var selector;
 var menu;
+var createSelect;
 
 
 
 /*Testing i.e. FPS, mouse position, stats*/
 var positionTxt;
+var testTxt;
 
 /*Library and helper functions*/
 function createEventListeners() {
@@ -64,13 +75,32 @@ function convertToGrid(coord,type)
 		return ((coord-5)/80);
 }
 
+function hoverOver(position,lX,rX,uY,bY)
+{
+	var hover = false;
+	testTxt.setText("Test: Pos.x: " + position.x + " Pos.y: " + position.y
+					+ "\n lX: " + lX + " rX: " + rX
+					+ "\n uY: " + uY + " bY: " + bY);
+	if(position.x > lX && position.x < rX)
+	{
+		if(position.y < bY && position.y > uY)
+			hover = true;
+	}
+	return hover;
+}
+
 /*PhaserJS main functions*/
 function create() {
+	
+	/*Place game div in middle of screen*/
 	this.game.scale.pageAlignHorizontally = true;
 	this.game.scale.pageAlignVertically = true;
 	this.game.scale.refresh();
+	
+	
 	this.game.input.mouse.capture = true;
-	//this.greensqr.anchor.setTo(0.5, 0.5);
+	
+	
 	this.background = this.game.add.sprite(0, 0, 'background');
 
 	this.text = game.add.text(34,10,"State Machine Creator",style);
@@ -79,6 +109,7 @@ function create() {
 	//this.game.time.advancedTiming = true;
 	var pos = this.game.input.activePointer.position;
 	positionTxt = game.add.text(55,500,"x:" + pos.x + " y:" + pos.y, style);
+	testTxt = game.add.text(55,520,"test:", style);
 	var xinc = 0;
 	var yinc = 0;
 	for(yinc = 0; yinc < 13; yinc++)
@@ -92,8 +123,17 @@ function create() {
 	
 	selector = this.game.add.sprite(0,0,'orangesqr');
 	selector.visible = false;
+	
 	menu = this.game.add.sprite(0,0,'menu');
 	menu.visible = false;
+	
+	createSelect = this.game.add.sprite(0,0,'createSelect');
+	createSelect.visible = false;
+	
+	infoSelect = this.game.add.sprite(0,0,'infoSelect');
+	infoSelect.visible = false;
+	
+	
 }
 
 function update() {
@@ -130,15 +170,22 @@ function update() {
 			selector.visible = false;
 	}
 	positionTxt.setText("x:" + txtX + " y:" + txtY);
+	testTxt.setText("Test");
 	
 	if(this.game.input.activePointer.leftButton.isDown == true)
 		ismbDown = true;
 	
+	/*The lmb was pressed and then let go on the grid*/
 	if(ismbDown == true && this.game.input.activePointer.leftButton.isUp == true && pos.x > 200)
 	{
+		/*if the menu was already up hide it*/
 		if(menu.visible == true)
+		{
 			menu.visible = false;
-		else
+			createSelect.visible = false;
+			infoSelect.visible = false;
+		}
+		else /*Otherwise place it, conditionals for making sure menu doesn't go oob*/
 		{
 			if(pos.y < 688)
 			{
@@ -166,13 +213,50 @@ function update() {
 					menu.y = pos.y - 112;
 				}
 			}
+			/*Set it visible no matter the condition and store coord of menu square*/
 			menu.visible = true;
 			menuX = currX;
 			menuY = currY;
 		}
+		/*The mouse can't be down at this point since this checks for it being up, set bool back*/
 		ismbDown = false;
 	}
 	
+	
+	/*This statement checks for menu selection hoverings*/
+	if(menu.visible == true)
+	{
+	
+		/*Check Create State hover*/
+		var hover = false;
+		hover = hoverOver(pos,menu.x,menu.x+216,menu.y,menu.y+28);
+		
+		if(hover == true)
+		{
+			createSelect.x = menu.x;
+			createSelect.y = menu.y;
+			createSelect.visible = true;
+		}
+		else
+		{
+			createSelect.visible = false;
+		}	
+		
+		/*Check Info hover*/
+		hover = hoverOver(pos,menu.x,menu.x+216,menu.y+80,menu.y+112);
+		
+		if(hover == true)
+		{
+			infoSelect.x = menu.x;
+			infoSelect.y = menu.y+80;			
+			infoSelect.visible = true;
+		}
+		else
+			infoSelect.visible = false;
+		
+	}
+	
+	/*Hide the menu completely if click is off the grid*/
 	if(ismbDown == true && pos.x <= 200)
 	{
 		ismbDown = false;
