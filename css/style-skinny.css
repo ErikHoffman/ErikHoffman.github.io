@@ -68,7 +68,7 @@ body {
 
 #dialog {
 	width: 90%;
-	height:700px;
+	height:1000px;
 	background-color:#CDCDCD;
 	position: absolute;
 	top: 200px;
@@ -101,7 +101,7 @@ body {
 	position:absolute;
 	width: 100%;
 	height: 275px;
-	top:975px;
+	top:1275px;
 	background-color: #233237;
 	clear: both;
 	font-family: "Josefin Sans", serif;
