@@ -3,7 +3,7 @@ div {
 }
 
 .button {
-	background-color: #984B43;
+	background-color:#88BBD6;
 	border: none;
 	color: white;
 	padding: 15px 32px;
@@ -15,8 +15,7 @@ div {
 
 html { 
   /*background: url(../background.jpg) no-repeat center center fixed; */
-  /*background-color: #BE0000;*/
-  background-color:#062F4F;
+  background-color:#E9E9E9;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -42,8 +41,7 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	height: 135px;
-	/*background-color: #800000;*/
-	background-color: #233237;
+	background-color: #CDCDCD;
 	margin-bottom: 10px;
 	margin-top:1px;
 	filter: alpha(opacity=70);
@@ -69,8 +67,7 @@ body {
 #dialog {
 	width: 50%;
 	height: 900px;
-	/*background-color: #FF350A;*/
-	background-color:#828081;
+	background-color:#CDCDCD;
 	
 	position: absolute;
 	top: 300px;
@@ -139,6 +136,26 @@ div.bitbucketlogo {
 	top:1675px;
 }*/
 
+.linkind
+{
+	color:#7D7D7D;
+	font-size: 1.8vw;
+	font-family:"Josefin Sans", Palatino, serif;
+	margin-right:auto;
+	padding:1vw;
+	display:inline;
+}
+
+.linkind:visited {
+	color:#7D7D7D;
+}
+
+.linkind:hover {
+	color:#FFFFFF;
+}
+
+
+
 ul{
 	display:inline-block;
 	list-style-type: none;
@@ -149,28 +166,25 @@ ul{
 
 li{
 	display:inline;
-	/*margin-left:auto;*/
 	padding:1vw;
 	margin-right:auto;
 	font-family: "Josefin Sans", Palatino, serif;
 	font-size: 1.8vw;
-	color: #984B43;
+	color:#7D7D7D;
 	text-decoration:none;
 }
 
 
 li:link {
-	/*color: #CD5C5C;*/
-	color: #984B43;
+	color:#7D7D7D;
 }
 
 li:visited {
-	/*color: #CD5C5C;*/
-	color:#984B43;
+	color:#FFFFFF;
 }
 
 li:hover {
-	color: #EAC67A;
+	color:#FFFFFF;
 	text-decoration:none;
 	cursor: pointer;
 }
