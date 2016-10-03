@@ -26,6 +26,9 @@
 			
 			var showLess = document.getElementById('showless');
 			showLess.style.display = 'none';
+			
+			var truformModal = document.getElementById('truformModal');
+			truformModal.style.display = 'none';
 			var width = window.innerWidth ||
 					document.documentElement.clientWidth ||
 					document.body.clientWidth;
@@ -39,14 +42,29 @@
 				var bitbuck = document.getElementById('bitbucket-logo').style.width = '100px';
 				var bitbuck = document.getElementById('bitbucket-logo').style.height = '100px';
 				var bitbuck = document.getElementById('bitbucket-logo').src = "../images/bucket.png";
-				incHeight("dialog",300);
-				addToTop("footer",300);
 			}
 			
 			//incHeight();
 		};
 		
 		function truformDesc(){
+			var truformModal = document.getElementById('truformModal');
+			truformModal.style = 'block';
+		}
+		
+		
+		var span = document.getElementsByClassName("close")[0];
+		span.onclick = function() {
+			var truformModal = document.getElementById('truformModal');
+			truformModal.style = 'none';
+		}
+		
+		/*function truformDescClose(){
+			var truformModal = document.getElementById('truformModal');
+			truformModal.style = 'none';
+		}*/
+		
+		/*function truformDesc(){
 			incHeight("dialog",300);
 			addToTop("footer",300);
 			var showMore = document.getElementById('showmore');
@@ -66,7 +84,7 @@
 			truformDesc.style.display = 'none';
 			var showLessButton = document.getElementById('showless');
 			showLessButton.style.display = 'none';
-		};
+		};*/
 		
 		window.addEventListener('resize', rsize);
 		
@@ -109,6 +127,11 @@
 			toAddHeight = String(toAddHeight);
 			toAddHeight += 'px';
 			el.style.top = toAddHeight;
+		}
+		
+		function overrideHeight(e, toAdd) {
+			
+		
 		}
 		
 		/***
@@ -178,15 +201,26 @@
 						from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
 						workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br>
 					</div>
+					
+					<div id="truformModal" class="modal">
+						<div class="modal-content">
+							<span class="close">x</span>
+								<p>An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
+								meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
+								from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
+								workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br></p>
+						</div>
+					</div>
 						<div id="showmore">
 							<button class="button" onclick="truformDesc()">Show Description</button>
 						</div>
 						<div id="showless">
-							<button class="button" onclick="showLess()">Show Less</button>
+							<button class="button" onclick="truformDescClose()">Show Less</button>
 						</div>
 					</div>
 				</div>
 		    </div>
+			
 		</div>
 		<div id = "footer"> 
 			<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href=https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a> 
