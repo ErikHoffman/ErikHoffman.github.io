@@ -26,6 +26,9 @@
 			
 			var showLess = document.getElementById('showless');
 			showLess.style.display = 'none';
+			
+			var truformModal = document.getElementById('truformModal');
+			truformModal.style.display = 'none';
 			var width = window.innerWidth ||
 					document.documentElement.clientWidth ||
 					document.body.clientWidth;
@@ -39,14 +42,29 @@
 				var bitbuck = document.getElementById('bitbucket-logo').style.width = '100px';
 				var bitbuck = document.getElementById('bitbucket-logo').style.height = '100px';
 				var bitbuck = document.getElementById('bitbucket-logo').src = "../images/bucket.png";
-				incHeight("dialog",300);
-				addToTop("footer",300);
 			}
 			
 			//incHeight();
 		};
 		
 		function truformDesc(){
+			var truformModal = document.getElementById('truformModal');
+			truformModal.style = 'block';
+		}
+		
+		
+		var span = document.getElementsByClassName("close")[0];
+		span.onclick = function() {
+			var truformModal = document.getElementById('truformModal');
+			truformModal.style = 'none';
+		}
+		
+		/*function truformDescClose(){
+			var truformModal = document.getElementById('truformModal');
+			truformModal.style = 'none';
+		}*/
+		
+		/*function truformDesc(){
 			incHeight("dialog",300);
 			addToTop("footer",300);
 			var showMore = document.getElementById('showmore');
@@ -66,7 +84,7 @@
 			truformDesc.style.display = 'none';
 			var showLessButton = document.getElementById('showless');
 			showLessButton.style.display = 'none';
-		};
+		};*/
 		
 		window.addEventListener('resize', rsize);
 		
@@ -111,6 +129,11 @@
 			el.style.top = toAddHeight;
 		}
 		
+		function overrideHeight(e, toAdd) {
+			
+		
+		}
+		
 		/***
 		 * get live runtime value of an element's css style
 		 *   http://robertnyman.com/2006/04/24/get-the-rendered-style-of-an-element
@@ -146,7 +169,7 @@
 				
 					<li id="link-home"><a href="../index.html" style="text-decoration:none; color:inherit;">The Front Page</a></li>
 					<li id="link-about"><a href="about.html" style="text-decoration:none; color:inherit;">About Me</a></li>
-					<li style="color:#FFA07A" id="link-portfolio"><a href="portfolio.html" style="text-decoration:none; color:inherit;">Portfolio</a></li>
+					<li style="color:#FFFFFF" id="link-portfolio"><a href="portfolio.html" style="text-decoration:none; color:inherit;">Portfolio</a></li>
 					<li id="link-resume"><a href="../Erik_CIS_Resume.pdf" style="text-decoration:none; color:inherit;">Resume</a></li>
 			
 				</ul>
@@ -162,37 +185,42 @@
 					<br><br>
 					On Bitbucket I have hosted some code that I've written for different projects, including the DFA/NFA state creator that you can access below.<br><br>
 					Why Bitbucket over github?<br><br>For individual use I enjoy the simple layout of the site enough to use it over github. I have experience using both however.<br>
-					<li id="link-game">
-					<a style="color:#FFA07A; text-decoration:none;" href="../stateM_creator/stateM_creator.html"><div id="DFACreate"><font size="6">State Machine Creator</font></div></a>
-					</li>
+					<a class="linkind" style="text-decoration:none;" href="../stateM_creator/stateM_creator.html"><div id="DFACreate"><font size="6">State Machine Creator</font></div></a>
 					<br>A UI made in phaserJS that lets you create simple state machines and save them to a file.
 					<br>This is a work in progress as I want to keep up to date with javascript and also try different 2d engines for web.<br>
 					
 					<div id="haskell">
-					<li id="link-haskell">
-					<a style="color:#FFA07A; text-decoration:none;" href="../haskell/haskell.html"><div id="HaskellCreate"><font size="6">Haskell web apps with Haste</font></div></a>
-					</li>
+					<a class="linkind" style="text-decoration:none;" href="../haskell/haskell.html"><div id="HaskellCreate"><font size="6">Haskell web apps with Haste</font></div></a>
 					</div>
 					
 					<div id="truformarea">
-					<li id="link-truform">
-					<a style="color:#FFA07A; text-decoration:none;" href="https://bitbucket.org/benbaird/truform"><div id="truform"><font size="6">Truform App</font></div></a>
-					</li>
+					<a class="linkind" style="text-decoration:none;" href="https://bitbucket.org/benbaird/truform"><div id="truform"><font size="6">Truform App</font></div></a>
 					<div id="truformDesc">
 						An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
 						meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
 						from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
 						workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br>
 					</div>
+					
+					<div id="truformModal" class="modal">
+						<div class="modal-content">
+							<span class="close">x</span>
+								<p>An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
+								meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
+								from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
+								workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br></p>
+						</div>
+					</div>
 						<div id="showmore">
 							<button class="button" onclick="truformDesc()">Show Description</button>
 						</div>
 						<div id="showless">
-							<button class="button" onclick="showLess()">Show Less</button>
+							<button class="button" onclick="truformDescClose()">Show Less</button>
 						</div>
 					</div>
 				</div>
 		    </div>
+			
 		</div>
 		<div id = "footer"> 
 			<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href=https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a> 
