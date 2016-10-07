@@ -14,13 +14,13 @@ div {
 }
 
 .modal {
+	z-index:2;
 	background-color:#88BBD6;
 	position:fixed;
-	z-index:1;
-	left: 0;
-	top:0;
-	width: 75%;
-	height: 50%;
+	left: 25%;
+	top:100px;
+	width: 50%;
+	height: 75%;
 	overflow: auto;
 }
 
@@ -69,15 +69,19 @@ body {
 .hover_img a:hover span {display:block;}
 
 #header {
-	position:absolute;
+	z-index:1;
+	position:fixed;
 	display:inline-block;
 	width: 100%;
 	margin: 0 auto;
+	border-radius:0;
 	height: 135px;
 	background-color: #CDCDCD;
+	border-style:solid;
+	border-color:#000000;
 	margin-bottom: 10px;
-	margin-top:1px;
 	filter: alpha(opacity=70);
+	z-index:1;
 }
 
 #navbar {
