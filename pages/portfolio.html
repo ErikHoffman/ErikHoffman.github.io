@@ -19,16 +19,21 @@
 			});
 		});
 		
+		var truformModal;
+		var span;
+		
 		window.onload = function(){
 		
 			var truformDesc = document.getElementById('truformDesc');
 			truformDesc.style.display = 'none';
 			
-			var showLess = document.getElementById('showless');
-			showLess.style.display = 'none';
+			//var showLess = document.getElementById('showless');
+			//showLess.style.display = 'none';
 			
-			var truformModal = document.getElementById('truformModal');
+			truformModal = document.getElementById('truformModal');
 			truformModal.style.display = 'none';
+			
+			
 			var width = window.innerWidth ||
 					document.documentElement.clientWidth ||
 					document.body.clientWidth;
@@ -45,23 +50,35 @@
 			}
 			
 			//incHeight();
-		};
+		}
 		
+		
+
+		
+
 		function truformDesc(){
-			var truformModal = document.getElementById('truformModal');
+			//span = document.getElementsByClassName('close')[0].innerHTML;
+			//span = document.getElementById('modal-close');
 			truformModal.style = 'block';
+	
 		}
 		
-		
-		var span = document.getElementsByClassName("close")[0];
-		span.onclick = function() {
-			var truformModal = document.getElementById('truformModal');
+		/*span.onclick = function() {
 			truformModal.style = 'none';
-		}
+		}*/
+		
+		$(document).on("click", "#truformClose", function(event){
+			truformModal.style = 'none';
+		});
 		
 		function truformDescClose(){
-			var truformModal = document.getElementById('truformModal');
 			truformModal.style = 'none';
+		}
+		
+		window.onclick = function(event) {
+			if (event.target == truformModal) {
+				truformModal.style.display = "none";
+			}
 		}
 		
 		/*function truformDesc(){
@@ -109,7 +126,7 @@
 				img.style.width = "350px";
 				img.style.height = "70px";
 			}
-		};
+		}
 		
 		function incHeight(e, addHeight) {
 			var el = document.getElementById(e);
@@ -129,10 +146,10 @@
 			el.style.top = toAddHeight;
 		}
 		
-		function overrideHeight(e, toAdd) {
+		//function overrideHeight(e, toAdd) {
 			
 		
-		}
+		//}
 		
 		/***
 		 * get live runtime value of an element's css style
@@ -194,32 +211,28 @@
 					</div>
 					
 					<div id="truformarea">
-					<a class="linkind" style="text-decoration:none;" href="https://bitbucket.org/benbaird/truform"><div id="truform"><font size="6">Truform App</font></div></a>
-					<div id="truformDesc">
-						An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
-						meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
-						from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
-						workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br>
+						<a class="linkind" style="text-decoration:none;" href="https://bitbucket.org/benbaird/truform"><div id="truform"><font size="6">Truform App</font></div></a>
+						<div id="truformDesc">
+							An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
+							meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
+							from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
+							workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br>
+						</div>
 					</div>
 					
 					<div id="truformModal" class="modal">
-						<div id="showless">
-							<button class="button" onclick="truformDescClose()">Show Less</button>
-						</div>
 						<div class="modal-content">
-							<span class="close">x</span>
+							<button class="button" id="truformClose">Show Less</button>
 								<p>An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
 								meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
 								from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
 								workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/&#13;&#10;functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br></p>
 						</div>
 					</div>
-						<div id="showmore">
-							<button class="button" onclick="truformDesc()">Show Description</button>
-						</div>
-						<!--div id="showless">
-							<button class="button" onclick="truformDescClose()">Show Less</button>
-						</div-->
+					
+					<!--span id="modal-close" class="close">x</span-->
+					<div id="showmore">
+						<button class="button" onclick="truformDesc()">Show Description</button>
 					</div>
 				</div>
 		    </div>
