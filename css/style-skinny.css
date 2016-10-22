@@ -18,9 +18,9 @@ div {
 	position:fixed;
 	z-index:2;
 	left: 25%;
-	top:0;
-	width: 75%;
-	height: 50%;
+	top:100px;
+	width: 50%;
+	height: 75%;
 	overflow: auto;
 }
 
@@ -77,6 +77,8 @@ body {
 	height: 135px;
 	background-color: #CDCDCD;
 	margin-bottom: 10px;
+	border-top: 3px solid #000000;
+	border-bottom: 3px solid #000000;
 	opacity: 0.9;
 	margin-top:1px;
 	filter: alpha(opacity=70);
@@ -101,7 +103,8 @@ body {
 
 #dialog {
 	width: 90%;
-	height:1100px;
+	overflow:auto;
+	/*height:1100px;*/
 	background-color:#CDCDCD;
 	position: absolute;
 	top: 200px;
@@ -186,7 +189,7 @@ li{
 	padding:1vw;
 	margin-right:auto;
 	font-family: "Josefin Sans", Palatino, serif;
-	font-size: 4.5vw;
+	font-size: 15px;
 	color:#7D7D7D;
 	text-decoration:none;
 }

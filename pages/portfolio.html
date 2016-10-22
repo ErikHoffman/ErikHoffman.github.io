@@ -11,14 +11,10 @@
 		<!--meta charset="utf-8"/-->
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script>
-		$(document).ready(function(){
-			$("link-about").click(function(){
-			});
-			$("link-portfolio").click(function(){
-			});
-		});
 		
+		
+		
+		<script>
 		var truformModal;
 		var span;
 		
@@ -68,11 +64,11 @@
 		}*/
 		
 		$(document).on("click", "#truformClose", function(event){
-			truformModal.style = 'none';
+			truformModal.style.display = 'none';
 		});
 		
 		function truformDescClose(){
-			truformModal.style = 'none';
+			truformModal.style.display = 'none';
 		}
 		
 		window.onclick = function(event) {
@@ -80,29 +76,6 @@
 				truformModal.style.display = "none";
 			}
 		}
-		
-		/*function truformDesc(){
-			incHeight("dialog",300);
-			addToTop("footer",300);
-			var showMore = document.getElementById('showmore');
-			showMore.style.display = 'none';
-			var truformDesc = document.getElementById('truformDesc');
-			truformDesc.style.display = 'block';
-			var showLessButton = document.getElementById('showless');
-			showLessButton.style.display = 'block';
-		};
-		
-		function showLess(){
-			incHeight("dialog",-300);
-			addToTop("footer",-300);
-			var showMore = document.getElementById('showmore');
-			showMore.style.display = 'block';
-			var truformDesc = document.getElementById('truformDesc');
-			truformDesc.style.display = 'none';
-			var showLessButton = document.getElementById('showless');
-			showLessButton.style.display = 'none';
-		};*/
-		
 		window.addEventListener('resize', rsize);
 		
 		function rsize() {
@@ -206,9 +179,9 @@
 					<br>A UI made in phaserJS that lets you create simple state machines and save them to a file.
 					<br>This is a work in progress as I want to keep up to date with javascript and also try different 2d engines for web.<br>
 					
-					<div id="haskell">
+					<!--div id="haskell">
 					<a class="linkind" style="text-decoration:none;" href="../haskell/haskell.html"><div id="HaskellCreate"><font size="6">Haskell web apps with Haste</font></div></a>
-					</div>
+					</div-->
 					
 					<div id="truformarea">
 						<a class="linkind" style="text-decoration:none;" href="https://bitbucket.org/benbaird/truform"><div id="truform"><font size="6">Truform App</font></div></a>
@@ -226,7 +199,7 @@
 								<p>An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
 								meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
 								from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
-								workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/&#13;&#10;functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br></p>
+								workout was performed well. <br><br>Under source view: "Truform/app/src/&#13;&#10;main/java/&#13;&#10;naddateam/&#13;&#10;truform/&#13;&#10;functionality/&#13;&#10;ExerciseAnalysis.java<br> to see the algorithm code I created.<br><br></p>
 						</div>
 					</div>
 					

@@ -77,8 +77,10 @@ body {
 	border-radius:0;
 	height: 135px;
 	background-color: #CDCDCD;
-	border-style:solid;
-	border-color:#000000;
+	border-top: 3px solid #000000;
+	border-bottom: 3px solid #000000;
+	/*border-style:solid;
+	border-color:#000000;*/
 	margin-bottom: 10px;
 	filter: alpha(opacity=70);
 	z-index:1;
@@ -103,10 +105,10 @@ body {
 
 #dialog {
 	width: 50%;
-	height: 900px;
+	overflow:auto;
 	background-color:#CDCDCD;
 	
-	position: absolute;
+	position:absolute;
 	top: 300px;
 	left: 25%;
 	text-align:center;
@@ -124,8 +126,9 @@ body {
 	margin: 0 auto;
 	display:inline-block;
 	right:12.5%;
-	height: 900px;
-	position: absolute;
+	overflow:auto;
+	/*height: 900px;*/
+	/*position: absolute;*/
 	text-align:center;
 	font-size:20px;
 }
@@ -206,7 +209,7 @@ li{
 	padding:1vw;
 	margin-right:auto;
 	font-family: "Josefin Sans", Palatino, serif;
-	font-size: 1.8vw;
+	font-size: 30px;
 	color:#7D7D7D;
 	text-decoration:none;
 }
