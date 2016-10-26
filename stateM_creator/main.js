@@ -20,6 +20,17 @@ function preload() {
 /*Font styles for text declared here*/
 var style = { font: "12px Arial", fill: "#000000" };
 
+
+/*The state class*/
+var state = function(x,y,name,edges)
+{
+	this.x = x;
+	this.y = y;
+	this.name = name;
+	for(var i = 0; i < edges.length; i++)
+		this.edges[i] = edges[i];
+}
+
 /*CurrX/CurrY: Current x and y positions of mouse in terms of the grid for replacing
 gray squares after orange selector cursor
 
@@ -44,6 +55,18 @@ var textArea;
 var selector;
 var menu;
 var createSelect;
+
+
+
+var menuHover = 0;
+/*
+Menu hover type
+0 - none
+1 - create state
+2 - delete state
+3 - create edge
+4 - info
+*/ 
 
 
 
@@ -178,14 +201,39 @@ function update() {
 	/*The lmb was pressed and then let go on the grid*/
 	if(ismbDown == true && this.game.input.activePointer.leftButton.isUp == true && pos.x > 200)
 	{
-		/*if the menu was already up hide it*/
+		/*if the menu was already up, check to see if over an option, also hide it*/
 		if(menu.visible == true)
 		{
+		
+			/*Check hoverings*/
+			if(menuHover == 1) /*Create State*/
+			{
+				menuHover = 0;
+			}
+			else if(menuHover == 2) /*Delete State*/
+			{
+				menuHover = 0;
+			}
+			else if(menuHover == 3) /*Create Edge*/
+			{
+				menuHover = 0;
+			}
+			else if(menuHover == 4) /*Info*/
+			{
+				menuHover = 0;
+			}
+			
+			
+			/*createState(X,Y)
+			infoState(X,Y)*/
+			
+			
+			/*End hovering check*/
 			menu.visible = false;
 			createSelect.visible = false;
 			infoSelect.visible = false;
 		}
-		else /*Otherwise place it, conditionals for making sure menu doesn't go oob*/
+		else /*Otherwise place it, conditionals for making sure menu doesn't go right of pointer when that would overflow to right*/
 		{
 			if(pos.y < 688)
 			{
@@ -229,18 +277,37 @@ function update() {
 	
 		/*Check Create State hover*/
 		var hover = false;
-		hover = hoverOver(pos,menu.x,menu.x+216,menu.y,menu.y+28);
+		hover = hoverOver(pos,menu.x,menu.x+216,menu.y,menu.y+27);
 		
 		if(hover == true)
 		{
 			createSelect.x = menu.x;
 			createSelect.y = menu.y;
 			createSelect.visible = true;
+			menuHover = 1;
 		}
 		else
-		{
 			createSelect.visible = false;
-		}	
+		
+		
+		/*Check Delete State hover*/
+		hover = hoverOver(pos,menu.x,menu.x+216,menu.y+28,menu.y+53);
+		
+		if(hover == true)
+		{
+			menuHover = 2;
+		}
+		//else
+		
+		/*Check Create Edge hover*/
+		hover = hoverOver(pos,menu.x,menu.x+216,menu.y+54,menu.y+79);
+		
+		if(hover == true)
+		{
+			menuHover = 3;
+		}
+		//else
+		
 		
 		/*Check Info hover*/
 		hover = hoverOver(pos,menu.x,menu.x+216,menu.y+80,menu.y+112);
@@ -250,13 +317,14 @@ function update() {
 			infoSelect.x = menu.x;
 			infoSelect.y = menu.y+80;			
 			infoSelect.visible = true;
+			menuHover = 4;
 		}
 		else
 			infoSelect.visible = false;
 		
 	}
 	
-	/*Hide the menu completely if click is off the grid*/
+	/*Hide the menu if click is off the grid*/
 	if(ismbDown == true && pos.x <= 200)
 	{
 		ismbDown = false;
