@@ -15,6 +15,7 @@ function preload() {
 	this.load.image('menu', 'assets/menu.png');
 	this.load.image('createSelect','assets/menu_createS_highlight.png');
 	this.load.image('infoSelect','assets/menu_info_highlight.png');
+	this.load.image('createMenu','assets/create_state_screen.png');
 }
 
 /*Font styles for text declared here*/
@@ -156,6 +157,9 @@ function create() {
 	infoSelect = this.game.add.sprite(0,0,'infoSelect');
 	infoSelect.visible = false;
 	
+	createMenu = this.game.add.sprite(0,0,'createMenu');
+	createMenu.visible = false;
+	
 	
 }
 
@@ -209,6 +213,10 @@ function update() {
 			if(menuHover == 1) /*Create State*/
 			{
 				menuHover = 0;
+				menu.visible = false;
+				createMenu.visible = true;
+				createMenu.x = pos.x;
+				createMenu.y = pos.y;
 			}
 			else if(menuHover == 2) /*Delete State*/
 			{
