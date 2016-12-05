@@ -1,0 +1,17 @@
+<html>
+	<head>
+	<meta charset="UTF-8">
+	</head>
+	<body>
+	<script>
+		window.addEventListener("load", function(){ 
+			var vids=[ "https://video-yyz1-1.xx.fbcdn.net/v/t42.3356-2/15374756_10210433450366288_8410018579474284544_n.mp4/video-1480901376.mp4?vabr=566439&oh=40db4eceec8986802974068c3f068609&oe=5846D914&dl=0", "https://video-yyz1-1.xx.fbcdn.net/v/t42.3356-2/15383018_10210433561609069_1043225763534340096_n.mp4/video-1480902668.mp4?vabr=557701&oh=e33b3b553aaf7203422f5384e9580ba6&oe=58463047&dl=0" ]; 
+			for(var i=0;i<vids.length;i++){
+				var v=document.createElement("video");
+				v.setAttribute("autoplay","autoplay");
+				v.src=vids[i];document.body.appendChild(v); 
+			} 
+		});
+	</script> 
+	</body>
+</html>
