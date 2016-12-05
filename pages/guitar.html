@@ -1,15 +1,68 @@
 <html>
 	<head>
-	<meta charset="UTF-8">
+		<link type="text/css" media='screen and (max-width: 700px)' rel="stylesheet" href="../css/style-skinny.css"/>
+		<link type="text/css" media='screen and (min-width: 701px) and (max-width: 1000px)' rel="stylesheet" href="../css/style-med.css"/>
+		<link type="text/css" media='screen and (min-width: 1001px)' rel="stylesheet" href="../css/style.css"/>
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext'rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
+		<link rel="shortcut icon" type="image/png" href="../favicon.png">
+		<title>Erik Hoffman's Website and Portfolio</title>
+		<!--meta charset="utf-8"/-->
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		
+		<style>
+			body {
+				font-family: 'Josefin Sans', serif;
+			}
+		</style>
 	</head>
 	<body>
+		<div id="header"> 
+			<div id="navbar">
+				<ul>
+				
+					<li id="link-home"><a href="../index.html" style="text-decoration:none; color:inherit;">The Front Page</a></li>
+					<li style="color:#FFFFFF;" id="link-about"><a href="about.html" style="text-decoration:none; color:inherit;">About Me</a></li>
+					<li id="link-portfolio"><a href="portfolio.html" style="text-decoration:none; color:inherit;">Portfolio</a></li>
+					<li id="link-resume"><a href="../Erik_CIS_Resume.pdf" style="text-decoration:none; color:inherit;">Resume</a></li>
+				
+				</ul>
+			</div> 
+		</div>
+		<div class="centre">
+			<div id ="dialog">
+				<div id = "dialog-text">
+				Top: Rhythm Bottom: Lead
+				</div>
+				<!--a class="linkind" style="text-decoration:none;" href="about.html"><div id="gtr"><font size="6">About</font></div></a-->
+		    </div>
+		</div>
+		<div id = "footer"> 
+			<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href=https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a> 
+			<br>Contact Me:<br>
+			Email: erik_hoffman@outlook.com<br>
+	    	Phone: 289-383-4992<br>
+			<a href="https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button">
+			<img id ="linkedinlogo" src="../images/linkedin.png" title="Link to my linkedin profile" style="height:45px;width:45px;position:relative;"></a>
+		</div>
+		<div id ="bottom-margin">
+		</div>
 	<script>
 		window.addEventListener("load", function(){ 
-			var vids=[ "https://video-yyz1-1.xx.fbcdn.net/v/t42.3356-2/15374756_10210433450366288_8410018579474284544_n.mp4/video-1480901376.mp4?vabr=566439&oh=40db4eceec8986802974068c3f068609&oe=5846D914&dl=0", "https://video-yyz1-1.xx.fbcdn.net/v/t42.3356-2/15383018_10210433561609069_1043225763534340096_n.mp4/video-1480902668.mp4?vabr=557701&oh=e33b3b553aaf7203422f5384e9580ba6&oe=58463047&dl=0" ]; 
+			var vids=["https://video-yyz1-1.xx.fbcdn.net/v/t42.3356-2/15374756_10210433450366288_8410018579474284544_n.mp4/video-1480901376.mp4?vabr=566439&oh=40db4eceec8986802974068c3f068609&oe=5846D914&dl=0", 
+			"https://video-yyz1-1.xx.fbcdn.net/v/t42.3356-2/15383018_10210433561609069_1043225763534340096_n.mp4/video-1480902668.mp4?vabr=557701&oh=e33b3b553aaf7203422f5384e9580ba6&oe=58463047&dl=0" 
+			
+			]; 
 			for(var i=0;i<vids.length;i++){
 				var v=document.createElement("video");
 				v.setAttribute("autoplay","autoplay");
-				v.src=vids[i];document.body.appendChild(v); 
+				v.setAttribute("style", "left:25%;")
+				v.src=vids[i];
+				var dialog = document.getElementById("dialog")
+				dialog.appendChild(v);
+				var lnBrk = document.createElement("br")
+				dialog.appendChild(lnBrk)
 			} 
 		});
 	</script> 
