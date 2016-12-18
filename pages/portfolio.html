@@ -16,18 +16,25 @@
 		
 		<script>
 		var truformModal;
+		var functionalModal;
 		var span;
 		
 		window.onload = function(){
 		
-			var truformDesc = document.getElementById('truformDesc');
-			truformDesc.style.display = 'none';
+			//var truformDesc = document.getElementById('truformDesc');
+			//truformDesc.style.display = 'none';
+			
+			//var functionalDesc = document.getElementById('functionalDesc');
+			//functionalDesc.style.display = 'none';
 			
 			//var showLess = document.getElementById('showless');
 			//showLess.style.display = 'none';
 			
 			truformModal = document.getElementById('truformModal');
 			truformModal.style.display = 'none';
+			
+			functionalModal = document.getElementById('functionalModal');
+			functionalModal.style.display = 'none';
 			
 			
 			var width = window.innerWidth ||
@@ -53,22 +60,29 @@
 		
 
 		function truformDesc(){
-			//span = document.getElementsByClassName('close')[0].innerHTML;
-			//span = document.getElementById('modal-close');
 			truformModal.style = 'block';
 	
 		}
 		
-		/*span.onclick = function() {
-			truformModal.style = 'none';
-		}*/
+		function functionalDesc(){
+			functionalModal.style = 'block';
+		}
+
 		
 		$(document).on("click", "#truformClose", function(event){
 			truformModal.style.display = 'none';
 		});
 		
+		$(document).on("click", "#functionalClose", function(event) {
+			functionalModal.style.display = 'none';
+		});
+		
 		function truformDescClose(){
 			truformModal.style.display = 'none';
+		}
+		
+		function functionalClose(){
+			functionalModal.style.display = 'none';
 		}
 		
 		window.onclick = function(event) {
@@ -76,6 +90,13 @@
 				truformModal.style.display = "none";
 			}
 		}
+		
+		window.onclick = function(event) {
+			if (event.target == functionalModal) {
+				functionalModal.style.display = "none";
+			}
+		}
+		
 		window.addEventListener('resize', rsize);
 		
 		function rsize() {
@@ -178,35 +199,44 @@
 					<a class="linkind" style="text-decoration:none;" href="../stateM_creator/stateM_creator.html"><div id="DFACreate"><font size="6">State Machine Creator</font></div></a>
 					<br>A UI made in phaserJS that lets you create simple state machines and save them to a file.
 					<br>This is a work in progress as I want to keep up to date with javascript and also try different 2d engines for web.<br>
-					
-					<!--div id="haskell">
-					<a class="linkind" style="text-decoration:none;" href="../haskell/haskell.html"><div id="HaskellCreate"><font size="6">Haskell web apps with Haste</font></div></a>
-					</div-->
+				
 					
 					<div id="truformarea">
 						<a class="linkind" style="text-decoration:none;" href="https://bitbucket.org/benbaird/truform"><div id="truform"><font size="6">Truform App</font></div></a>
-						<div id="truformDesc">
-							An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
-							meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
-							from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
-							workout was performed well. <br><br>Under source view: "Truform/app/src/main/java/naddateam/truform/functionality/ExerciseAnalysis.java"<br> to see the algorithm code I created.<br><br>
+					
+						<div id="truformModal" class="modal">
+							<div class="modal-content">
+								<button class="button" id="truformClose">Show Less</button>
+									<p>An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
+									meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
+									from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
+									workout was performed well. <br><br>Under source view: "Truform/app/src/&#13;&#10;main/java/&#13;&#10;naddateam/&#13;&#10;truform/&#13;&#10;functionality/&#13;&#10;ExerciseAnalysis.java<br> to see the algorithm code I created.<br><br></p>
+							</div>
+						</div>
+						
+						<div id="showmoreT">
+							<button class="button" onclick="truformDesc()">Show Description</button>
 						</div>
 					</div>
 					
-					<div id="truformModal" class="modal">
-						<div class="modal-content">
-							<button class="button" id="truformClose">Show Less</button>
-								<p>An app made in a team for a course at University of Guelph. The entire course followed the development of this app and was graded along the way during
-								meetings with the professor. Myself and three others created this using an Arduino computer with a gyroscope and accelerometer linked to a smartphone to measure workout form
-								from a user. <br><br>My major role in the project involved creating the algorithm that would measure the data of the workout and give output on wether or not the form of the
-								workout was performed well. <br><br>Under source view: "Truform/app/src/&#13;&#10;main/java/&#13;&#10;naddateam/&#13;&#10;truform/&#13;&#10;functionality/&#13;&#10;ExerciseAnalysis.java<br> to see the algorithm code I created.<br><br></p>
+					<div id="functionalarea">
+						<a class="linkind" style="text-decoration:none;" href="https://bitbucket.org/ErikHoffman/connect-four-elixir"><div id="functional"><font size="6">Functional Connect Four in Elixir</font></div></a>
+					
+						<div id="functionalModal" class="modal">
+							<div class="modal-content">
+								<button class="button" id="functionalClose">Show Less</button>
+									<p>Created in a functional programming study group during my final semester at University of Guelph.<br><br>
+									Used the Elixir programming language to create a connect four game to communicate over IRC with other members of the class. Learned about the advantages of functional as well
+									as the hurdles one must overcome (mutability, recursion, etc.).
+									<br><br></p>
+							</div>
+						</div>
+						
+						<div id="showmoreF">
+							<button class="button" onclick="functionalDesc()">Show Description</button>
 						</div>
 					</div>
 					
-					<!--span id="modal-close" class="close">x</span-->
-					<div id="showmore">
-						<button class="button" onclick="truformDesc()">Show Description</button>
-					</div>
 					<br><br><br>
 				</div>
 		    </div>

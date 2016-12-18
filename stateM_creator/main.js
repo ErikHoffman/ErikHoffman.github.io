@@ -5,7 +5,7 @@ function preload() {
 	/*Various*/
 	this.load.image('background','assets/background.jpg');
 	
-	/*Grid and types of square*/
+	/*Grid and types of squares*/
 	this.load.image('greensqr', 'assets/greensqr.png');
 	this.load.image('bluesqr', 'assets/bluesqr.png');
 	this.load.image('orangesqr', 'assets/orangesqr.png');
@@ -15,7 +15,14 @@ function preload() {
 	this.load.image('menu', 'assets/menu.png');
 	this.load.image('createSelect','assets/menu_createS_highlight.png');
 	this.load.image('infoSelect','assets/menu_info_highlight.png');
+	
+	/*State create menu*/
 	this.load.image('createMenu','assets/create_state_screen.png');
+	this.load.image('createAccept','assets/create_state_screen_accept_highlight.png');
+	this.load.image('createCancel','assets/create_state_screen_cancel_highlight.png');
+	
+	
+
 }
 
 /*Font styles for text declared here*/
@@ -49,7 +56,9 @@ var ismbDown = false;
 var menuX = 0;
 var menuY = 0;
 
-
+/*These stay static once a square is selected*/
+var gridX = 0;
+var gridY = 0;
 
 /*Sprite variables*/
 var textArea; 
@@ -60,6 +69,7 @@ var createSelect;
 
 
 var menuHover = 0;
+var createMenuHover = 0;
 /*
 Menu hover type
 0 - none
@@ -74,6 +84,8 @@ Menu hover type
 /*Testing i.e. FPS, mouse position, stats*/
 var positionTxt;
 var testTxt;
+var createPosRefX;
+var createPosRefY;
 
 /*Library and helper functions*/
 function createEventListeners() {
@@ -97,6 +109,37 @@ function convertToGrid(coord,type)
 		return ((coord-205)/80);
 	else
 		return ((coord-5)/80);
+}
+
+/*Displays window in a way that doesn't result in overflow off screen*/
+function displayOverflow(item,xover,yover,pos)
+{
+	if(pos.y < 800-yover)
+	{
+		if(pos.x < 1000-xover)
+		{
+			item.x = pos.x;
+			item.y = pos.y;
+		}
+		else
+		{
+			item.x = pos.x - xover;
+			item.y = pos.y;
+		}
+	}
+	else
+	{
+		if(pos.x < 1000-xover)
+		{
+			item.x = pos.x;
+			item.y = pos.y - yover;
+		}
+		else
+		{
+			item.x = pos.x - xover;
+			item.y = pos.y - yover;
+		}
+	}
 }
 
 function hoverOver(position,lX,rX,uY,bY)
@@ -132,8 +175,14 @@ function create() {
 	this.text = game.add.text(5,55,"\nLeft click on created state\nand select \"create edge\"\nto connect states",style);
 	//this.game.time.advancedTiming = true;
 	var pos = this.game.input.activePointer.position;
+	
+	
 	positionTxt = game.add.text(55,500,"x:" + pos.x + " y:" + pos.y, style);
 	testTxt = game.add.text(55,520,"test:", style);
+	
+	createPosRefX = game.add.text(0,0,"",style);
+	createPosRefY = game.add.text(0,0,"",style);
+	
 	var xinc = 0;
 	var yinc = 0;
 	for(yinc = 0; yinc < 13; yinc++)
@@ -160,6 +209,12 @@ function create() {
 	createMenu = this.game.add.sprite(0,0,'createMenu');
 	createMenu.visible = false;
 	
+	createAccept = this.game.add.sprite(0,0,'createAccept');
+	createAccept.visible = false;
+	
+	createCancel = this.game.add.sprite(0,0,'createCancel');
+	createCancel.visible = false;
+	
 	
 }
 
@@ -177,13 +232,14 @@ function update() {
 	var txtX = 0;
 	var txtY = 0;
 	
+
 	if(pos.x >= 200)
 	{
 		txtX = (currX-205)/80;
 		txtY = (currY-5)/80;
 		
 		selector.visible = true;
-		if(menu.visible == false)
+		if(menu.visible == false && createMenu.visible == false)
 		{
 			selector.x = currX;
 			selector.y = currY;
@@ -205,8 +261,11 @@ function update() {
 	/*The lmb was pressed and then let go on the grid*/
 	if(ismbDown == true && this.game.input.activePointer.leftButton.isUp == true && pos.x > 200)
 	{
-		/*if the menu was already up, check to see if over an option, also hide it*/
-		if(menu.visible == true)
+		/*
+		If the menu was already up, check to see if over an option, also hide it
+		If you have the create state menu open do not compute
+		*/
+		if(menu.visible == true && createMenu.visible == false)
 		{
 		
 			/*Check hoverings*/
@@ -215,8 +274,11 @@ function update() {
 				menuHover = 0;
 				menu.visible = false;
 				createMenu.visible = true;
-				createMenu.x = pos.x;
-				createMenu.y = pos.y;
+				displayOverflow(createMenu,312,343,pos);
+				createPosRefX.setText(gridX);
+				createPosRefY.setText(gridY);
+				
+				/*STOPPED HERE*/
 			}
 			else if(menuHover == 2) /*Delete State*/
 			{
@@ -230,6 +292,8 @@ function update() {
 			{
 				menuHover = 0;
 			}
+			else
+				menu.visible = false;
 			
 			
 			/*createState(X,Y)
@@ -237,38 +301,28 @@ function update() {
 			
 			
 			/*End hovering check*/
-			menu.visible = false;
 			createSelect.visible = false;
 			infoSelect.visible = false;
 		}
-		else /*Otherwise place it, conditionals for making sure menu doesn't go right of pointer when that would overflow to right*/
+		else if(menu.visible == false && createMenu.visible == true) 
 		{
-			if(pos.y < 688)
+			if(createMenuHover == 1)
 			{
-				if(pos.x < 774)
-				{
-					menu.x = pos.x;
-					menu.y = pos.y;
-				}
-				else
-				{
-					menu.x = pos.x - 216;
-					menu.y = pos.y;
-				}
+				createMenuHover = 0;
+				createMenu.visible = false;
 			}
-			else
+			else if(createMenuHover == 2)
 			{
-				if(pos.x < 774)
-				{
-					menu.x = pos.x;
-					menu.y = pos.y - 112;
-				}
-				else
-				{
-					menu.x = pos.x - 216;
-					menu.y = pos.y - 112;
-				}
+				createMenuHover = 0;
 			}
+			
+			/*Same as above, end check*/
+			createAccept.visible = false;
+			createCancel.visible = false;
+		}
+		else/*Otherwise nothing is up and place regular menu, conditionals for making sure menu doesn't go right of pointer when that would overflow to right*/
+		{
+			displayOverflow(menu,216,112,pos)
 			/*Set it visible no matter the condition and store coord of menu square*/
 			menu.visible = true;
 			menuX = currX;
@@ -285,6 +339,7 @@ function update() {
 	
 		/*Check Create State hover*/
 		var hover = false;
+		menuHover = 0;
 		hover = hoverOver(pos,menu.x,menu.x+216,menu.y,menu.y+27);
 		
 		if(hover == true)
@@ -329,6 +384,47 @@ function update() {
 		}
 		else
 			infoSelect.visible = false;
+		
+	}
+	
+	
+	if(createMenu.visible == true)
+	{
+		var hover = false;
+		createMenuHover = 0;
+		/*Cancel hover*/
+		hover = hoverOver(pos,createMenu.x+24,createMenu.x+126,createMenu.y+314,createMenu.y+339);
+		
+		if(hover == true)
+		{
+			createMenuHover = 1;
+			createCancel.x = createMenu.x+24;
+			createCancel.y = createMenu.y+314;
+			createCancel.visible = true;
+		}
+		else
+		{
+			createCancel.visible = false;
+		}
+		
+		
+		/*Accept hover*/
+		hover = hoverOver(pos,createMenu.x+187,createMenu.x+289,createMenu.y+314,createMenu.y+339);
+		
+		if(hover == true)
+		{
+			createMenuHover = 2;
+			createAccept.x = createMenu.x+187;
+			createAccept.y = createMenu.y+314;
+			createAccept.visible = true;
+		}
+		else
+		{
+			createAccept.visible = false;
+		}
+		
+		
+		
 		
 	}
 	
