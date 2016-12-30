@@ -2,6 +2,10 @@ html {
 	background-color:#CDCDCD;
 }
 
+.gamearea {
+	cursor:none;
+}
+
 .button {
 	background-color:#88BBD6;
 	border: none;

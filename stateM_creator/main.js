@@ -18,10 +18,24 @@ function preload() {
 	
 	/*State create menu*/
 	this.load.image('createMenu','assets/create_state_screen.png');
+	
+	/*Highlights*/
 	this.load.image('createAccept','assets/create_state_screen_accept_highlight.png');
 	this.load.image('createCancel','assets/create_state_screen_cancel_highlight.png');
+	this.load.image('createAcceptH','assets/create_state_screen_acceptS_highlight.png');
+	this.load.image('createName','assets/create_state_screen_name_highlight.png');
+	this.load.image('createSymbolH','assets/create_state_screen_symbol_highlight.png');
+	this.load.image('createDescH','assets/create_state_screen_description_highlight.png');
+	
+	/*Selecteds*/
+	this.load.image('createAcceptS','assets/create_state_screen_acceptS_selected.png');
 	
 	
+	/*For disabling cursor, might need
+	this.game.canvas.id = 'phaser-dfa';
+	document.getElementById('phaser-dfa').style.cursor = 'none';
+	*/
+	this.game.canvas.id = 'phaser-dfa';
 
 }
 
@@ -183,6 +197,8 @@ function create() {
 	createPosRefX = game.add.text(0,0,"",style);
 	createPosRefY = game.add.text(0,0,"",style);
 	
+	createPosRefX.visible = false;
+	createPosRefY.visible = false;
 	var xinc = 0;
 	var yinc = 0;
 	for(yinc = 0; yinc < 13; yinc++)
@@ -209,13 +225,31 @@ function create() {
 	createMenu = this.game.add.sprite(0,0,'createMenu');
 	createMenu.visible = false;
 	
+	/*Code for dragging image
+	createMenu.inputEnabled = true;
+	createMenu.input.enableDrag(true);
+	*/
+	
 	createAccept = this.game.add.sprite(0,0,'createAccept');
 	createAccept.visible = false;
 	
 	createCancel = this.game.add.sprite(0,0,'createCancel');
 	createCancel.visible = false;
 	
+	createAcceptH = this.game.add.sprite(0,0,'createAcceptH');
+	createAcceptH.visible = false;
 	
+	createName = this.game.add.sprite(0,0,'createName');
+	createName.visible = false;
+	
+	createSymbolH = this.game.add.sprite(0,0,'createSymbolH');
+	createSymbolH.visible = false;
+	
+	createAcceptS = this.game.add.sprite(0,0,'createAcceptS');
+	createAcceptS.visible = false;
+	
+	createDescH = this.game.add.sprite(0,0,'createDescH');
+	createDescH.visible = false;
 }
 
 function update() {
@@ -231,7 +265,6 @@ function update() {
 	//Position on grid
 	var txtX = 0;
 	var txtY = 0;
-	
 
 	if(pos.x >= 200)
 	{
@@ -273,12 +306,29 @@ function update() {
 			{
 				menuHover = 0;
 				menu.visible = false;
+				
+				/*Display the state creation menu*/
 				createMenu.visible = true;
+				
 				displayOverflow(createMenu,312,343,pos);
+				
+				/*Place the info text for grid reference*/
+				gridX = txtX;
+				gridY = txtY;
+				
 				createPosRefX.setText(gridX);
 				createPosRefY.setText(gridY);
 				
-				/*STOPPED HERE*/
+				createPosRefX.x = createPosRefY.x = createMenu.x + 150;
+				createPosRefX.y = createMenu.y + 25;
+				createPosRefY.y = createMenu.y + 45;
+				
+				/*.parent finds the parent layer in a child object, need 
+				it since text will default under images*/
+				createPosRefX.parent.bringToTop(createPosRefX);
+				createPosRefY.parent.bringToTop(createPosRefY);
+				createPosRefX.visible = true;
+				createPosRefY.visible = true;
 			}
 			else if(menuHover == 2) /*Delete State*/
 			{
@@ -310,10 +360,23 @@ function update() {
 			{
 				createMenuHover = 0;
 				createMenu.visible = false;
+				createPosRefX.visible = false;
+				createPosRefY.visible = false;
 			}
 			else if(createMenuHover == 2)
 			{
 				createMenuHover = 0;
+			}
+			else if(createMenuHover == 5)
+			{
+			    if(createAcceptS.visible == true)
+					createAcceptS.visible = false;
+				else
+				{
+					createAcceptS.x = createMenu.x+138;
+					createAcceptS.y = createMenu.y+136;
+					createAcceptS.visible = true;
+				}
 			}
 			
 			/*Same as above, end check*/
@@ -337,6 +400,8 @@ function update() {
 	if(menu.visible == true)
 	{
 	
+		/*CAN ABSTRACT THESE TO A HOVER FUNCTION WHICH LOOPS THROUGH 
+		OBJECTS THAT INCLUDE PICTURE, AND X AND Y BOUNDS AND MENUHOVER LEVEL*/
 		/*Check Create State hover*/
 		var hover = false;
 		menuHover = 0;
@@ -423,6 +488,75 @@ function update() {
 			createAccept.visible = false;
 		}
 		
+		/*Name hover*/
+		hover = hoverOver(pos,createMenu.x+132,createMenu.x+296,createMenu.y+68,createMenu.y+91);
+		
+		if(hover == true)
+		{
+			createMenuHover = 3;
+			createName.x = createMenu.x+132;
+			createName.y = createMenu.y+68;
+			createName.visible = true;
+		}
+		else
+		{
+			createName.visible = false;
+		}
+		
+		/*Symbol hover*/
+		hover = hoverOver(pos,createMenu.x+96,createMenu.x+119,createMenu.y+101,createMenu.y+124);
+		
+		if(hover == true)
+		{
+			createMenuHover = 4;
+			createSymbolH.x = createMenu.x+96;
+			createSymbolH.y = createMenu.y+101;
+			createSymbolH.visible = true;
+		}
+		else
+		{
+			createSymbolH.visible = false;
+		}
+		
+		/*Accept state checkbox hover*/
+		hover = hoverOver(pos,createMenu.x+138,createMenu.x+161,createMenu.y+136,createMenu.y+159);
+		
+		if(hover == true)
+		{
+			createMenuHover = 5;
+			createAcceptH.x = createMenu.x+138;
+			createAcceptH.y = createMenu.y+136;
+			createAcceptH.visible = true;
+		}
+		else
+		{
+			createAcceptH.visible = false;
+		}
+		
+		/*Description hover*/
+		hover = hoverOver(pos,createMenu.x+25,createMenu.x+288,createMenu.y+194,createMenu.y+295);
+		
+		if(hover == true)
+		{
+			createMenuHover = 6;
+			createDescH.x = createMenu.x+25;
+			createDescH.y = createMenu.y+194;
+			createDescH.visible = true;
+		}
+		else
+		{
+			createDescH.visible = false;
+		}
+		
+		
+		/*
+		Change the cursor based on what's been highlighted
+		Text cursor so the user knows it is a text area
+		*/
+		if(createDescH.visible == true || createSymbolH.visible == true || createName.visible == true)
+			document.getElementById('phaser-dfa').style.cursor = "text";
+		else
+			document.getElementById('phaser-dfa').style.cursor = "default";
 		
 		
 		
