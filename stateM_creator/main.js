@@ -11,24 +11,42 @@ function preload() {
 	this.load.image('orangesqr', 'assets/orangesqr.png');
 	this.load.image('sector', 'assets/gridcomp.png');
 	
-	/*Menu*/
+	/////////////
+	/*Main Menu*/
+	/////////////
 	this.load.image('menu', 'assets/menu.png');
 	this.load.image('createSelect','assets/menu_createS_highlight.png');
 	this.load.image('infoSelect','assets/menu_info_highlight.png');
+	/////////////
+	/*Main Menu*/
+	/////////////
 	
+	/////////////////////
 	/*State create menu*/
+	/////////////////////
 	this.load.image('createMenu','assets/create_state_screen.png');
 	
+	//////////////
 	/*Highlights*/
+	//////////////
 	this.load.image('createAccept','assets/create_state_screen_accept_highlight.png');
 	this.load.image('createCancel','assets/create_state_screen_cancel_highlight.png');
 	this.load.image('createAcceptH','assets/create_state_screen_acceptS_highlight.png');
 	this.load.image('createName','assets/create_state_screen_name_highlight.png');
 	this.load.image('createSymbolH','assets/create_state_screen_symbol_highlight.png');
 	this.load.image('createDescH','assets/create_state_screen_description_highlight.png');
+	//////////////
+	/*Highlights*/
+	//////////////
 	
+	/////////////
 	/*Selecteds*/
+	/////////////
 	this.load.image('createAcceptS','assets/create_state_screen_acceptS_selected.png');
+	this.load.image('txt_index','assets/txt_index.png');
+	/////////////
+	/*Selecteds*/
+	/////////////
 	
 	
 	/*For disabling cursor, might need
@@ -93,13 +111,28 @@ Menu hover type
 4 - info
 */ 
 
+/*
+Create Menu hover type
+0 - none
+1- accept
+2 - cancel
+3 - name
+4 - symbol
+5 - accept state toggle
+6 - description
+*/
+
+/*Booleans for text hover so as to not display the blue highlight hover if typing*/
+var createMenuNameSel = false;
+var createMenuSymbolSel = false;
+var createMenuDescSel = false;
 
 
 /*Testing i.e. FPS, mouse position, stats*/
 var positionTxt;
 var testTxt;
-var createPosRefX;
-var createPosRefY;
+var createPosRefX; //The grid position of the currently selected state, this is for
+var createPosRefY; //user reference in case they come back and don't know what state they have selected
 
 /*Library and helper functions*/
 function createEventListeners() {
@@ -250,6 +283,9 @@ function create() {
 	
 	createDescH = this.game.add.sprite(0,0,'createDescH');
 	createDescH.visible = false;
+	
+	txt_index = this.game.add.sprite(0,0,'txt_index');
+	txt_index.visible = false;
 }
 
 function update() {
@@ -282,7 +318,7 @@ function update() {
 	{
 		txtX = "NA";
 		txtY = "NA";
-		if(menu.visible == false)
+		if(menu.visible == false && createMenu.visible == false)
 			selector.visible = false;
 	}
 	positionTxt.setText("x:" + txtX + " y:" + txtY);
@@ -356,18 +392,42 @@ function update() {
 		}
 		else if(menu.visible == false && createMenu.visible == true) 
 		{
-			if(createMenuHover == 1)
+			if(createMenuHover == 1) //Cancel button clicked
 			{
 				createMenuHover = 0;
 				createMenu.visible = false;
 				createPosRefX.visible = false;
 				createPosRefY.visible = false;
+				//Remove certain toggles if up
+				createAcceptS.visible = false;
+				txt_index.visible = false;
 			}
-			else if(createMenuHover == 2)
+			else if(createMenuHover == 2) //Accept button clicked
 			{
 				createMenuHover = 0;
+				createMenu.visible = false;
+				createPosRefX.visible = false;
+				createPosRefY.visible = false;
+				createAcceptS.visible = false;
+				txt_index.visible = false;
 			}
-			else if(createMenuHover == 5)
+			else if(createMenuHover == 3) //Name text area clicked
+			{
+				createMenuHover = 0;
+				txt_index.x = createName.x + 3;
+				txt_index.y = createName.y + 2;
+				txt_index.visible = true;
+				createMenuNameSel = true;
+			}
+			else if(createMenuHover == 4) //Symbol text area clicked
+			{
+				createMenuHover = 0;
+				txt_index.x = createSymbolH.x + 3;
+				txt_index.y = createSymbolH.y + 2;
+				txt_index.visible = true;
+				createMenuSymbolSel = true;
+			}
+			else if(createMenuHover == 5) //Accept State toggled
 			{
 			    if(createAcceptS.visible == true)
 					createAcceptS.visible = false;
@@ -377,6 +437,14 @@ function update() {
 					createAcceptS.y = createMenu.y+136;
 					createAcceptS.visible = true;
 				}
+			}
+			else if(createMenuHover == 6) //Description text area clicked
+			{
+				createMenuHover = 0;
+				txt_index.x = createDescH.x + 3;
+				txt_index.y = createDescH.y + 2;
+				txt_index.visible = true;
+				createMenuDescSel = true;
 			}
 			
 			/*Same as above, end check*/
