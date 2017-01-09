@@ -328,6 +328,7 @@ function update() {
 		ismbDown = true;
 	
 	/*The lmb was pressed and then let go on the grid*/
+	//This if represents the letting go
 	if(ismbDown == true && this.game.input.activePointer.leftButton.isUp == true && pos.x > 200)
 	{
 		/*
