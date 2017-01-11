@@ -82,8 +82,17 @@ var currX = 0;
 var currY = 0;
 var pastX = 0;
 var pastY = 0;
-var keys;
+
 var ismbDown = false;
+
+var keyA, keyB, keyC, keyD, keyE, keyF, keyG,keyH, keyI, keyJ, keyK, keyL, keyM, keyN, keyO, keyP, keyQ, keyR, keyS, keyT;
+var keyU, keyV, keyW, keyX, keyY, keyZ;
+
+var key1, key2, key3, key4, key5, key6, key7, key8, key9, key0;
+var keyShift, keyCtrl, keyBackSpace, keySpace;
+
+//The previously held key to prevent super fast typing
+var oldKey = -1;
 
 var menuX = 0;
 var menuY = 0;
@@ -122,10 +131,14 @@ Create Menu hover type
 6 - description
 */
 
-/*Booleans for text hover so as to not display the blue highlight hover if typing*/
+/*Booleans for text area selections*/
 var createMenuNameSel = false;
 var createMenuSymbolSel = false;
 var createMenuDescSel = false;
+/*Temporary text storage when creating states*/
+var createMenuNameText;
+var createMenuSymbolText;
+var createMenuDescText;
 
 
 /*Testing i.e. FPS, mouse position, stats*/
@@ -136,10 +149,280 @@ var createPosRefY; //user reference in case they come back and don't know what s
 
 /*Library and helper functions*/
 function createEventListeners() {
-	game.input.mouse.capture = true;
-	game.input.onDown.add(onDown, this);
-	game.input.onUp.add(onUp, this);
+	
+	keyA = game.input.keyboard.addKey(Phaser.Keyboard.A);
+	keyB = game.input.keyboard.addKey(Phaser.Keyboard.B);
+	keyC = game.input.keyboard.addKey(Phaser.Keyboard.C);
+	keyD = game.input.keyboard.addKey(Phaser.Keyboard.D);
+	keyE = game.input.keyboard.addKey(Phaser.Keyboard.E);
+	keyF = game.input.keyboard.addKey(Phaser.Keyboard.F);
+	keyG = game.input.keyboard.addKey(Phaser.Keyboard.G);
+	keyH = game.input.keyboard.addKey(Phaser.Keyboard.H);
+	keyI = game.input.keyboard.addKey(Phaser.Keyboard.I);
+	keyJ = game.input.keyboard.addKey(Phaser.Keyboard.J);
+	keyK = game.input.keyboard.addKey(Phaser.Keyboard.K);
+	keyL = game.input.keyboard.addKey(Phaser.Keyboard.L);
+	keyM = game.input.keyboard.addKey(Phaser.Keyboard.M);
+	keyN = game.input.keyboard.addKey(Phaser.Keyboard.N);
+	keyO = game.input.keyboard.addKey(Phaser.Keyboard.O);
+	keyP = game.input.keyboard.addKey(Phaser.Keyboard.P);
+	keyQ = game.input.keyboard.addKey(Phaser.Keyboard.Q);
+	keyR = game.input.keyboard.addKey(Phaser.Keyboard.R);
+	keyS = game.input.keyboard.addKey(Phaser.Keyboard.S);
+	keyT = game.input.keyboard.addKey(Phaser.Keyboard.T);
+	keyU = game.input.keyboard.addKey(Phaser.Keyboard.U);
+	keyV = game.input.keyboard.addKey(Phaser.Keyboard.V);
+	keyW = game.input.keyboard.addKey(Phaser.Keyboard.W);
+	keyX = game.input.keyboard.addKey(Phaser.Keyboard.X);
+	keyY = game.input.keyboard.addKey(Phaser.Keyboard.Y);
+	keyZ = game.input.keyboard.addKey(Phaser.Keyboard.Z);
+	keyShift = game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
+	keyBackSpace = game.input.keyboard.addKey(Phaser.Keyboard.BACKSPACE);
+	keySpace = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+	
+}
 
+function returnKeyInput() {
+	if(keyA.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "A";
+		else
+			return "a";
+	}
+	else if(keyB.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "B";
+		else
+			return "b";
+	}
+	else if(keyC.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "C";
+		else
+			return "c";
+	}
+	else if(keyD.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "D";
+		else
+			return "d";
+	}
+	else if(keyE.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "E";
+		else
+			return "e";
+	}
+	else if(keyF.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "F";
+		else
+			return "f";
+	}
+	else if(keyG.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "G";
+		else
+			return "g";
+	}
+	else if(keyH.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "H";
+		else
+			return "h";
+	}
+	else if(keyI.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "I";
+		else
+			return "i";
+	}
+	else if(keyJ.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "J";
+		else
+			return "j";
+	}
+	else if(keyK.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "K";
+		else
+			return "k";
+	}
+	else if(keyL.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "L";
+		else
+			return "l";
+	}
+	else if(keyM.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "M";
+		else
+			return "m";
+	}
+	else if(keyN.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "N";
+		else
+			return "n";
+	}
+	else if(keyO.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "O";
+		else
+			return "o";
+	}
+	else if(keyP.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "P";
+		else
+			return "p";
+	}
+	else if(keyQ.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "Q";
+		else
+			return "q";
+	}
+	else if(keyR.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "R";
+		else
+			return "r";
+	}
+	else if(keyS.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "S";
+		else
+			return "s";
+	}
+	else if(keyT.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "T";
+		else
+			return "t";
+	}
+	else if(keyU.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "U";
+		else
+			return "u";
+	}
+	else if(keyV.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "V";
+		else
+			return "v";
+	}
+	else if(keyW.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "W";
+		else
+			return "w";
+	}
+	else if(keyB.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "B";
+		else
+			return "b";
+	}
+	else if(keyX.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "X";
+		else
+			return "x";
+	}
+	else if(keyY.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "Y";
+		else
+			return "y";
+	}
+	else if(keyZ.isDown == true)
+	{
+		if(keyShift.isDown == true)
+			return "Z";
+		else
+			return "z";
+	}
+	else if(keyBackSpace.isDown == true)
+	{
+		return -1;
+	}
+	else if(keySpace.isDown == true)
+	{
+		return 1;
+	}
+	else
+		return 0;
+}
+
+/*
+function: addText
+params: area - the text contained in the area
+		type - the actual area, need this as the symbol and description areas function differently
+description: Examines which keys are pressed during game loop and placed text in text areas
+if they are selected and certain conditions apply
+*/
+function addText(area, type)
+{
+	/*Let's capture the keyboard input if the user is in any of
+	the text areas*/
+	var oldText = area.text;
+	var newText = returnKeyInput();
+	
+	
+	if(newText != 0 && newText != -1 && newText != 1 && oldKey != newText)
+	{
+		area.setText(oldText + newText)
+	}
+	else if(newText == -1 && oldKey != newText)
+	{
+		oldText = oldText.substring(0, oldText.length -1);
+		area.setText(oldText);
+		txt_index.x = area.width;
+	}
+	else if(newText == 1 && oldKey != newText)
+	{
+		oldText = oldText + ' ';
+		area.setText(oldText);
+		txt_index.x = area.width;
+	}
+	if(type == 0)
+		txt_index.x = createName.x + 3 + area.width;
+	else if(type == 1)
+		txt_index.x = createSymbolH.x + 3 + area.width;
+	else if(type == 2)
+		txt_index.x = createDescH.x + 3 + area.width;
+	/*Place restriction as key press will be too quick*/
+	oldKey = newText;
 }
 
 function onDown(pointer) {
@@ -187,6 +470,7 @@ function displayOverflow(item,xover,yover,pos)
 			item.y = pos.y - yover;
 		}
 	}
+
 }
 
 function hoverOver(position,lX,rX,uY,bY)
@@ -244,6 +528,7 @@ function create() {
 	}
 	
 	selector = this.game.add.sprite(0,0,'orangesqr');
+	selector.alpha = 0.5;
 	selector.visible = false;
 	
 	menu = this.game.add.sprite(0,0,'menu');
@@ -286,6 +571,15 @@ function create() {
 	
 	txt_index = this.game.add.sprite(0,0,'txt_index');
 	txt_index.visible = false;
+	
+	createEventListeners()
+	
+	createMenuNameText = game.add.text(0,0,"",style);
+	createMenuSymbolText = game.add.text(0,0,"",style);
+	createMenuDescText = game.add.text(0,0,"",style);
+	createMenuNameText.visible = false;
+	createMenuSymbolText.visible = false;
+	createMenuDescText.visible = false;
 }
 
 function update() {
@@ -399,9 +693,17 @@ function update() {
 				createMenu.visible = false;
 				createPosRefX.visible = false;
 				createPosRefY.visible = false;
-				//Remove certain toggles if up
 				createAcceptS.visible = false;
+				
+				//Reset text area selections
 				txt_index.visible = false;
+				createMenuNameSel = false;
+				createMenuSymbolSel = false;
+				createMenuDescSel = false;
+				createMenuNameText.setText("")
+				createMenuSymbolText.setText("")
+				createMenuDescText.setText("")
+				oldKey = -1;
 			}
 			else if(createMenuHover == 2) //Accept button clicked
 			{
@@ -410,7 +712,16 @@ function update() {
 				createPosRefX.visible = false;
 				createPosRefY.visible = false;
 				createAcceptS.visible = false;
+				
+				//Reset text area selections
 				txt_index.visible = false;
+				createMenuNameSel = false;
+				createMenuSymbolSel = false;
+				createMenuDescSel = false;
+				createMenuNameText.setText("")
+				createMenuSymbolText.setText("")
+				createMenuDescText.setText("")
+				oldKey = -1;
 			}
 			else if(createMenuHover == 3) //Name text area clicked
 			{
@@ -418,7 +729,15 @@ function update() {
 				txt_index.x = createName.x + 3;
 				txt_index.y = createName.y + 2;
 				txt_index.visible = true;
+				
+				//Reset text area selections
 				createMenuNameSel = true;
+				createMenuSymbolSel = false;
+				createMenuDescSel = false;
+				createMenuNameText.visible = true;
+				createMenuNameText.x = createName.x + 3;
+				createMenuNameText.y = createName.y + 2;
+				oldKey = -1;
 			}
 			else if(createMenuHover == 4) //Symbol text area clicked
 			{
@@ -426,7 +745,17 @@ function update() {
 				txt_index.x = createSymbolH.x + 3;
 				txt_index.y = createSymbolH.y + 2;
 				txt_index.visible = true;
+				
+				//Reset text area selections
 				createMenuSymbolSel = true;
+				createMenuNameSel = false;
+				createMenuDescSel = false;
+				
+				//Show text for when user types
+				createMenuSymbolText.visible = true;
+				createMenuSymbolText.x = createSymbolH.x + 3;
+				createMenuSymbolText.y = createSymbolH.y + 2;
+				oldKey = -1;
 			}
 			else if(createMenuHover == 5) //Accept State toggled
 			{
@@ -438,6 +767,7 @@ function update() {
 					createAcceptS.y = createMenu.y+136;
 					createAcceptS.visible = true;
 				}
+				oldKey = -1;
 			}
 			else if(createMenuHover == 6) //Description text area clicked
 			{
@@ -445,7 +775,17 @@ function update() {
 				txt_index.x = createDescH.x + 3;
 				txt_index.y = createDescH.y + 2;
 				txt_index.visible = true;
+				
+				//Reset text area selections
 				createMenuDescSel = true;
+				createMenuNameSel = false;
+				createMenuSymbolSel = false;
+				
+				//Show text for when user types
+				createMenuDescText.visible = true;
+				createMenuDescText.x = createDescH.x + 3;
+				createMenuDescText.y = createDescH.y + 2;
+				oldKey = -1;
 			}
 			
 			/*Same as above, end check*/
@@ -525,6 +865,21 @@ function update() {
 	if(createMenu.visible == true)
 	{
 		var hover = false;
+		
+		
+		if(createMenuNameSel == true)
+		{
+			addText(createMenuNameText,0);
+		}
+		else if(createMenuSymbolSel == true)
+		{
+			addText(createMenuSymbolText,1);
+		}
+		else if(createMenuDescSel == true)
+		{
+			addText(createMenuDescText,2);
+		}
+			
 		createMenuHover = 0;
 		/*Cancel hover*/
 		hover = hoverOver(pos,createMenu.x+24,createMenu.x+126,createMenu.y+314,createMenu.y+339);
