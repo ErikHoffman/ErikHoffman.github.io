@@ -46,7 +46,7 @@ div {
 	cursor: pointer;
 }
 
-html { 
+html {
   /*background: url(../background.jpg) no-repeat center center fixed; */
   background-color:#E9E9E9;
   -webkit-background-size: cover;
@@ -58,6 +58,8 @@ html {
 	-ms-animation: fadein 2s;
 	-o-animation: fadein 2s;
 	animation: fadein 2;
+	height:100%;
+	min-height:100%;
 }
 
 body {
@@ -94,7 +96,7 @@ body {
 	margin: 0 auto;
 	width:100%;
 	top:25%;
-	
+
 	/*font-family: 'Josefin Sans', serif;*/
 	-webkit-animation: fadein 2s;
 	-moz-animation: fadein 2s;
@@ -107,7 +109,7 @@ body {
 	width: 50%;
 	overflow:auto;
 	background-color:#CDCDCD;
-	
+
 	position:absolute;
 	top: 300px;
 	left: 25%;
