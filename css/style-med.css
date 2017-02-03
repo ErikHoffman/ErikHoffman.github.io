@@ -134,6 +134,7 @@ body {
 	/*height: 275px;*/
 	overflow: auto;
 	top:1200px;
+  bottom:0;
 	/*background-color: #800000;*/
 	background-color: #233237;
 	clear: both;
