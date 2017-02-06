@@ -161,7 +161,7 @@ div.bitbucketlogo {
 	width:100%;
 	overflow:auto;
 	top:1400px;
-  bottom:0;
+  /*bottom:0;*/
 	background-color: #233237;
 	clear: both;
 	font-family: "Josefin Sans", serif;

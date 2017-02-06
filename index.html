@@ -1,5 +1,5 @@
 <!DOCTYPE html5>
-<html>	
+<html>
 	<head>
 		<link type="text/css" media='screen and (max-width: 700px)' rel="stylesheet" href="css/style-skinny.css"/>
 		<link type="text/css" media='screen and (min-width: 701px) and (max-width: 1000px)' rel="stylesheet" href="css/style-med.css"/>
@@ -12,17 +12,17 @@
 		<link rel="shortcut icon" type="image/png" href="favicon.png">
 		<title>Erik Hoffman's Website and Portfolio</title>
 		<!--meta charset="utf-8"/-->
-		
+
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script>
-		
-		
+
+
 		<!-- make sure the picture(s) on the page are relative to the size of the screen-->
 		window.onload = function(){
 			var width = window.innerWidth ||
 					document.documentElement.clientWidth ||
 					document.body.clientWidth;
-					
+
 			var height = window.innerHeight ||
 					document.documentElement.clientHeight ||
 					document.body.clientHeight;
@@ -33,16 +33,16 @@
 				img.style.height = "175px";
 			}
 		};
-		
+
 		<!-- Listen for window resize, don't overwrite general window.onresize function as it is a default function-->
 		window.addEventListener('resize', rsize);
-		
+
 		<!-- repoll for width and height, adjust accordingly-->
 		function rsize() {
 			var width = window.innerWidth ||
 					document.documentElement.clientWidth ||
 					document.body.clientWidth;
-					
+
 			var height = window.innerHeight ||
 					document.documentElement.clientHeight ||
 					document.body.clientHeight;
@@ -59,8 +59,8 @@
 			}
 		};
 		</script>
-		
-		
+
+
 		<style>
 			body {
 				font-family: 'Josefin Sans', serif;
@@ -68,15 +68,15 @@
 		</style>
 	</head>
 	<body>
-		<div id="header"> 
+		<div id="header">
 			<div id="navbar">
 				<ul>
-				
+
 					<li style="color:#FFFFFF" id="link-home"><a href="index.html" style="text-decoration:none; color:inherit;">The Front Page</a></li>
 					<li id="link-about"><a href="pages/about.html" style="text-decoration:none; color:inherit;">About Me</a></li>
 					<li id="link-portfolio"><a href="pages/portfolio.html" style="text-decoration:none; color:inherit;">Portfolio</a></li>
 					<li id="link-resume"><a href="Erik_CIS_Resume.pdf" style="text-decoration:none; color:inherit;">Resume</a></li>
-				
+
 					<!--
 					<li class="link">
 						<div class="link">
@@ -95,7 +95,7 @@
 					</li>
 					<li id ="resume"><a href="Erik_CIS_Resume.pdf">Resume</a></li-->
 				</ul>
-			</div> 
+			</div>
 		</div>
 		<div class="centre">
 			<!--img id ="background" src="background.jpg"/-->
@@ -111,8 +111,8 @@
 				</div>
 		    </div>
 		</div>
-		<div id = "footer"> 
-			<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href=https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a> 
+		<div id = "footer">
+			<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href=https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a>
 			<br>Contact Me:<br>
 			Email: erik_hoffman@outlook.com<br>
 	    	Phone: 289-383-4992<br>
