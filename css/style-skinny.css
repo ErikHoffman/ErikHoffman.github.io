@@ -120,6 +120,10 @@ body {
 	animation: fadein 2;
 }
 
+#dialog:hover {
+	border:1px solid #000000;
+}
+
 #bitbucket-link {
 	color:CD5C5C;
 	/*position: absolute;*/
