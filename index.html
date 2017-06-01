@@ -4,7 +4,7 @@
 		<link type="text/css" media='screen and (max-width: 700px)' rel="stylesheet" href="css/style-skinny.css"/>
 		<link type="text/css" media='screen and (min-width: 701px) and (max-width: 1000px)' rel="stylesheet" href="css/style-med.css"/>
 		<link type="text/css" media='screen and (min-width: 1001px)' rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="css/small-device.css" />
+    <!--link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="css/small-device.css" /-->
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext'rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
 		<script
@@ -18,7 +18,7 @@
 		<script>
 
 
-		<!-- make sure the picture(s) on the page are relative to the size of the screen-->
+		//make sure the picture(s) on the page are relative to the size of the screen
 		window.onload = function(){
 			var width = window.innerWidth ||
 					document.documentElement.clientWidth ||
@@ -35,10 +35,10 @@
 			}
 		};
 
-		<!-- Listen for window resize, don't overwrite general window.onresize function as it is a default function-->
+		//Listen for window resize, dont overwrite general window.onresize function as it is a default function
 		window.addEventListener('resize', rsize);
 
-		<!-- repoll for width and height, adjust accordingly-->
+		//repoll for width and height, adjust accordingly-->
 		function rsize() {
 			var width = window.innerWidth ||
 					document.documentElement.clientWidth ||
