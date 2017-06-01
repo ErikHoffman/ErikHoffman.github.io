@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>	
 	<head>
-		<link type="text/css" media='screen and (max-width: 700px)' rel="stylesheet" href="../css/style-skinny.css"/>
-		<link type="text/css" media='screen and (min-width: 701px) and (max-width: 1000px)' rel="stylesheet" href="../css/style-med.css"/>
-		<link type="text/css" media='screen and (min-width: 1001px)' rel="stylesheet" href="../css/style.css"/>
+		<link type="text/css" media='screen and (max-width: 700px)' rel="stylesheet" href="css/style-skinny.css"/>
+		<link type="text/css" media='screen and (min-width: 701px) and (max-width: 1000px)' rel="stylesheet" href="css/style-med.css"/>
+		<link type="text/css" media='screen and (min-width: 1001px)' rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="css/small-device.css" />
 		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext'rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="../favicon.png">
@@ -20,15 +21,6 @@
 		var span;
 		
 		window.onload = function(){
-		
-			//var truformDesc = document.getElementById('truformDesc');
-			//truformDesc.style.display = 'none';
-			
-			//var functionalDesc = document.getElementById('functionalDesc');
-			//functionalDesc.style.display = 'none';
-			
-			//var showLess = document.getElementById('showless');
-			//showLess.style.display = 'none';
 			
 			truformModal = document.getElementById('truformModal');
 			truformModal.style.display = 'none';
@@ -52,7 +44,6 @@
 				var bitbuck = document.getElementById('bitbucket-logo').src = "../images/bucket.png";
 			}
 			
-			//incHeight();
 		}
 		
 		
@@ -139,11 +130,6 @@
 			toAddHeight += 'px';
 			el.style.top = toAddHeight;
 		}
-		
-		//function overrideHeight(e, toAdd) {
-			
-		
-		//}
 		
 		/***
 		 * get live runtime value of an element's css style
@@ -252,15 +238,5 @@
 		</div>
 		<div id ="bottom-margin">
 		</div>
-		<!--script>
-			var bitbucktext = document.getElementById("bitbuckettxt");
-			var bitbuckimg = document.getElementById("bitbucket");
-			bitbucktext.onmouseover = function(){
-				bitbucketimg.style.display = "block";
-			}
-			bitbucktext.onmouseout = function(){
-				bitbucketimg.style.display = "none";
-			}
-		</script-->
 	</body>
 </html>
