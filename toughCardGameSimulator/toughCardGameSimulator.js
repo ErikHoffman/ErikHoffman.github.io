@@ -67,6 +67,7 @@ function placeFromPile(pile) {
     }
 
     //Suite Two
+    //We want check to be true as if the number didn't exist in the top suite we can't try it below
     if((check === true) && (popped === false)) {
       check = false;
       if(suiteTwo.length === 0) {
@@ -78,11 +79,7 @@ function placeFromPile(pile) {
         popped = true;
       }
       else {
-        for(i = 0; i < suiteTwo.length; i++) {
-          if(pile[pile.length-1].number === suiteTwo[i].number) {
-            check = true;
-          }
-        }
+        check = numberMatch(pile[pile.length-1], suiteTwo);
       }
     }
     //Suite Three
@@ -97,11 +94,7 @@ function placeFromPile(pile) {
         popped = true;
       }
       else {
-        for(i = 0; i < suiteThree.length; i++) {
-          if(pile[pile.length-1].number === suiteThree[i].number) {
-            check = true;
-          }
-        }
+        check = numberMatch(pile[pile.length-1], suiteTwo);
       }
     }
     //Suite Four
@@ -115,10 +108,15 @@ function placeFromPile(pile) {
         popped = true;
       }
     }
+    
+    //We are done placing cards because the top one won't go anywhere, return and move to next
     if(popped === false) {
       return {placed: false, pile: pile};
     }
+      
   }
+  
+  //If the while loop finishes then the pile we are looking at is out of cards and we can move to the next
   return {placed: true, pile: pile}; //Had to place if made it out of loop
 }
 
