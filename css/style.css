@@ -2,6 +2,10 @@ div {
 	border-radius: 5px;
 }
 
+*{
+	font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+}
+
 .button {
 	background-color:#88BBD6;
 	border: none;
@@ -60,7 +64,6 @@ html {
 	animation: fadein 2;
 	height:100%;
 	min-height:100%;
-	font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
 }
 
 body {
@@ -120,7 +123,6 @@ body {
 	-ms-animation: fadein 2s;
 	-o-animation: fadein 2s;
 	animation: fadein 2;
-	font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
 }
 
 #dialog:hover {
@@ -155,7 +157,7 @@ div.bitbucketlogo {
 }
 
 .portfolio-section {
-	margin-top: 10px;
+	margin-top: 20px;
 	padding-bottom: 10px;
 	border:1px solid #000000;
 }
@@ -169,7 +171,6 @@ div.bitbucketlogo {
 	background-color: #233237;
 	border-radius: 0px;
 	clear: both;
-	font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
 	font-weight:bold;
 	font-size:25px;
 	text-align: center;
@@ -180,7 +181,6 @@ div.bitbucketlogo {
 {
 	color:#7D7D7D;
 	font-size: 1.8vw;
-	font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
 	margin-right:auto;
 	padding:1vw;
 	display:inline;
@@ -208,7 +208,6 @@ li{
 	display:inline;
 	padding:1vw;
 	margin-right:auto;
-	font-family: "Whitney SSm A", "Whitney SSm B", "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
 	font-size: 30px;
 	color:#7D7D7D;
 	text-decoration:none;
