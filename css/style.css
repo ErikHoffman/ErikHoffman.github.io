@@ -171,6 +171,7 @@ div.bitbucketlogo {
 	position:absolute;
 	width:100%;
 	overflow:auto;
+	top:1400px;
 	background-color: #233237;
 	border-radius: 0px;
 	clear: both;
