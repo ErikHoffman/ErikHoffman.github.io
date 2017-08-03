@@ -3,6 +3,8 @@ var numbers = ['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
 var deck = [];
 
 var wins = 0;
+var gamesRan = 0;
+var highestSuiteCount = 0;
 
 var piles = [];
 
@@ -35,14 +37,19 @@ function resetGame() {
   suites = [];
   for(i = 0; i < 4; i++) {
     suites[i] = [];
+  }
+  stackFlipped = [];
+  suitesPrinted = 0;
+}
+
+function resetWinningSuitesDivs() {
+  for(i = 0; i < 4; i++) {
     var test = elementNames[i];
     var suiteNode = document.getElementById(elementNames[i]);
     while(suiteNode.firstChild) {
       suiteNode.removeChild(suiteNode.firstChild);
     }
   }
-  stackFlipped = [];
-  suitesPrinted = 0;
 }
 
 function shuffle() {
@@ -71,11 +78,7 @@ function placeFromPile(pile) {
       popped = true;
     }
     else {
-      for(i = 0; i < suites[0].length; i++) {
-        if(pile[pile.length-1].number === suites[0][i].number) {
-          check = true;
-        }
-      }
+      check = numberMatch(pile[pile.length-1], suites[0]);
     }
 
     //Suite Two
@@ -132,7 +135,7 @@ function placeFromPile(pile) {
   return {placed: true, pile: pile}; //Had to place if made it out of loop
 }
 
-/*Number match makes sure the number you are trying to add to a suite exists in the suites above it*/
+/*Number match makes sure the number you are examining exists in a suite even though it's not the same suite*/
 function numberMatch(card, suite) {
   for(i = 0; i < suite.length; i++) {
     if(card.number === suite[i].number) {
@@ -151,9 +154,7 @@ function countSuites() {
 
 function runGame() {
 
-  for(x = 0; x < 100; x++) {
-
-    document.getElementById('gameCounter').innerHTML = '' + (x+1);
+  for(x = 0; x < 1000; x++) {
     resetGame();
     /*Create the deck*/
     for (j = 0; j < suitesChars.length; j++) {
@@ -162,7 +163,9 @@ function runGame() {
         deck.push(card);
       }
     }
+
     shuffle(deck);
+    var deckCopy = deck.map(function(x) { return x; });
 
     for(j = 0; j < 4; j++) {
       piles[j] = [];
@@ -177,7 +180,7 @@ function runGame() {
     var placeCheck;
     var wincheck = countSuites();
 
-    while(wincheck <= 51) {
+    while(wincheck <= 52) {
       for(j = 0; j < 5; j++) {
         if(j < 4) {
           placeCheck = placeFromPile(piles[j]);
@@ -193,27 +196,50 @@ function runGame() {
           stackFlipped = placeCheck.pile;
         }
       }
-      if(deck.length === 0 && ( (countSuites()) < 52) ) {
+      if(deck.length === 0 && ( (countSuites()) < 51) ) {
         victory = false;
         break;
       }
+      else if(deck.length === 0 && countSuites() === 52) {
+        break;
+      }
     }
+    //game has ended
 
     wincheck = countSuites();
-
-    if(victory) {
-      wins++;
-      document.getElementById('winloss').innerHTML = '' + wins + 'WINS';
+    if((highestSuiteCount === 0) || (wincheck > highestSuiteCount)) {
+      highestSuiteCount = wincheck;
     }
-  }
 
-  if(countSuites() > 40) {
-    for(s = 0; s < 4; s++) {
-      if(suites[s].length > 0) {
-        appendCardElement(s,elementNames[s],true);
+    if(wincheck === 52) {
+      wins++;
+      document.getElementById('winloss').innerHTML = '' + wins + ' WIN(S)!';
+      var winningDeckTag = document.createElement('p');
+      winningDeckTag.innerHTML = 'Deck ' + wins + ' on run ' + (x+gamesRan+1);
+      document.getElementById('winningDecks').appendChild(winningDeckTag);
+      for(l = 0; l < deckCopy.length; l++) {
+        var winningDeckImg = document.createElement('img');
+        winningDeckImg.setAttribute('style', 'height:20px;');
+        winningDeckImg.setAttribute('src', 'Vector-Playing-Cards-master/cards-svg/' + deckCopy[l].number + deckCopy[l].suite + '.svg');
+        document.getElementById('winningDecks').appendChild(winningDeckImg);
+      }
+    }
+
+    if(wincheck > 50) {
+      resetWinningSuitesDivs();
+      for(s = 0; s < 4; s++) {
+        if(suites[s].length > 0) {
+          appendCardElement(s,elementNames[s],true);
+        }
       }
     }
   }
+  gamesRan += x;
+  var gameCounter = document.getElementById('gameCounter');
+  gameCounter.innerHTML = '';
+  gameCounter.innerHTML = '' + (gamesRan);
+  var suiteCount = document.getElementById('suiteCount');
+  suiteCount.innerHTML = '' + (highestSuiteCount);
 }
 
 function appendCardElement(suiteNum, suiteStr, endGame) {
@@ -222,8 +248,8 @@ function appendCardElement(suiteNum, suiteStr, endGame) {
   if(endGame) {
     for(i = 0; i < suites[suiteNum].length; i++) {
       suiteElem = document.createElement('img');
-      suiteElem.setAttribute('style', 'height:100px');
-      suiteElem.setAttribute('src', 'Vector-Playing-Cards-master/cards-svg/' + suites[0][i].number + suiteChar + '.svg');
+      suiteElem.setAttribute('style', 'height:100px;width:14.28%;');
+      suiteElem.setAttribute('src', 'Vector-Playing-Cards-master/cards-svg/' + suites[suiteNum][i].number + suiteChar + '.svg');
       document.getElementById(suiteStr).appendChild(suiteElem);
     }
   }
@@ -231,7 +257,7 @@ function appendCardElement(suiteNum, suiteStr, endGame) {
     for(i = 0; i < numbers.length; i++) {
       suiteElem = document.createElement('img');
       suiteElem.setAttribute('style', 'height:100px');
-      suiteElem.setAttribute('src', 'Vector-Playing-Cards-master/cards-svg/' + suites[0][i].number + suiteChar + '.svg');
+      suiteElem.setAttribute('src', 'Vector-Playing-Cards-master/cards-svg/' + suites[suiteNum][i].number + suiteChar + '.svg');
       document.getElementById(suiteStr).appendChild(suiteElem);
     }
   }
