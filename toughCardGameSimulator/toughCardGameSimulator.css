@@ -7,7 +7,9 @@
   background-color: #E9E9E9;
   width: 45%;
   margin: 0 auto;
-  height: 1200px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+  overflow-x: hidden;
 }
 
 .button {

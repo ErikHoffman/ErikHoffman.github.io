@@ -166,14 +166,22 @@ function runGame() {
 
     shuffle(deck);
     var deckCopy = deck.map(function(x) { return x; });
-
     for(j = 0; j < 4; j++) {
       piles[j] = [];
-      piles[0].push(deck.pop());
-      if(j > 0) {piles[1].push(deck.pop());}
-      if(j > 1) {piles[2].push(deck.pop());}
-      if(j > 2) {piles[3].push(deck.pop()); suites[0].push(deck.pop());} /*Place a single card in suite one to start the game*/
+      for(k = 0; k < 4; k++) {
+        piles[j].push(deck.pop());
+      }
     }
+
+    suites[0].push(deck.pop());
+
+    // for(j = 0; j < 4; j++) {
+    //   piles[j] = [];
+    //   piles[j].push(deck.pop());
+    //   if(j > 0) {piles[1].push(deck.pop());}
+    //   if(j > 1) {piles[2].push(deck.pop());}
+    //   if(j > 2) {piles[3].push(deck.pop()); suites[0].push(deck.pop());} /*Place a single card in suite one to start the game*/
+    // }
 
 
     var victory = true;
