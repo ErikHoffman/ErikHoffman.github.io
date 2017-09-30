@@ -18,49 +18,6 @@
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script>
-
-
-		//make sure the picture(s) on the page are relative to the size of the screen
-		window.onload = function(){
-			var width = window.innerWidth ||
-					document.documentElement.clientWidth ||
-					document.body.clientWidth;
-
-			var height = window.innerHeight ||
-					document.documentElement.clientHeight ||
-					document.body.clientHeight;
-			if(width <= 700)
-			{
-				var img = document.getElementById('test');
-				img.style.width = "175px";
-				img.style.height = "175px";
-			}
-		};
-
-		//Listen for window resize, dont overwrite general window.onresize function as it is a default function
-		window.addEventListener('resize', rsize);
-
-		//repoll for width and height, adjust accordingly-->
-		function rsize() {
-			var width = window.innerWidth ||
-					document.documentElement.clientWidth ||
-					document.body.clientWidth;
-
-			var height = window.innerHeight ||
-					document.documentElement.clientHeight ||
-					document.body.clientHeight;
-			var img = document.getElementById('test');
-			if(width <= 700)
-			{
-				img.style.width = "175px";
-				img.style.height = "175px";
-			}
-			else
-			{
-				img.style.width = "350px";
-				img.style.height = "350px";
-			}
-		};
 		</script>
 
 
@@ -107,15 +64,15 @@
 						<br><br>
 					</div>
 				</div>
+				<div id = "footer">
+					<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href="https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a>
+					<br>Contact Me:<br>
+					Email: erik_hoffman@outlook.com<br>
+						Phone: 289-383-4992<br>
+					<a href="https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button">
+					<img id ="linkedinlogo" src="images/linkedin.png" title="Link to my linkedin profile" style="height:45px;width:45px;position:relative;"></a>
+				</div>
 		  </div>
-		</div>
-		<div id = "footer">
-			<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href="https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a>
-			<br>Contact Me:<br>
-			Email: erik_hoffman@outlook.com<br>
-	    	Phone: 289-383-4992<br>
-			<a href="https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button">
-			<img id ="linkedinlogo" src="images/linkedin.png" title="Link to my linkedin profile" style="height:45px;width:45px;position:relative;"></a>
 		</div>
 		<div id ="bottom-margin">
 		</div>

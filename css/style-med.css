@@ -108,6 +108,7 @@ body {
 	position: relative;
 	top: 300px;
 	left: 20%;
+	margin-bottom: 150px;
 	text-align:center;
 	-webkit-animation: fadein 2s;
 	-moz-animation: fadein 2s;
@@ -131,12 +132,12 @@ body {
 
 #footer {
 	z-index:1;
-	position:absolute;
-	width: 100%;
+	position:relative;
 	overflow: auto;
-	top:1200px;
 	background-color: #233237;
-	border-radius: 0px;
+	border: 1px solid #233237;
+	border-top-right-radius: 0px;
+	border-top-left-radius: 0px;
 	clear: both;
 	font-weight:bold;
 	font-size:20px;
