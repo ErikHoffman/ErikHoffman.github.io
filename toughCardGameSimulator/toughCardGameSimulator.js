@@ -85,42 +85,50 @@ function placeFromPile(pile) {
     //We want check to be true as if the number didn't exist in the top suite we can't try it below
     if((check === true) && (popped === false)) {
       check = false;
-      if(suites[1].length === 0) {
+      if(suites[1].length === 0 && pile[pile.length-1].number === suites[0][0].number) {
         suites[1].push(pile.pop());
         popped = true;
       }
-      else if(pile[pile.length-1].suite === suites[1][0].suite) {
-        suites[1].push(pile.pop());
-        popped = true;
+      else if(suites[1].length > 0) {
+        if(pile[pile.length-1].suite === suites[1][0].suite) {
+          suites[1].push(pile.pop());
+          popped = true;
+        }
       }
       else {
         check = numberMatch(pile[pile.length-1], suites[1]); /*If the card's number was in this suitepile we can check the next one*/
       }
     }
+
     //Suite Three
     if((check === true) && (popped === false)) {
       check = false;
-      if(suites[2].length === 0) {
+      if(suites[2].length === 0 && pile[pile.length-1].number === suites[1][0].number) {
         suites[2].push(pile.pop());
         popped = true;
       }
-      else if(pile[pile.length-1].suite === suites[2][0].suite) {
-        suites[2].push(pile.pop());
-        popped = true;
+      else if(suites[2].length > 0) {
+        if(pile[pile.length-1].suite === suites[2][0].suite) {
+          suites[2].push(pile.pop());
+          popped = true;
+        }
       }
       else {
         check = numberMatch(pile[pile.length-1], suites[2]); /*Again, make sure the card that can't be placed in this suite did have a number match*/
       }
     }
+
     //Suite Four
     if((check === true) && (popped === false)) {
-      if(suites[3].length === 0) {
+      if(suites[3].length === 0 && pile[pile.length-1].number === suites[2][0].number) {
         suites[3].push(pile.pop());
         popped = true;
       }
-      else if(pile[pile.length-1].suite === suites[3][0].suite) {
-        suites[3].push(pile.pop());
-        popped = true;
+      else {
+        if(pile[pile.length-1].suite === suites[3][0].suite) {
+          suites[3].push(pile.pop());
+          popped = true;
+        }
       }
     }
 
@@ -136,9 +144,10 @@ function placeFromPile(pile) {
 }
 
 /*Number match makes sure the number you are examining exists in a suite even though it's not the same suite*/
+/*as well as makes sure the first card from above pile has been placed*/
 function numberMatch(card, suite) {
   for(i = 0; i < suite.length; i++) {
-    if(card.number === suite[i].number) {
+    if(card.number === suite[i].number && suite[0]) {
       return true;
     }
   }
@@ -174,15 +183,6 @@ function runGame() {
     }
 
     suites[0].push(deck.pop());
-
-    // for(j = 0; j < 4; j++) {
-    //   piles[j] = [];
-    //   piles[j].push(deck.pop());
-    //   if(j > 0) {piles[1].push(deck.pop());}
-    //   if(j > 1) {piles[2].push(deck.pop());}
-    //   if(j > 2) {piles[3].push(deck.pop()); suites[0].push(deck.pop());} /*Place a single card in suite one to start the game*/
-    // }
-
 
     var victory = true;
     var placeCheck;
