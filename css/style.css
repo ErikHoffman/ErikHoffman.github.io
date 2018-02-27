@@ -17,26 +17,6 @@ div {
 	font-size: 16px;
 }
 
-.modal {
-	z-index:2;
-	background-color:#88BBD6;
-	position:fixed;
-	left: 25%;
-	top:100px;
-	width: 50%;
-	height: 75%;
-	overflow: auto;
-}
-
-.modal-content {
-	background-color: #E9E9E9;
-	margin: 10% auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 50%;
-	overflow: auto;
-}
-
 .close {
 	color: #aaaaaa;
 	float: right;
@@ -62,8 +42,6 @@ html {
 	-ms-animation: fadein 2s;
 	-o-animation: fadein 2s;
 	animation: fadein 2;
-	height:100%;
-	min-height:100%;
 }
 
 body {
@@ -75,19 +53,34 @@ body {
 .hover_img a:hover span {display:block;}
 
 #header {
-	z-index:1;
 	position:fixed;
 	display:inline-block;
 	width: 100%;
 	margin: 0 auto;
-	border-radius:0;
+	border-radius: 0;
 	height: 135px;
 	background-color: #CDCDCD;
 	border-top: 3px solid #000000;
 	border-bottom: 3px solid #000000;
 	margin-bottom: 10px;
 	filter: alpha(opacity=70);
-	z-index:1;
+	z-index: 1;
+}
+
+@media only screen and (max-width: 1001px) {
+	#header {
+		position: absolute;
+		height: 120px;
+		font-size: 20px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	#header {
+		position: absolute;
+		height: 105px;
+		font-size: 15px;
+	}
 }
 
 #navbar {
@@ -114,19 +107,37 @@ body {
 	overflow:auto;
 	background-color:#CDCDCD;
 	border:1px solid #CDCDCD;
-	position:absolute;
+	position: absolute;
 	top: 300px;
 	margin-bottom: 200px;
 	left: 25%;
 	text-align:center;
 	font-size:20px;
-	/*opacity: 0.7;*/
 	-webkit-animation: fadein 2s;
 	-moz-animation: fadein 2s;
 	-ms-animation: fadein 2s;
 	-o-animation: fadein 2s;
 	animation: fadein 2;
 }
+
+@media only screen and (max-width: 1001px) {
+	#dialog {
+		width: 60%;
+		top: 250px;
+		left: 20%;
+		margin-bottom: 150px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	#dialog {
+		width: 90%;
+		top: 200px;
+		left: 5%;
+		margin-bottom: 100px;
+	}
+}
+
 
 #dialog:hover {
 	border:1px solid #000000;
@@ -140,14 +151,6 @@ body {
 	overflow:auto;
 	text-align:center;
 	font-size:20px;
-}
-
-div.bitbucketlogo {
-	width:50%;
-	height:10%;
-	background-image:url('../images/bitbucket_rgb_blue.png');
-	margin:0;
-	padding:10%;
 }
 
 #bitbucket-link {
@@ -165,6 +168,18 @@ div.bitbucketlogo {
 	border:1px solid #000000;
 }
 
+.portfolio-section:before {
+	content:'';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 0px;
+	height: 42px;
+	background: rgba(255,255,255,0.3);
+	border-radius: 5px;
+	transition: all 2s ease;
+}
+
 #footer {
 	position:relative;
 	overflow:auto;
@@ -177,6 +192,18 @@ div.bitbucketlogo {
 	font-size:25px;
 	text-align: center;
 	color: #CD5C5C;
+}
+
+@media only screen and (max-width: 1001px) {
+	#footer {
+		font-size: 20px
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	#footer {
+		font-size: 15px;
+	}
 }
 
 .linkind
@@ -215,6 +242,18 @@ li{
 	text-decoration:none;
 }
 
+@media only screen and (max-width: 1001px) {
+	li {
+		font-size: 25px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	li {
+		font-size: 20px;
+	}
+}
+
 
 li:link {
 	color:#7D7D7D;
@@ -228,4 +267,31 @@ li:hover {
 	color:#FFFFFF;
 	text-decoration:none;
 	cursor: pointer;
+}
+
+.bounce-image:hover {
+	animation: bounce 1s;
+}
+
+@media only screen and (max-width: 700px) {
+	.bounce-image:hover {
+		animation: none;
+	}
+}
+
+@keyframes bounce {
+	0%, 20%, 60%, 100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
+
+	40% {
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+
+	80% {
+		-webkit-transform: translateY(-10px);
+		transform: translateY(-10px);
+	}
 }
