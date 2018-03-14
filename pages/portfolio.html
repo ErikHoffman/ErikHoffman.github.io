@@ -2,154 +2,9 @@
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="../css/style.css"/>
-		<!--link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="../css/small-device.css" /-->
-		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext'rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="../favicon.png">
 		<title>Erik Hoffman's Website and Portfolio</title>
-		<!--meta charset="utf-8"/-->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-
-
-		<script>
-		var truformModal;
-		var functionalModal;
-		var span;
-
-		window.onload = function(){
-
-			truformModal = document.getElementById('truformModal');
-			truformModal.style.display = 'none';
-
-			functionalModal = document.getElementById('functionalModal');
-			functionalModal.style.display = 'none';
-
-
-			var width = window.innerWidth ||
-					document.documentElement.clientWidth ||
-					document.body.clientWidth;
-
-			var height = window.innerHeight ||
-					document.documentElement.clientHeight ||
-					document.body.clientHeight;
-
-			if(width <= 700)
-			{
-				var bitbuck = document.getElementById('bitbucket-logo').style.width = '100px';
-				var bitbuck = document.getElementById('bitbucket-logo').style.height = '100px';
-				var bitbuck = document.getElementById('bitbucket-logo').src = "../images/bucket.png";
-			}
-
-		}
-
-
-
-
-
-		function truformDesc(){
-			truformModal.style = 'block';
-
-		}
-
-		function functionalDesc(){
-			functionalModal.style = 'block';
-		}
-
-
-		$(document).on("click", "#truformClose", function(event){
-			truformModal.style.display = 'none';
-		});
-
-		$(document).on("click", "#functionalClose", function(event) {
-			functionalModal.style.display = 'none';
-		});
-
-		function truformDescClose(){
-			truformModal.style.display = 'none';
-		}
-
-		function functionalClose(){
-			functionalModal.style.display = 'none';
-		}
-
-		window.onclick = function(event) {
-			if (event.target == truformModal) {
-				truformModal.style.display = "none";
-			}
-		}
-
-		window.onclick = function(event) {
-			if (event.target == functionalModal) {
-				functionalModal.style.display = "none";
-			}
-		}
-
-		window.addEventListener('resize', rsize);
-
-		function rsize() {
-			var width = window.innerWidth ||
-					document.documentElement.clientWidth ||
-					document.body.clientWidth;
-
-			var height = window.innerHeight ||
-					document.documentElement.clientHeight ||
-					document.body.clientHeight;
-			var img = document.getElementById('bitbucket-logo');
-			if(width <= 700)
-			{
-				img.src="../images/bucket.png";
-				img.style.width = "100px";
-				img.style.height = "100px";
-			}
-			else
-			{
-				img.src="../images/bitbucket_rgb_blue.png";
-				img.style.width = "350px";
-				img.style.height = "70px";
-			}
-		}
-
-		function incHeight(e, addHeight) {
-			var el = document.getElementById(e);
-			var height = el.offsetHeight;
-			var newHeight = height + addHeight;
-			el.style.height = newHeight + 'px';
-		}
-
-		function addToTop(e, addTop) {
-			var el = document.getElementById(e);
-			var toAddHeight = getStyle(el, 'top');
-			toAddHeight = toAddHeight.replace('px','');
-			toAddHeight = parseInt(toAddHeight);
-			toAddHeight += addTop;
-			toAddHeight = String(toAddHeight);
-			toAddHeight += 'px';
-			el.style.top = toAddHeight;
-		}
-
-		/***
-		 * get live runtime value of an element's css style
-		 *   http://robertnyman.com/2006/04/24/get-the-rendered-style-of-an-element
-		 *     note: "styleName" is in CSS form (i.e. 'font-size', not 'fontSize').
-		***/
-		var getStyle = function (e, styleName) {
-			var styleValue = "";
-			if(document.defaultView && document.defaultView.getComputedStyle) {
-				styleValue = document.defaultView.getComputedStyle(e, "").getPropertyValue(styleName);
-			}
-			else if(e.currentStyle) {
-				styleName = styleName.replace(/\-(\w)/g, function (strMatch, p1) {
-					return p1.toUpperCase();
-				});
-				styleValue = e.currentStyle[styleName];
-			}
-			return styleValue;
-		}
-
-		</script>
-
 
 		<style>
 			body {
@@ -158,11 +13,11 @@
 		</style>
 	</head>
 	<body>
-		<div id="header">
-			<div id="navbar">
+		<div class="header">
+			<div class="navbar">
 				<ul>
 
-					<li id="link-home"><a href="../index.html" style="text-decoration:none; color:inherit;">The Front Page</a></li>
+					<li id="link-home"><a href="../index.html" style="text-decoration:none; color:inherit;">Home</a></li>
 					<li id="link-about"><a href="about.html" style="text-decoration:none; color:inherit;">About Me</a></li>
 					<li style="color:#FFFFFF" id="link-portfolio"><a href="portfolio.html" style="text-decoration:none; color:inherit;">Portfolio</a></li>
 					<li id="link-resume"><a href="../Erik_CIS_Resume.pdf" style="text-decoration:none; color:inherit;">Resume</a></li>
@@ -171,15 +26,22 @@
 			</div>
 		</div>
 		<div class="centre">
-			<div id ="dialog">
-				<div id = "dialog-text">
+			<div class="dialog">
+				<div class="curtain">
+					<div class="curtain__panel curtain__panel--left">
+					</div>
+					<div class="curtain__panel curtain__panel--right">
+					</div>
+				</div>
+				<div class="dialog-text">
 					<br><br>
-					<!-- Put </a> on same line as img or else you will have underline at bottom right of image-->
-					<!-- <div class="portfolio-section">
+					<div id="functionalarea" class="portfolio-section">
+						<a class="linkind" style="text-decoration:none;" href="https://bitbucket.org/ErikHoffman/connect-four-elixir"><div id="functional"><font size="6">Functional Connect Four in Elixir</font></div></a>
 						<br>
-						<a href="https://bitbucket.org/ErikHoffman/profile/repositories?visibility=all">
-						<img id ="bitbucket-logo" src="../images/bitbucket_rgb_blue.png" title="Link to my bitbucket" style="width:350px;height:70px;position:relative;"></a>
-					</div> -->
+						<p>Created in a functional programming study group during my final semester at University of Guelph.<br><br>
+						Used the Elixir programming language to create a connect four game to communicate over IRC with other members of the class. Learned about the advantages of functional as well
+						as the hurdles one must overcome (mutability, recursion, etc.).
+					</div>
 
 					<div class="portfolio-section">
 						<a class="linkind" style="text-decoration:none;" href="../stateM_creator/stateM_creator.html"><div id="DFACreate"><font size="6">State Machine Creator</font></div></a>
@@ -196,17 +58,9 @@
 						workout was performed well.</p>
 					</div>
 
-					<div id="functionalarea" class="portfolio-section">
-						<a class="linkind" style="text-decoration:none;" href="https://bitbucket.org/ErikHoffman/connect-four-elixir"><div id="functional"><font size="6">Functional Connect Four in Elixir</font></div></a>
-						<br>
-						<p>Created in a functional programming study group during my final semester at University of Guelph.<br><br>
-						Used the Elixir programming language to create a connect four game to communicate over IRC with other members of the class. Learned about the advantages of functional as well
-						as the hurdles one must overcome (mutability, recursion, etc.).
-					</div>
-
 					<br><br><br>
 				</div>
-				<div id = "footer">
+				<div class="footer">
 					<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href="https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a>
 					<br>Contact Me:<br>
 					Email: erik_hoffman@outlook.com<br>

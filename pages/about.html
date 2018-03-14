@@ -2,14 +2,9 @@
 <html>
 	<head>
 		<link type="text/css" rel="stylesheet" href="../css/style.css"/>
-		<!--link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="../css/small-device.css" /-->
-		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext'rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Philosopher' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" type="image/png" href="../favicon.png">
 		<title>Erik Hoffman's Website and Portfolio</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 		<style>
 			body {
@@ -18,11 +13,11 @@
 		</style>
 	</head>
 	<body>
-		<div id="header">
-			<div id="navbar">
+		<div class="header">
+			<div class="navbar">
 				<ul>
 
-					<li id="link-home"><a href="../index.html" style="text-decoration:none; color:inherit;">The Front Page</a></li>
+					<li id="link-home"><a href="../index.html" style="text-decoration:none; color:inherit;">Home</a></li>
 					<li style="color:#FFFFFF;" id="link-about"><a href="about.html" style="text-decoration:none; color:inherit;">About Me</a></li>
 					<li id="link-portfolio"><a href="portfolio.html" style="text-decoration:none; color:inherit;">Portfolio</a></li>
 					<li id="link-resume"><a href="../Erik_CIS_Resume.pdf" style="text-decoration:none; color:inherit;">Resume</a></li>
@@ -31,14 +26,20 @@
 			</div>
 		</div>
 		<div class="centre">
-			<div id ="dialog">
+			<div class="dialog">
+				<div class="curtain">
+					<div class="curtain__panel curtain__panel--left">
+					</div>
+					<div class="curtain__panel curtain__panel--right">
+					</div>
+				</div>
 				<a href="https://www.uoguelph.ca/">
 				<img id ="guelph-logo" src="../images/University-of-Guelph.png" title="Link to my University of Guelph" style="width:40%;padding-top:75px;position:relative;"></a>
-				<div id = "dialog-text">
+				<div class="dialog-text">
 					<br><br>I entered the Computer Science Honours program at University of Guelph in Fall 2012. <br><br> I have a minor
 					in mathematics and have completed a large variety of electives in Computer Science. Some of my favourites include artificial intelligence and information organization and retrieval. <br><br>I graduated in Winter 2016.<br><br><br>
 				</div>
-				<div id = "footer">
+				<div class="footer">
 					<br>This website is hosted on github pages <a style="color:#FFA07A; text-decoration:none;" href="https://github.com/ErikHoffman?tab=repositories"><div id="github">Here</div></a>
 					<br>Contact Me:<br>
 					Email: erik_hoffman@outlook.com<br>
@@ -47,7 +48,6 @@
 					<a href="https://bitbucket.org/ErikHoffman/profile/repositories?visibility=all">
 					<img class="bounce-image" id ="bitbucketlogo" src="../images/bitbucket_new_logo.png" title="Link to my bitbucket" style="width:45px;height:45px;position:relative;"></a>
 				</div>
-				<!--a class="linkind" style="text-decoration:none;" href="guitar.html"><div id="guitarlink"><font size="6">Guitar</font></div></a-->
 		  </div>
 		</div>
 	</body>
