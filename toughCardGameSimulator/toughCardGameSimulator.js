@@ -42,16 +42,6 @@ function resetGame() {
   suitesPrinted = 0;
 }
 
-function resetWinningSuitesDivs() {
-  for(i = 0; i < 4; i++) {
-    var test = elementNames[i];
-    var suiteNode = document.getElementById(elementNames[i]);
-    while(suiteNode.firstChild) {
-      suiteNode.removeChild(suiteNode.firstChild);
-    }
-  }
-}
-
 function shuffle() {
   var count = deck.length,
       randomnumber,
@@ -69,7 +59,6 @@ function placeFromPile(pile) {
   outOfMoves = false;
   while(pile.length > 0) {
     var popped = false;
-
     var check = false;
 
     //Suite One
@@ -154,15 +143,15 @@ function numberMatch(card, suite) {
   return false;
 }
 
+/* countSuites - adds up all 4 suite piles */
 function countSuites() {
-  return (suites[1].length +
+  return (suites[0].length +
           suites[1].length +
           suites[2].length +
           suites[3].length);
 }
 
 function runGame() {
-
   for(x = 0; x < 1000; x++) {
     resetGame();
     /*Create the deck*/
@@ -184,13 +173,13 @@ function runGame() {
 
     suites[0].push(deck.pop());
 
-    var victory = true;
+    var victory = false;
     var placeCheck;
     var wincheck = countSuites();
 
     while(wincheck <= 52) {
       for(j = 0; j < 5; j++) {
-        if(j < 4) {
+        if(j < 4 && piles[j].length > 0) {
           placeCheck = placeFromPile(piles[j]);
           piles[j] = placeCheck.pile;
         }
@@ -204,7 +193,7 @@ function runGame() {
           stackFlipped = placeCheck.pile;
         }
       }
-      if(deck.length === 0 && ( (countSuites()) < 51) ) {
+      if(deck.length === 0 && ( (countSuites()) < 52) ) {
         victory = false;
         break;
       }
@@ -212,14 +201,24 @@ function runGame() {
         break;
       }
     }
-    //game has ended
 
+    //game has ended
     wincheck = countSuites();
+
+    //Check if the best score has been beaten (first win)
     if((highestSuiteCount === 0) || (wincheck > highestSuiteCount)) {
       highestSuiteCount = wincheck;
     }
 
     if(wincheck === 52) {
+
+      resetWinningSuitesDivs();
+      for(s = 0; s < 4; s++) {
+        if(suites[s].length > 0) {
+          appendCardElement(s,elementNames[s],true);
+        }
+      }
+
       wins++;
       document.getElementById('winloss').innerHTML = '' + wins + ' WIN(S)!';
       var winningDeckTag = document.createElement('p');
@@ -232,15 +231,6 @@ function runGame() {
         document.getElementById('winningDecks').appendChild(winningDeckImg);
       }
     }
-
-    if(wincheck > 50) {
-      resetWinningSuitesDivs();
-      for(s = 0; s < 4; s++) {
-        if(suites[s].length > 0) {
-          appendCardElement(s,elementNames[s],true);
-        }
-      }
-    }
   }
   gamesRan += x;
   var gameCounter = document.getElementById('gameCounter');
@@ -250,6 +240,22 @@ function runGame() {
   suiteCount.innerHTML = '' + (highestSuiteCount);
 }
 
+/* resetWinningSuitesDivs - empties the divs where the cards are placed */
+function resetWinningSuitesDivs() {
+  for(i = 0; i < 4; i++) {
+    var test = elementNames[i];
+    var suiteNode = document.getElementById(elementNames[i]);
+    while(suiteNode.firstChild) {
+      suiteNode.removeChild(suiteNode.firstChild);
+    }
+  }
+}
+
+/* appendCardElement - Show the cards that the player won with
+ * @suiteNum - which suit pile to check
+ * @suiteStr - the suit that the pile is
+ * @endGame - if it's the end of the game and need to display
+*/
 function appendCardElement(suiteNum, suiteStr, endGame) {
   var suiteChar = suites[suiteNum][suitesPrinted].suite;
   var suiteElem;
