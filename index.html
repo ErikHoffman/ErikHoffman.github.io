@@ -5,10 +5,78 @@
   <title>Erik Hoffman Website</title>
   <base href="./">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link href="styles.64d40ea55b23120c69cd.bundle.css" rel="stylesheet"/></head>
+  <style type="text/css">
+    .loading-area {
+    	position: relative;
+    	display: flex;
+    	flex-direction: column;
+    	align-items: center;
+    	justify-content: center;
+    	height: 100vh;
+      overflow: hidden;
+    }
+
+    html {
+    	height: 100%;
+    	min-height: 100%;
+    	margin: 0;
+    	background-image: url("assets/ottawa-photo.png");
+    	background-repeat: no-repeat;
+    	background-attachment: fixed;
+    	background-size: cover;
+    	will-change: transform;
+    }
+
+    .loading-area .spinner {
+      height: 200px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+    .loading-area .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #ddd;
+    }
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+      }
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+  </style>
+<link href="styles.88bbbeccc86abe26310c.bundle.css" rel="stylesheet"/></head>
 <body>
-  <app-root style="width:100%;height:100%;">Loading...</app-root>
-<script type="text/javascript" src="inline.baff31ffdf9c76be3720.bundle.js"></script><script type="text/javascript" src="polyfills.71406c175a4c895d2470.bundle.js"></script><script type="text/javascript" src="vendor.6dd5857ac7c68d4e7eb5.bundle.js"></script><script type="text/javascript" src="main.88d03e9751a7cd4e3cc8.bundle.js"></script></body>
+  <app-root>
+    <div class="loading-area" style="vertical-align:middle;text-align:center;">
+      <p><b>Loading...</b></p>
+      <svg class="spinner" viewBox="25 25 50 50">
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+      </svg>
+    </div>
+  </app-root>
+<script type="text/javascript" src="inline.ac0bf70098c37014f81f.bundle.js"></script><script type="text/javascript" src="polyfills.71406c175a4c895d2470.bundle.js"></script><script type="text/javascript" src="vendor.6dd5857ac7c68d4e7eb5.bundle.js"></script><script type="text/javascript" src="main.589edf3ab8bc23e15b2c.bundle.js"></script></body>
 </html>
