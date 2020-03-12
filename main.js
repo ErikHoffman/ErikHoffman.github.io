@@ -112,29 +112,22 @@ module.exports = "<router-outlet></router-outlet>\r\n"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(route) {
-        this.route = route;
+    function AppComponent() {
     }
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        })
     ], AppComponent);
     return AppComponent;
 }());
@@ -181,6 +174,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -199,6 +193,7 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_http__WEBPACK_IMPORTED_MODULE_3__["HttpModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
@@ -218,7 +213,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"portfolio-section\">\r\n    <div class=\"portfolio-section--header\">\r\n        <!-- routerLink does not work for external links -->\r\n        <a *ngIf=\"localLink.length != 0\" class=\"text-link text-link--dark-bkrnd\" routerLink=\"{{localLink}}\">\r\n            <div>{{name}}<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\"/></svg></div>\r\n        </a>\r\n        <a *ngIf=\"link.length != 0\" target=\"_blank\" class=\"text-link text-link--dark-bkrnd\" href=\"{{link}}\">\r\n            <div>{{name}}<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\"/></svg></div>\r\n        </a>\r\n    </div>\r\n    <div class=\"portfolio-section--date\">{{dates}}</div>\r\n    <br>\r\n    <div class=\"portfolio-section--description\">\r\n        <div [innerHTML]=\"description\"></div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"portfolio-section\">\r\n\t<div class=\"portfolio-section--header\">\r\n\t\t<!-- routerLink does not work for external links -->\r\n\t\t<a *ngIf=\"localLink.length != 0\" class=\"text-link text-link--dark-bkrnd\" routerLink=\"{{localLink}}\">\r\n\t\t\t<div>{{name}}<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t\t\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\" /></svg></div>\r\n\t\t</a>\r\n\t\t<a *ngIf=\"link.length != 0\" target=\"_blank\" class=\"text-link text-link--dark-bkrnd\" href=\"{{link}}\">\r\n\t\t\t<div>{{name}}<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t\t\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\" /></svg></div>\r\n\t\t</a>\r\n\t</div>\r\n\t<div class=\"portfolio-section--date\">{{dates}}</div>\r\n\t<br>\r\n\t<div class=\"portfolio-section--description\">\r\n\t\t<div [innerHTML]=\"description\"></div>\r\n\t</div>\r\n</div>"
 
 /***/ }),
 
@@ -292,11 +287,11 @@ var projects = [
     },
     { id: 2,
         name: 'Osmosis Solitaire Simulator',
-        description: 'Osmosis is a very tough Solitaire variation that is nothing more than a test' +
+        description: 'Osmosis or Treasure Trove is a very easy but also hard to win Solitaire variation that is nothing more than a test' +
             ' of patience to see how many games you can attempt before you give up.' +
             '<br><br>No strategy is involved but I was interested in the win ratio to see if this game is even worth' +
             ' playing, so I coded the game rules into typescript and ran it over many simulations to find the win ratio' +
-            ' is between 0.007 and 0.008 percent. Doesn\'t sound very worth it to me!',
+            ' comes to approximately 0.05%.',
         dates: '2016 - 2018',
         localLink: '../projects/osmosis-solitaire',
         link: ''
@@ -349,7 +344,7 @@ var Project = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div class=\"page-content\" (wheel)=\"onScroll($event)\" *ngIf=\"selectedPage.id >= 0 && !this.routedPage.includes('projects/')\"> -->\r\n<div class=\"page-content\" *ngIf=\"!this.routedPage.includes('projects/')\">\r\n    <div class=\"background-image\" *ngIf=\"!this.routedPage.includes('projects/')\"></div>\r\n    <div class=\"header\">\r\n        <div class=\"navbar\">\r\n            <ul class=\"header-list\">\r\n                <li *ngFor=\"let page of pagesList\">\r\n                    <a class=\"header-link\" [class.selected]=\"page === selectedPage || (page === defaultPage && !selectedPage)\" (click)=\"onSelect(page)\">\r\n                        <div class=\"header-link-row full\">\r\n                            <div [class]=\"page.class\"></div>\r\n                            <a>{{page.name}}</a>\r\n                        </div>\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n            <div class=\"mobile-header\">\r\n                <div class=\"mobile-navigation\">\r\n                    <div class=\"container\" id=\"hamburger\" (click)=\"hamburgerClick()\">\r\n                        <!-- svg is split into these three rows, one for each layer of the hamburg -->\r\n                        <div class=\"bar1\"></div>\r\n                        <div class=\"bar2\"></div>\r\n                        <div class=\"bar3\"></div>\r\n                    </div>\r\n                    <h1 class=\"mobile-header-title\">Erik Hoffman</h1>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div [style.display]=\"getDropdownStatus()\" id=\"mobile-dropdown-main\" class=\"mobile-dropdown\">\r\n            <div *ngFor=\"let page of pagesList\">\r\n                <button (click)=\"onSelect(page, 'true')\" class=\"mobile-dropdown-option\">\r\n              <div class=\"header-link-row\">\r\n                <div [class]=\"page.class\"></div>\r\n                {{page.name}}\r\n              </div>\r\n            </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"centre\">\r\n        <div class=\"dialog-top-nav\">\r\n            <div class=\"about-portfolio-wrapper\">\r\n                <div class=\"portfolio-section\" style=\"display: flex;\">\r\n                    <a routerLink=\"../projects/state-machine-creator\" class=\"text-link text-link--dark-bkrnd\">\r\n                        Current Side Project\r\n                        <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t\t\t\t\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\"/></svg>\r\n\t\t\t\t\t</a>\r\n\r\n                </div>\r\n            </div>\r\n        </div>\r\n        <div class=\"dialog\">\r\n            <div class=\"curtain\">\r\n                <div class=\"curtain__panel curtain__panel--left\">\r\n                </div>\r\n                <div class=\"curtain__panel curtain__panel--right\">\r\n                </div>\r\n            </div>\r\n            <div class=\"dialog-text\">\r\n                <div #maintext id=\"main-text\" *ngIf=\"selectedPage.id === 1\">\r\n                    <h1 class=\"page-title\">About Me</h1>\r\n                    -Computer Science Graduate-<br>-Full Stack Developer-<br><br> Welcome to my website and portfolio.<br><br> My name is Erik Hoffman and I'm a software developer who enjoys using code to solve problems and create cool stuff! See my projects\r\n                    to check out my personal work or view my resume for my professional experience.\r\n                    <br><br>\r\n                </div>\r\n\r\n                <div #portfoliotext id=\"portfolio-text\" *ngIf=\"selectedPage.id === 2\">\r\n                    <h1 class=\"page-title\">Projects</h1>\r\n\r\n                    <div class=\"portfolio-wrapper\">\r\n                        <div *ngFor=\"let project of projectsList\">\r\n                            <app-portfolio-section name={{project.name}} description={{project.description}} dates={{project.dates}} localLink={{project.localLink}} link={{project.link}}>\r\n                            </app-portfolio-section>\r\n                        </div>\r\n                    </div>\r\n                    <br><br><br>\r\n                </div>\r\n\r\n                <div #resumetext class=\"resume-text\" *ngIf=\"selectedPage.id === 3\">\r\n                    <h1 class=\"page-title\">Resume</h1>\r\n                    <a class=\"uncontained-link\" target=\"_blank\" href=\"assets/Erik_CIS_Resume.pdf\">Download as PDF</a>\r\n                    <!-- <a id=\"sorted-area\">List</a>\r\n          <button (click)=\"startsort()\">Sort me</button> -->\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"footer\">\r\n                <br>\r\n                <a class=\"text-link text-link--light-bkrnd\" target=\"_blank\" href=\"https://github.com/ErikHoffman?tab=repositories\">\r\n                    This website is hosted on github pages\r\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t\t\t\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\"/></svg>\r\n                </a><br>\r\n                <a class=\"text-link text-link--light-bkrnd\" target=\"_blank\" href=\"https://bitbucket.org/ErikHoffman/erik-hoffman-website-angular\">\r\n                    Check out the unbuilt Angular code!\r\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t\t\t\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\"/></svg>\r\n                </a>\r\n                <br>Contact Me:<br> Email: erik_hoffman@outlook.com<br>\r\n                <div class=\"footer--icons-row\">\r\n                    <a href=\"https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button\">\r\n                        <div class=\"footer--icon linkedin-icon\"></div>\r\n                    </a>\r\n                    <a href=\"https://bitbucket.org/ErikHoffman/profile/repositories?visibility=all\">\r\n                        <div class=\"footer--icon bitbucket-icon\"></div>\r\n                    </a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<button class=\"button go-to-top\">^ Back To Top ^</button>\r\n<router-outlet></router-outlet>"
+module.exports = "<!-- <div class=\"page-content\" (wheel)=\"onScroll($event)\" *ngIf=\"selectedPage.id >= 0 && !this.routedPage.includes('projects/')\"> -->\r\n<div class=\"page-content\" *ngIf=\"!this.routedPage.includes('projects/')\">\r\n\t<!-- <div class=\"background-image\" *ngIf=\"!this.routedPage.includes('projects/')\"></div> -->\r\n\t<div class=\"header\">\r\n\t\t<div class=\"navbar\">\r\n\t\t\t<ul class=\"header-list\">\r\n\t\t\t\t<li *ngFor=\"let page of pagesList\">\r\n\t\t\t\t\t<a class=\"header-link\" [class.selected]=\"page === selectedPage || (page === defaultPage && !selectedPage)\" (click)=\"onSelect(page)\">\r\n\t\t\t\t\t\t<div class=\"header-link-row full\">\r\n\t\t\t\t\t\t\t<div [class]=\"page.class\"></div>\r\n\t\t\t\t\t\t\t<a>{{page.name}}</a>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</a>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t\t<div class=\"mobile-header\">\r\n\t\t\t\t<div class=\"mobile-navigation\">\r\n\t\t\t\t\t<div class=\"container\" id=\"hamburger\" (click)=\"hamburgerClick()\">\r\n\t\t\t\t\t\t<!-- svg is split into these three rows, one for each layer of the hamburg -->\r\n\t\t\t\t\t\t<div class=\"bar1\"></div>\r\n\t\t\t\t\t\t<div class=\"bar2\"></div>\r\n\t\t\t\t\t\t<div class=\"bar3\"></div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<h1 class=\"mobile-header-title\">Erik Hoffman</h1>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div [style.display]=\"showDropdown ? 'block' : 'none'\" id=\"mobile-dropdown-main\" class=\"mobile-dropdown\">\r\n\t\t\t<div *ngFor=\"let page of pagesList\">\r\n\t\t\t\t<button (click)=\"onSelect(page, 'true')\" class=\"mobile-dropdown-option\">\r\n\t\t\t\t\t<div class=\"header-link-row\">\r\n\t\t\t\t\t\t<div [class]=\"page.class\"></div>\r\n\t\t\t\t\t\t{{page.name}}\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</button>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"centre\">\r\n\t\t<div class=\"dialog-top-nav\">\r\n\t\t\t<div class=\"about-portfolio-wrapper\">\r\n\t\t\t\t<a routerLink=\"../projects/state-machine-creator\" class=\"text-link text-link--dark-bkrnd\">\r\n\t\t\t\t\tCurrent Side Project\r\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t\t\t\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\" /></svg>\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"dialog\">\r\n\t\t\t<div class=\"curtain\">\r\n\t\t\t\t<div class=\"curtain--panel curtain--panel--left\">\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"curtain--panel curtain--panel--right\">\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"dialog-text\">\r\n\t\t\t\t<div #maintext id=\"main-text\" *ngIf=\"selectedPage.id === 1\">\r\n\t\t\t\t\t<h1 class=\"page-title\">About Me</h1>\r\n\t\t\t\t\t-Computer Science Graduate-<br>-Full Stack Developer-<br><br> Welcome to my website and portfolio.<br><br> My name is Erik Hoffman and I'm a software developer who enjoys using code to solve problems and create cool stuff! See my projects\r\n\t\t\t\t\tto check out my personal work or view my resume for my professional experience.\r\n\t\t\t\t\t<br><br>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div #portfoliotext id=\"portfolio-text\" *ngIf=\"selectedPage.id === 2\">\r\n\t\t\t\t\t<h1 class=\"page-title\">Projects</h1>\r\n\r\n\t\t\t\t\t<div class=\"portfolio-wrapper\">\r\n\t\t\t\t\t\t<div class=\"portfolio-flex-item\" *ngFor=\"let project of projectsList\">\r\n\t\t\t\t\t\t\t<app-portfolio-section name={{project.name}} description={{project.description}} dates={{project.dates}} localLink={{project.localLink}} link={{project.link}}>\r\n\t\t\t\t\t\t\t</app-portfolio-section>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<br><br><br>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<div #resumetext class=\"resume-text\" *ngIf=\"selectedPage.id === 3\">\r\n\t\t\t\t\t<h1 class=\"page-title\">Resume</h1>\r\n\t\t\t\t\t<a class=\"uncontained-link\" target=\"_blank\" href=\"assets/Erik_CIS_Resume.pdf\">Download as PDF</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div class=\"footer\">\r\n\t\t\t\t<br>\r\n\t\t\t\t<a class=\"text-link text-link--light-bkrnd\" target=\"_blank\" href=\"https://github.com/ErikHoffman?tab=repositories\">\r\n\t\t\t\t\tThis website is hosted on github pages\r\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t\t\t\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\" /></svg>\r\n\t\t\t\t</a><br>\r\n\t\t\t\t<a class=\"text-link text-link--light-bkrnd\" target=\"_blank\" href=\"https://bitbucket.org/ErikHoffman/erik-hoffman-website-angular\">\r\n\t\t\t\t\tCheck out the unbuilt Angular code!\r\n\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"right-arrow\" viewBox=\"0 0 24 24\">\r\n\t\t\t\t\t\t<path d=\"M24 12l-12-8v5h-12v6h12v5z\" /></svg>\r\n\t\t\t\t</a>\r\n\t\t\t\t<br>Contact Me:<br> Email: erik_hoffman@outlook.com<br>\r\n\t\t\t\t<div class=\"footer--icons-row\">\r\n\t\t\t\t\t<a title=\"Linkedin\" href=\"https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button\">\r\n\t\t\t\t\t\t<div class=\"footer--icon linkedin-icon\"></div>\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<a title=\"Bitbucket\" href=\"https://bitbucket.org/ErikHoffman/profile/repositories?visibility=all\">\r\n\t\t\t\t\t\t<div class=\"footer--icon bitbucket-icon\"></div>\r\n\t\t\t\t\t</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n<button class=\"button go-to-top\">^ Back To Top ^</button>\r\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -360,7 +355,7 @@ module.exports = "<!-- <div class=\"page-content\" (wheel)=\"onScroll($event)\" 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".about-portfolio-wrapper {\n  position: absolute;\n  /* background-color: #9BB1D0; */\n  background-color: #0F1626;\n  padding: 20px;\n  right: -3px;\n  z-index: 1;\n  border: 1px solid black;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px; }\n\n.go-to-top {\n  display: none;\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  margin-right: 10px;\n  margin-bottom: 10px; }\n\n.dialog-top-nav {\n  width: 70%;\n  margin: 0 auto;\n  position: relative;\n  top: 141px; }\n\n@media only screen and (max-width: 700px) {\n  .dialog-top-nav {\n    width: 90%; } }\n\n.portfolio-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  align-items: flex-start; }\n\n.portfolio-wrapper > * {\n  /*All of the portfolio sections*/\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 600px;\n  flex: 1 1 300px;\n  margin-top: 20px;\n  padding: 30px 30px 30px 30px;\n  border: 1px solid #F5F5F5;\n  background: #0F1626;\n  position: relative;\n  overflow: auto; }\n\n@media only screen and (max-width: 1230px) {\n  .portfolio-wrapper > * {\n    height: auto;\n    overflow: auto; } }\n\n.footer--link:hover {\n  color: #F5F5F5; }\n\n.footer--link:hover .right-arrow {\n    fill: #F5F5F5;\n    -webkit-animation: move-right ease 0.5s forwards;\n            animation: move-right ease 0.5s forwards; }\n\n.footer {\n  position: relative;\n  overflow: auto;\n  background-color: #EBD5B3;\n  border: 1px solid #EBD5B3;\n  border-top-right-radius: 0px;\n  border-top-left-radius: 0px;\n  clear: both;\n  font-weight: bold;\n  font-size: 25px;\n  text-align: center;\n  color: #010203; }\n\n.footer--icon {\n    margin: 0 5px 0 0;\n    width: 45px;\n    height: 45px; }\n\n.footer--icons-row {\n    margin: 10px 0 10px 0;\n    display: flex;\n    justify-content: center; }\n\n.footer--link {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-decoration: none;\n    color: #45B664; }\n\n@media only screen and (max-width: 1001px) {\n  .footer {\n    font-size: 20px; } }\n\n@media only screen and (max-width: 700px) {\n  .footer {\n    font-size: 15px; } }\n"
+module.exports = ".about-portfolio-wrapper {\n  position: absolute;\n  background-color: #0F1626;\n  padding: 20px;\n  right: -3px;\n  z-index: 1;\n  border: 1px solid black;\n  border-top-left-radius: 10px;\n  border-top-right-radius: 10px; }\n\n.go-to-top {\n  display: none;\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  margin-right: 10px;\n  margin-bottom: 10px; }\n\n.dialog-top-nav {\n  width: 70%;\n  margin: 0 auto;\n  position: relative;\n  top: 141px; }\n\n@media only screen and (max-width: 700px) {\n  .dialog-top-nav {\n    width: 90%; } }\n\n.portfolio-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center; }\n\n.portfolio-wrapper .portfolio-flex-item {\n    margin-right: 1%;\n    margin-left: 1%;\n    margin-top: 20px;\n    padding: 30px 30px 30px 30px;\n    background: #0F1626;\n    border: 1px solid #F5F5F5;\n    width: 25%; }\n\n@media only screen and (max-width: 1600px) {\n    .portfolio-wrapper .portfolio-flex-item {\n      width: 35%; } }\n\n@media only screen and (max-width: 1100px) {\n    .portfolio-wrapper .portfolio-flex-item {\n      width: 100%; } }\n\n.footer--link:hover {\n  color: #F5F5F5; }\n\n.footer--link:hover .right-arrow {\n    fill: #F5F5F5;\n    -webkit-animation: move-right ease 0.5s forwards;\n            animation: move-right ease 0.5s forwards; }\n\n.footer {\n  position: relative;\n  overflow: auto;\n  background-color: #EBD5B3;\n  border: 1px solid #EBD5B3;\n  border-top-right-radius: 0px;\n  border-top-left-radius: 0px;\n  clear: both;\n  font-weight: bold;\n  font-size: 25px;\n  text-align: center;\n  color: #010203; }\n\n.footer--icon {\n    margin: 0 5px 0 0;\n    width: 45px;\n    height: 45px; }\n\n.footer--icons-row {\n    margin: 10px 0 10px 0;\n    display: flex;\n    justify-content: center; }\n\n.footer .text-link {\n    margin: 0 0 20px 0; }\n\n@media only screen and (max-width: 1001px) {\n  .footer {\n    font-size: 20px; } }\n\n@media only screen and (max-width: 700px) {\n  .footer {\n    font-size: 15px; } }\n"
 
 /***/ }),
 
@@ -379,6 +374,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./page */ "./src/app/page-content/page.ts");
 /* harmony import */ var _directives_portfolio_content_portfolio__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../directives/portfolio-content/portfolio */ "./src/app/directives/portfolio-content/portfolio.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -394,11 +390,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var PageContentComponent = /** @class */ (function () {
-    function PageContentComponent(zone, router, location) {
+    function PageContentComponent(zone, router, location, platformLocation) {
+        var _this = this;
         this.zone = zone;
         this.router = router;
         this.location = location;
+        this.platformLocation = platformLocation;
         this.selectedPage = {
             id: -1,
             name: 'unrouted',
@@ -409,20 +408,23 @@ var PageContentComponent = /** @class */ (function () {
         this.pagesList = _page__WEBPACK_IMPORTED_MODULE_2__["pages"];
         this.projectsList = _directives_portfolio_content_portfolio__WEBPACK_IMPORTED_MODULE_3__["projects"];
         this.showDropdown = false;
-    }
-    PageContentComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.navigationSubscription = this.router.events.subscribe(function (e) {
+        this.subscriptions = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subscription"];
+        this.subscriptions.add(this.router.events.subscribe(function (e) {
             if (e instanceof _angular_router__WEBPACK_IMPORTED_MODULE_4__["NavigationStart"]) {
                 _this.routeToPage(e);
             }
-        });
-        this.routeToPage(null);
+        }));
+        /* Subscribe to backbutton since it does not trigger router event */
+        this.subscriptions.add(this.platformLocation.onPopState(function () {
+            _this.routeToPage();
+        }));
+        this.routeToPage();
+    }
+    PageContentComponent.prototype.ngOnInit = function () {
     };
     PageContentComponent.prototype.routeToPage = function (event) {
         var _this = this;
         this.routedPage = event ? event.url.slice(1) : window.location.hash.slice(2);
-        // console.log(this.routedPage);
         Object.keys(this.pagesList).forEach(function (key) {
             if (_this.pagesList[key].route.toUpperCase() === _this.routedPage.toUpperCase()) {
                 _this.selectedPage = _this.pagesList[key];
@@ -430,15 +432,6 @@ var PageContentComponent = /** @class */ (function () {
         });
         if (this.selectedPage.id === -1) {
             this.selectedPage = this.defaultPage;
-        }
-        // console.log(this.selectedPage);
-    };
-    PageContentComponent.prototype.getDropdownStatus = function () {
-        if (this.showDropdown) {
-            return "block";
-        }
-        else {
-            return "none";
         }
     };
     PageContentComponent.prototype.hamburgerClick = function () {
@@ -452,13 +445,11 @@ var PageContentComponent = /** @class */ (function () {
         if (dropdown) {
             document.getElementById('mobile-dropdown-main').style.display = 'none';
         }
-        //this.router.navigateByUrl('/' + this.selectedPage.route.toLowerCase());
-        this.location.go('/' + this.selectedPage.route.toLowerCase());
+        // this.router.navigateByUrl(`/${this.selectedPage.route.toLowerCase}`)
+        this.location.go("/" + this.selectedPage.route.toLowerCase());
     };
     PageContentComponent.prototype.ngOnDestroy = function () {
-        if (this.navigationSubscription) {
-            this.navigationSubscription.unsubscribe();
-        }
+        this.subscriptions.unsubscribe();
     };
     PageContentComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -468,7 +459,8 @@ var PageContentComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
-            _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"]])
+            _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_1__["PlatformLocation"]])
     ], PageContentComponent);
     return PageContentComponent;
 }());
@@ -583,26 +575,26 @@ module.exports = "<link href='http://fonts.googleapis.com/css?family=Merienda+On
 /*!*********************************************************!*\
   !*** ./src/app/projects/osmosisSolitaire/card-class.ts ***!
   \*********************************************************/
-/*! exports provided: cardClass, pile */
+/*! exports provided: Card, Pile */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cardClass", function() { return cardClass; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pile", function() { return pile; });
-var cardClass = /** @class */ (function () {
-    function cardClass(suitName, numberSymbolName) {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Card", function() { return Card; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pile", function() { return Pile; });
+var Card = /** @class */ (function () {
+    function Card(suitName, numberSymbolName) {
         this.suit = suitName;
         this.numberSymbol = numberSymbolName;
     }
-    return cardClass;
+    return Card;
 }());
 
-var pile = /** @class */ (function () {
-    function pile() {
+var Pile = /** @class */ (function () {
+    function Pile() {
         this.cards = [];
     }
-    pile.prototype.shuffle = function () {
+    Pile.prototype.shuffle = function () {
         var count = this.cards.length, randomnumber, temp;
         while (count) {
             randomnumber = Math.random() * count-- | 0;
@@ -612,7 +604,7 @@ var pile = /** @class */ (function () {
         }
     };
     /* Checks incoming card against the numbers already placed in this suit */
-    pile.prototype.numberMatch = function (card) {
+    Pile.prototype.numberMatch = function (card) {
         for (var i = 0; i < this.cards.length; i++) {
             if (card.numberSymbol === this.cards[i].numberSymbol) {
                 return true;
@@ -620,7 +612,7 @@ var pile = /** @class */ (function () {
         }
         return false;
     };
-    return pile;
+    return Pile;
 }());
 
 
@@ -686,7 +678,7 @@ var OsmosisSolitaireComponent = /** @class */ (function () {
         this.suits = [];
         this.stack = [];
         this.countSuits = function (accumulator, currentVal) {
-            if (accumulator instanceof _card_class__WEBPACK_IMPORTED_MODULE_1__["pile"]) {
+            if (accumulator instanceof _card_class__WEBPACK_IMPORTED_MODULE_1__["Pile"]) {
                 accumulator = accumulator.cards.length;
             } // Initialize, don't want to reduce whole object
             return accumulator + currentVal.cards.length;
@@ -696,51 +688,50 @@ var OsmosisSolitaireComponent = /** @class */ (function () {
         this.gamesRunning = toggle;
     };
     OsmosisSolitaireComponent.prototype.resetGame = function () {
-        this.deck = new _card_class__WEBPACK_IMPORTED_MODULE_1__["pile"]();
+        this.deck = new _card_class__WEBPACK_IMPORTED_MODULE_1__["Pile"]();
         this.piles = [];
         this.suits = [];
         for (var i = 0; i < 4; i++) {
-            this.suits[i] = new _card_class__WEBPACK_IMPORTED_MODULE_1__["pile"]();
+            this.suits[i] = new _card_class__WEBPACK_IMPORTED_MODULE_1__["Pile"]();
         }
-        this.stackFlipped = new _card_class__WEBPACK_IMPORTED_MODULE_1__["pile"]();
+        this.stackFlipped = new _card_class__WEBPACK_IMPORTED_MODULE_1__["Pile"]();
     };
     OsmosisSolitaireComponent.prototype.placeFromPile = function (pile) {
         while (pile.length > 0) {
             var check = true;
-            var placed = false;
+            var numPlaced = 0;
             var i = 0;
             while (i < 4 && check) { // Now we loop through the 4 suits, but if check is false do not continue
                 if (i === 0 && pile[pile.length - 1].suit === this.suits[0].cards[0].suit && pile.length > 0) { // Handle first suit, which has no rules except the suit must match
                     this.suits[0].cards.push(pile.pop());
-                    placed = true;
+                    numPlaced++;
                 }
                 else if (i > 0 && this.suits[i].cards.length === 0 && this.suits[i - 1].cards.length > 0 &&
                     check && pile.length > 0) { // Empty suit check for 2, 3, 4, only check if previous suit is not empty
-                    if (this.suits[i].cards.length === 0 && pile[pile.length - 1].numberSymbol === this.suits[i - 1].cards[0].numberSymbol) {
-                        // If the suit of the card matches that of the first spot of the previous suit we can place 
-                        this.suits[i].cards.push(pile.pop());
-                        placed = true;
-                    }
+                    this.suits[i].cards.push(pile.pop());
+                    numPlaced++;
                 }
-                else if (i > 0 && this.suits[i].cards.length > 0 && check && pile.length > 0) { // If suit is not empty
-                    if (pile[pile.length - 1].suit === this.suits[i].cards[0].suit) {
-                        // If the suit matches we can place, doesn't need to match order after first
-                        this.suits[i].cards.push(pile.pop());
-                        placed = true;
-                    }
+                else if (i > 0 && this.suits[i].cards.length > 0 &&
+                    check && pile.length > 0 &&
+                    (pile[pile.length - 1].suit === this.suits[i].cards[0].suit)) { // If suit is not empty
+                    this.suits[i].cards.push(pile.pop());
+                    numPlaced++;
                 }
-                /* This function runs when the card number already exists in a previous suit and it can
-                  then be checked in a lower set */
+                /* This if statement checks when the card suit matches the current examined suit, meaning it can
+                  then be placed in a subsequent one as long as it matches the suit  */
                 if (i < 3 && this.suits[i].cards.length > 0 && pile.length > 0) {
                     check = this.suits[i].numberMatch(pile[pile.length - 1]);
                 }
+                else {
+                    check = false;
+                }
                 i++;
             }
-            if (!placed) { // Checked card against all 4 piles and could not place, return here since it would run infinitely
-                return { placed: placed, pile: pile };
+            if (numPlaced === 0) { // Checked card against all 4 piles and could not place, return here since it would run infinitely
+                return { numPlaced: numPlaced, pile: pile };
             }
         }
-        return { placed: placed, pile: pile }; // Out of cards in the pile so return status
+        return { numPlaced: numPlaced, pile: pile }; // Out of cards in the pile so return status
     };
     /* Run DOM manipulation after a win is found */
     OsmosisSolitaireComponent.prototype.handleWin = function (gameNum, deckCopy) {
@@ -751,7 +742,7 @@ var OsmosisSolitaireComponent = /** @class */ (function () {
             }
         }
         this.wins++;
-        document.getElementById('winloss').innerHTML = '' + this.wins + ' WIN(S)!';
+        document.getElementById('winloss').innerHTML = '' + this.wins + ' WIN' + (this.wins > 1 ? '(S)!' : '!');
         var winningDeckTag = document.createElement('p');
         winningDeckTag.innerHTML = 'Deck ' + this.wins + ' on run ' + (gameNum + this.gamesRan + 1);
         document.getElementById('winningDecks').insertBefore(winningDeckTag, document.getElementById('winningDecks').childNodes[0]);
@@ -767,59 +758,56 @@ var OsmosisSolitaireComponent = /** @class */ (function () {
     };
     OsmosisSolitaireComponent.prototype.gameLoop = function (gameNum) {
         this.resetGame();
-        /*Create the deck*/
+        /* Setup the game */
+        /* Create the deck */
         for (var j = 0; j < this.suitsChars.length; j++) {
             for (var k = 0; k < this.numbers.length; k++) {
                 var card = void 0;
-                card = new _card_class__WEBPACK_IMPORTED_MODULE_1__["cardClass"](this.suitsChars[j], this.numbers[k]);
+                card = new _card_class__WEBPACK_IMPORTED_MODULE_1__["Card"](this.suitsChars[j], this.numbers[k]);
                 this.deck.cards.push(card);
             }
         }
         this.deck.shuffle();
         var deckCopy = this.deck.cards.map(function (x) { return x; }); // Use at end to show untouched winning deck
         for (var j = 0; j < 4; j++) {
-            this.piles[j] = new _card_class__WEBPACK_IMPORTED_MODULE_1__["pile"]();
+            this.piles[j] = new _card_class__WEBPACK_IMPORTED_MODULE_1__["Pile"]();
             for (var k = 0; k < 4; k++) {
                 this.piles[j].cards.push(this.deck.cards.pop());
             }
         }
+        /* Take the very top card of the deck and use that as our base for the first suit */
         this.suits[0].cards.push(this.deck.cards.pop());
-        var placeCheck, numPlaced;
+        var placeCheck;
+        var numPlaced = 0;
+        /* Game is now setup and commences */
         while (this.suits.reduce(this.countSuits) <= 52) {
-            numPlaced = 0;
             for (var j = 0; j < 4; j++) {
-                /* Loop through the 4 piles */
-                if (this.piles[j].cards.length > 0) { // Place from non-empty piles
+                /* Loop through the 4 non-deck piles, if they are not already empty try to place */
+                if (this.piles[j].cards.length > 0) {
                     placeCheck = this.placeFromPile(this.piles[j].cards);
-                    if (placeCheck.placed) {
-                        numPlaced++;
-                        this.piles[j].cards = placeCheck.pile;
-                    }
+                    numPlaced += placeCheck.numPlaced;
+                    this.piles[j].cards = placeCheck.pile;
                 }
             }
-            /* Try and place from the deck first */
-            if (this.deck.cards.length > 0) {
-                placeCheck = this.placeFromPile(this.deck.cards);
-                if (placeCheck.placed) {
-                    numPlaced++;
-                    this.deck.cards = placeCheck.pile;
-                }
-                else {
-                    // Push onto the flipped card pile
-                    this.stackFlipped.cards.push(this.deck.cards.pop());
-                }
+            /* Flip 3 (or 2 or 1 if only that many cards remain in the deck) cards into the flip pile */
+            for (var j = 0; j < (this.deck.cards.length >= 3 ? 3 : this.deck.cards.length); j++) {
+                this.stackFlipped.cards.push(this.deck.cards.pop());
             }
-            /* Then try the pile of flipped cards */
+            /* If there are any cards in the flip pile, try to place from the top first */
             if (this.stackFlipped.cards.length > 0) {
                 placeCheck = this.placeFromPile(this.stackFlipped.cards);
-                if (placeCheck.placed) {
-                    numPlaced++;
-                    this.stackFlipped.cards = placeCheck.pile;
-                } // No else needed here, the card stays at top of flipped pile
+                numPlaced += placeCheck.numPlaced;
+                this.stackFlipped.cards = placeCheck.pile;
             }
             if (this.suits.reduce(this.countSuits) === 52 || (numPlaced === 0 && this.deck.cards.length === 0)) {
                 /* Either we have run out of cards to play or the suits are full */
                 break;
+            }
+            if (this.deck.cards.length === 0) { /* The deck is empty, take the flipped pile and turn it back into the deck */
+                numPlaced = 0; /* Reset this number, if we make it through the entire next deck without placing a card, the game is a loss */
+                for (var j = 0; j < this.stackFlipped.cards.length; j++) {
+                    this.deck.cards.push(this.stackFlipped.cards.pop());
+                }
             }
         }
         /* game has ended
@@ -909,7 +897,7 @@ var OsmosisSolitaireComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"osmosis-container\">\r\n  <div class=\"info\" id=\"info\">\r\n    About: A simple application that runs this very hard version of solitaire (known as Osmosis Solitaire) through simulations\r\n    to find out just how hard it is to win. There is no strategy to the game so making an algorithm was\r\n    fairly straightforward.\r\n    <div class=\"osmosis-buttons\">\r\n      <a routerLink=\"/projects\" class=\"router-link\" style=\"text-decoration:none;\">\r\n        <button class=\"button\">Home</button>\r\n      </a>\r\n      <a target=\"_blank\" href=\"https://en.wikipedia.org/wiki/Osmosis_(solitaire)\" style=\"text-decoration:none;\">\r\n        <button class=\"button\">The Game Rules</button>\r\n      </a>\r\n    </div>\r\n\r\n    <div class=\"play-game\">\r\n      <div>Games to play</div>\r\n      <div>\r\n        <select class=\"ngames-dropdown\" [(ngModel)]=\"selectedValue\">\r\n          <option *ngFor=\"let g of gamesOptions\" [ngValue]=\"g\">{{g.name}}</option>\r\n        </select>\r\n      </div>\r\n      <div class=\"osmosis-buttons\">\r\n        <button class=\"button\" [disabled]=\"gamesRunning\" (click)=\"runGames()\">Run </button>\r\n      </div>\r\n    </div>\r\n    <br>\r\n    <br>Games Ran: <div id=\"gameCounter\"></div>\r\n    <br>Highest All Suits Count (closeness to winning): <div id=\"suitCount\"></div>\r\n    <br>Win Percentage: <div id=\"winPercentage\"></div>\r\n    <br> <div id=\"winloss\"></div>\r\n    Winning decks (bottom card is first):\r\n    <div id=\"winningDecks\"></div>\r\n  </div>\r\n  <div class=\"suits\" id=\"suits\">\r\n    <div *ngIf=\"gamesRunning\" id=\"loading-area\" class=\"loading-area\">\r\n      <p><b>Loading...</b></p>\r\n      <div class=\"runPercent\">{{runPercent}} %</div>\r\n      <svg class=\"spinner\" viewBox=\"25 25 50 50\">\r\n          <circle class=\"path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\r\n      </svg>\r\n    </div>\r\n    <div [hidden]=\"gamesRunning\">\r\n      Last Winning Suit Set\r\n      <div class=\"suitTitle\">Suit 1</div>\r\n      <div class=\"suit\" id=\"suitOne\"></div>\r\n\r\n      <div class=\"suitTitle\">Suit 2</div>\r\n      <div class=\"suit\" id=\"suitTwo\"></div>\r\n\r\n      <div class=\"suitTitle\">Suit 3</div>\r\n      <div class=\"suit\" id=\"suitThree\"></div>\r\n\r\n      <div class=\"suitTitle\">Suit 4</div>\r\n      <div class=\"suit\" id=\"suitFour\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"osmosis-container\">\r\n    <div class=\"info\" id=\"info\">\r\n        About: An application that runs this very straightforward but hard to win version of Solitaire known as Osmosis or Treasure Trove through simulations. There are no strategies involved in playing this game that I have discovered so as of now the simulator\r\n        loops through the available piles looking for cards to place.\r\n        <div class=\"osmosis-buttons\">\r\n            <a routerLink=\"/projects\" class=\"router-link\">\r\n                <button class=\"button\">Home</button>\r\n            </a>\r\n            <a target=\"_blank\" href=\"https://www.solsuite.com/games/osmosis.htm\">\r\n                <button class=\"button\">The Game Rules</button>\r\n            </a>\r\n        </div>\r\n\r\n        <div class=\"play-game\">\r\n            <div>Games to play</div>\r\n            <div>\r\n                <select class=\"ngames-dropdown\" [(ngModel)]=\"selectedValue\">\r\n          <option *ngFor=\"let g of gamesOptions\" [ngValue]=\"g\">{{g.name}}</option>\r\n        </select>\r\n            </div>\r\n            <div class=\"osmosis-buttons\">\r\n                <button class=\"button\" [disabled]=\"gamesRunning\" (click)=\"runGames()\">Run </button>\r\n            </div>\r\n        </div>\r\n        <br>\r\n        <br>Games Ran:\r\n        <div id=\"gameCounter\"></div>\r\n        <br>Highest All Suits Count (closeness to winning):\r\n        <div id=\"suitCount\"></div>\r\n        <br>Win Percentage:\r\n        <div id=\"winPercentage\"></div>\r\n        <br>\r\n        <div id=\"winloss\"></div>\r\n        Winning decks (bottom card is first):\r\n        <div id=\"winningDecks\"></div>\r\n    </div>\r\n    <div class=\"suits\" id=\"suits\">\r\n        <div *ngIf=\"gamesRunning\" id=\"loading-area\" class=\"loading-area\">\r\n            <p><b>Loading...</b></p>\r\n            <div class=\"runPercent\">{{runPercent}} %</div>\r\n            <svg class=\"spinner\" viewBox=\"25 25 50 50\">\r\n          <circle class=\"path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\r\n      </svg>\r\n        </div>\r\n        <div [hidden]=\"gamesRunning\">\r\n            Last Winning Suit Set\r\n            <div class=\"suitTitle\">Suit 1</div>\r\n            <div class=\"suit\" id=\"suitOne\"></div>\r\n\r\n            <div class=\"suitTitle\">Suit 2</div>\r\n            <div class=\"suit\" id=\"suitTwo\"></div>\r\n\r\n            <div class=\"suitTitle\">Suit 3</div>\r\n            <div class=\"suit\" id=\"suitThree\"></div>\r\n\r\n            <div class=\"suitTitle\">Suit 4</div>\r\n            <div class=\"suit\" id=\"suitFour\"></div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -935,6 +923,8 @@ module.exports = "* {\n  font-family: Ubuntu; }\n\n.osmosis-container {\n  margi
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StateMachineComponent", function() { return StateMachineComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./state */ "./src/app/projects/stateMachineCreator/state.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -942,11 +932,20 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 
+
+
 var StateMachineComponent = /** @class */ (function () {
     function StateMachineComponent() {
+        this.createStateForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            symbol: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            accept: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            colour: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('')
+        });
         this.showCreateStateWindow = false;
         this.showStateMenu = false;
         this.menuPos = { x: '0px', y: '0px' };
+        this.states = [];
         this.colours = [
             { label: 'Blue', hex: '#335DFF' },
             { label: 'Green', hex: '#10A314' },
@@ -958,11 +957,13 @@ var StateMachineComponent = /** @class */ (function () {
         ];
     }
     StateMachineComponent.prototype.toggleStateMenu = function (event) {
-        this.showStateMenu = !this.showStateMenu;
-        if (this.showStateMenu) {
-            this.focusedState = event.target.id.split(',');
-            this.menuPos.x = event.clientX + 'px';
-            this.menuPos.y = event.clientY + 'px';
+        if (!this.showCreateStateWindow) {
+            this.showStateMenu = !this.showStateMenu;
+            if (this.showStateMenu && !this.showCreateStateWindow) {
+                this.focusedStateId = event.target.id;
+                this.menuPos.x = event.clientX + 'px';
+                this.menuPos.y = event.clientY + 'px';
+            }
         }
     };
     StateMachineComponent.prototype.createStateOption = function () {
@@ -970,16 +971,35 @@ var StateMachineComponent = /** @class */ (function () {
         this.showCreateStateWindow = !this.showCreateStateWindow;
     };
     StateMachineComponent.prototype.createState = function () {
+        document.getElementById(this.focusedStateId).style.backgroundColor = this.createStateForm.value.colour.hex;
+        this.showCreateStateWindow = !this.showCreateStateWindow;
+        var state = new _state__WEBPACK_IMPORTED_MODULE_1__["State"]();
+        state.setCoordinatesFromId(this.focusedStateId);
+        state.name = this.createStateForm.value.name;
+        state.symbol = this.createStateForm.value.symbol;
+        state.accept = this.createStateForm.value.accept;
+        state.colour = this.createStateForm.value.colour;
+        this.states.push(state);
     };
     StateMachineComponent.prototype.createEdgeOption = function () {
     };
     StateMachineComponent.prototype.deleteStateOption = function () {
     };
+    StateMachineComponent.prototype.stateDoesNotExist = function () {
+        var _this = this;
+        var doesNotExist = true;
+        this.states.forEach(function (s) {
+            if (s.getCoordinatesAsId() === _this.focusedStateId) {
+                doesNotExist = false;
+            }
+        });
+        return doesNotExist;
+    };
     StateMachineComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-state-machine',
             styles: [__webpack_require__(/*! ./state-machine-creator.scss */ "./src/app/projects/stateMachineCreator/state-machine-creator.scss")],
-            template: __webpack_require__(/*! ./state-machine-creator.html */ "./src/app/projects/stateMachineCreator/state-machine-creator.html")
+            template: __webpack_require__(/*! ./state-machine-creator.html */ "./src/app/projects/stateMachineCreator/state-machine-creator.html"),
         })
     ], StateMachineComponent);
     return StateMachineComponent;
@@ -996,7 +1016,7 @@ var StateMachineComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div [style.display]=\"showCreateStateWindow ? 'block' : 'none'\" [style.top]=\"menuPos.y\" [style.left]=\"menuPos.x\" class=\"creation-window\">\r\n    <div class=\"create-state-title\">Create State</div>\r\n    <label class=\"input-area\">\r\n    Name:\r\n    <input class=\"input-box\" type=\"text\" name=\"nameInput\" placeholder=\"State\">\r\n  </label>\r\n    <label class=\"input-area\">\r\n    State Symbol:\r\n    <input class=\"input-box state-symbol\" type=\"text\" name=\"stateSymbolInput\" maxlength=\"1\" placeholder=\"A\">\r\n  </label>\r\n    <label class=\"input-area checkbox-area\">\r\n    Accept State:\r\n    <input class=\"input-box-hidden\" type=\"checkbox\" name=\"acceptStateInput\">\r\n    <span class=\"input-box-styled\"></span>\r\n  </label>\r\n    <label class=\"input-area dropdown-area\">\r\n    Colour:\r\n    <select class=\"input-colourpicker\" [(ngModel)]=\"selectedColour\" [style.background-color]=\"selectedColour?.hex\">\r\n      <option class=\"input-colourpicker-option\" [style.background-color]=\"c.hex\" *ngFor=\"let c of colours\" [ngValue]=\"c\">\r\n      </option>\r\n    </select>\r\n  </label>\r\n    <div class=\"input-area\">\r\n        <button (click)=\"showCreateStateWindow = !showCreateStateWindow\" class=\"button\">Cancel</button>\r\n        <button class=\"button\" (click)=\"createState()\">Create State</button>\r\n    </div>\r\n</div>\r\n<div [style.display]=\"showStateMenu ? 'block' : 'none'\" [style.top]=\"menuPos.y\" [style.left]=\"menuPos.x\" class=\"state-menu\">\r\n    <div class=\"state-menu-option\" (click)=\"createStateOption()\"><span>Create State</span></div>\r\n    <div class=\"state-menu-option\" (click)=\"createEdgeOption()\"><span>Create Edge</span></div>\r\n    <div class=\"state-menu-option\" (click)=\"deleteStateOption()\"><span>Delete State</span>\r\n    </div>\r\n</div>\r\n<div class=\"smc-area\">\r\n    <div class=\"creator-wrapper\">\r\n        <div class=\"info\">\r\n            <a routerLink=\"/home\" class=\"router-link\">\r\n                <button class=\"button\">Home</button>\r\n            </a>\r\n            <div>State Machine Creator</div>\r\n            Left click on a square to show menu.<br><br> Left click on created state and select \"Create Edge\" to create edge between states.\r\n        </div>\r\n        <div class=\"state-area\">\r\n            <div class=\"state-row\" *ngFor=\"let rows of ' '.repeat(100).split(''); let y = index\" [attr.data-index]=\"y\">\r\n                <div class=\"state-square\" (click)=\"toggleStateMenu($event)\" *ngFor=\"let number of ' '.repeat(100).split(''); let x = index\" [attr.data-index]=\"x\" [id]=\"y+','+x\"></div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div [style.display]=\"showCreateStateWindow ? 'block' : 'none'\" [style.top]=\"menuPos.y\" [style.left]=\"menuPos.x\" class=\"creation-window\">\r\n\t<form [formGroup]=\"createStateForm\" (ngSubmit)=\"createState()\">\r\n\t\t<div class=\"create-state-title\">Create State</div>\r\n\t\t<label class=\"input-area\">\r\n\t\t\tName:\r\n\t\t\t<input class=\"input-box\" type=\"text\" formControlName=\"name\" placeholder=\"State\">\r\n\t\t</label>\r\n\t\t<label class=\"input-area\">\r\n\t\t\tState Symbol:\r\n\t\t\t<input class=\"input-box state-symbol\" type=\"text\" formControlName=\"symbol\" maxlength=\"1\" placeholder=\"A\">\r\n\t\t</label>\r\n\t\t<label class=\"input-area checkbox-area\">\r\n\t\t\tAccept State:\r\n\t\t\t<input class=\"input-box-hidden\" type=\"checkbox\" formControlName=\"accept\">\r\n\t\t\t<span class=\"input-box-styled\"></span>\r\n\t\t</label>\r\n\t\t<label class=\"input-area dropdown-area\">\r\n\t\t\tColour:\r\n\t\t\t<select class=\"input-colourpicker\" formControlName=\"colour\" [style.background-color]=\"this.createStateForm.controls['colour']?.value.hex\">\r\n\t\t\t\t<option class=\"input-colourpicker-option\" [style.background-color]=\"c.hex\" *ngFor=\"let c of colours\" [ngValue]=\"c\"></option>\r\n\t\t\t</select>\r\n\t\t</label>\r\n\t\t<div class=\"input-area\">\r\n\t\t\t<button (click)=\"showCreateStateWindow = !showCreateStateWindow\" class=\"button\">Cancel</button>\r\n\t\t\t<button type=\"submit\" class=\"button\">Create State</button>\r\n\t\t</div>\r\n\t</form>\r\n</div>\r\n<div [style.display]=\"showStateMenu ? 'block' : 'none'\" [style.top]=\"menuPos.y\" [style.left]=\"menuPos.x\" class=\"state-menu\">\r\n\t<div *ngIf=\"states ? stateDoesNotExist() : true\" class=\"state-menu-option\" (click)=\"createStateOption()\"><span>Create State</span></div>\r\n\t<div class=\"state-menu-option\" (click)=\"createEdgeOption()\"><span>Create Edge</span></div>\r\n\t<div class=\"state-menu-option\" (click)=\"deleteStateOption()\"><span>Delete State</span>\r\n\t</div>\r\n</div>\r\n<div class=\"smc-area\">\r\n\t<div class=\"creator-wrapper\">\r\n\t\t<div class=\"info\">\r\n\t\t\t<a routerLink=\"/home\" class=\"router-link\">\r\n\t\t\t\t<button class=\"button\">Home</button>\r\n\t\t\t</a>\r\n\t\t\t<div>State Machine Creator</div>\r\n\t\t\tLeft click on a square to show menu.<br><br> Left click on created state and select \"Create Edge\" to create edge between states.\r\n\t\t</div>\r\n\t\t<div class=\"state-area\">\r\n\t\t\t<div class=\"state-row\" *ngFor=\"let rows of ' '.repeat(50).split(''); let y = index\" [attr.data-index]=\"y\">\r\n\t\t\t\t<div class=\"state-square\" (click)=\"toggleStateMenu($event)\" *ngFor=\"let number of ' '.repeat(50).split(''); let x = index\" [attr.data-index]=\"x\" [id]=\"y+','+x\"></div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>"
 
 /***/ }),
 
@@ -1007,7 +1027,45 @@ module.exports = "<div [style.display]=\"showCreateStateWindow ? 'block' : 'none
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "div {\n  margin: 0; }\n\n.creation-window {\n  position: fixed;\n  background-color: #688388;\n  border: 2px solid #000;\n  color: #000;\n  box-shadow: 10px 10px black; }\n\n.state-menu {\n  background-color: #688388;\n  position: absolute;\n  border: 1px solid black;\n  box-shadow: 10px 10px black; }\n\n.state-menu .state-menu-option {\n    border: 1px solid black;\n    padding: 10px 10px 10px 10px; }\n\n.state-menu .state-menu-option span {\n      -webkit-user-select: none;\n         -moz-user-select: none;\n          -ms-user-select: none;\n              user-select: none; }\n\n.state-menu .state-menu-option:hover {\n    background-color: white;\n    color: black; }\n\n.create-state-title {\n  text-align: center;\n  margin: 10px 0 10px 0; }\n\n.input-area {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 10px;\n  margin-left: 10px;\n  margin-right: 10px; }\n\n.input-box {\n  height: 24px; }\n\n.input-box.state-symbol {\n  width: 26px;\n  height: 24px;\n  text-align: center; }\n\n.input-box-hidden {\n  visibility: hidden;\n  height: 0px;\n  width: 0px;\n  margin: 0;\n  opacity: 0; }\n\n.input-box-styled {\n  padding: 0px;\n  margin-left: 10px;\n  height: 23px;\n  width: 25px;\n  background-color: #FFF;\n  border: 2px solid #FFF;\n  -moz-appearance: textarea;\n       appearance: textarea;\n  -webkit-appearance: textarea; }\n\n.input-box-styled:hover {\n  background-color: #ccc; }\n\n.input-box-styled:after {\n  content: \"\";\n  position: relative;\n  display: none; }\n\n.checkbox-area input:checked ~ .input-box-styled {\n  background-color: #88BBD6; }\n\n.checkbox-area input:checked ~ .input-box-styled:after {\n  display: block; }\n\n.checkbox-area .input-box-styled:after {\n  left: 9px;\n  top: 5px;\n  width: 5px;\n  height: 10px;\n  border: solid #000;\n  border-width: 0 3px 3px 0;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg); }\n\n.input-colourpicker {\n  width: 55px;\n  height: 28px; }\n\n.smc-area {\n  width: 96vw;\n  margin: 0 auto;\n  margin-top: 2vh;\n  background-color: #CDCDCD;\n  color: #000;\n  padding: 15px 15px 15px 15px;\n  height: 100%; }\n\n/* .home-button {\r\n} */\n\n.creator-wrapper {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  border: 1px solid #000;\n  display: flex;\n  justify-content: space-between;\n  overflow: hidden; }\n\n.info {\n  width: 20%;\n  border: 1px solid #000;\n  padding: 10px; }\n\n.state-area {\n  max-width: 80%;\n  max-height: 90vh;\n  -ms-grid-row-align: center;\n      align-self: center;\n  overflow: scroll; }\n\n.state-row {\n  display: inline-flex;\n  vertical-align: top;\n  width: 100%;\n  top: 0; }\n\n.state-square {\n  align-self: flex-start;\n  border: 1px solid #000;\n  width: 50px;\n  height: 50px;\n  flex-shrink: 0;\n  /* //padding-bottom: 100px; */ }\n\n.state-square:hover {\n  background-color: #FF7F27; }\n"
+module.exports = "div {\n  margin: 0; }\n\n.creation-window {\n  position: fixed;\n  background-color: #688388;\n  border: 2px solid #000;\n  color: #000;\n  box-shadow: 10px 10px black; }\n\n.state-menu {\n  background-color: #688388;\n  position: absolute;\n  border: 1px solid black;\n  box-shadow: 10px 10px black; }\n\n.state-menu .state-menu-option {\n    border: 1px solid black;\n    padding: 10px 10px 10px 10px; }\n\n.state-menu .state-menu-option span {\n      -webkit-user-select: none;\n         -moz-user-select: none;\n          -ms-user-select: none;\n              user-select: none; }\n\n.state-menu .state-menu-option:hover {\n    background-color: white;\n    color: black; }\n\n.create-state-title {\n  text-align: center;\n  margin: 10px 0 10px 0; }\n\n.input-area {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 10px;\n  margin-left: 10px;\n  margin-right: 10px; }\n\n.input-box {\n  height: 24px; }\n\n.input-box.state-symbol {\n  width: 26px;\n  height: 24px;\n  text-align: center; }\n\n.input-box-hidden {\n  visibility: hidden;\n  height: 0px;\n  width: 0px;\n  margin: 0;\n  opacity: 0; }\n\n.input-box-styled {\n  padding: 0px;\n  margin-left: 10px;\n  height: 23px;\n  width: 25px;\n  background-color: #FFF;\n  border: 2px solid #FFF;\n  -moz-appearance: textarea;\n       appearance: textarea;\n  -webkit-appearance: textarea; }\n\n.input-box-styled:hover {\n  background-color: #ccc; }\n\n.input-box-styled:after {\n  content: \"\";\n  position: relative;\n  display: none; }\n\n.checkbox-area input:checked ~ .input-box-styled {\n  background-color: #88BBD6; }\n\n.checkbox-area input:checked ~ .input-box-styled:after {\n  display: block; }\n\n.checkbox-area .input-box-styled:after {\n  left: 9px;\n  top: 5px;\n  width: 5px;\n  height: 10px;\n  border: solid #000;\n  border-width: 0 3px 3px 0;\n  -webkit-transform: rotate(45deg);\n  transform: rotate(45deg); }\n\n.input-colourpicker {\n  width: 55px;\n  height: 28px; }\n\n.smc-area {\n  width: 96vw;\n  margin: 0 auto;\n  margin-top: 2vh;\n  background-color: #CDCDCD;\n  color: #000;\n  padding: 15px 15px 15px 15px;\n  height: 100%; }\n\n.creator-wrapper {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  border: 1px solid #000;\n  display: flex;\n  justify-content: space-between;\n  overflow: hidden; }\n\n.info {\n  width: 20%;\n  border: 1px solid #000;\n  padding: 10px; }\n\n.state-area {\n  max-width: 80%;\n  max-height: 90vh;\n  -ms-grid-row-align: center;\n      align-self: center;\n  overflow: scroll; }\n\n.state-row {\n  display: inline-flex;\n  vertical-align: top;\n  width: 100%;\n  top: 0; }\n\n.state-square {\n  align-self: flex-start;\n  border: 1px solid #000;\n  width: 50px;\n  height: 50px;\n  flex-shrink: 0; }\n\n.state-square:hover {\n  border-color: #FF7F27; }\n"
+
+/***/ }),
+
+/***/ "./src/app/projects/stateMachineCreator/state.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/projects/stateMachineCreator/state.ts ***!
+  \*******************************************************/
+/*! exports provided: State, Edge */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "State", function() { return State; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Edge", function() { return Edge; });
+var State = /** @class */ (function () {
+    function State() {
+        this.coordinates = { x: null, y: null };
+    }
+    State.prototype.getCoordinatesAsId = function () {
+        return this.coordinates.x + "," + this.coordinates.y;
+    };
+    ;
+    State.prototype.setCoordinatesFromId = function (id) {
+        this.coordinates.x = parseInt(id.split(',')[0]);
+        this.coordinates.y = parseInt(id.split(',')[1]);
+    };
+    return State;
+}());
+
+;
+var Edge = /** @class */ (function () {
+    function Edge() {
+    }
+    return Edge;
+}());
+
+;
+
 
 /***/ }),
 
