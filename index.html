@@ -1,13 +1,55 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" name="Erik Hoffman Portfolio Website">
   <title>Erik Hoffman Website</title>
-  <base href="./">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu" />
-<link rel="stylesheet" href="styles.e7277fc5a06e8f1da0ec.css"></head>
+  <style type="text/css">
+    * {
+      font-family: Ubuntu;
+    }
+
+    .loading-area {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .loading-area .spinner {
+      height: 200px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  
+    .loading-area .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #F5F5F5;
+    }
+
+    html {
+	    background: #01172D;
+	    color: #F5F5F5;
+    }
+  </style>
+</head>
 <body>
   <app-root>
     <div class="loading-area">
@@ -17,5 +59,5 @@
       </svg>
     </div>
   </app-root>
-<script src="runtime-es2015.1eba213af0b233498d9d.js" type="module"></script><script src="runtime-es5.1eba213af0b233498d9d.js" nomodule defer></script><script src="polyfills-es5.fcc488a9a5d83ef57ebd.js" nomodule defer></script><script src="polyfills-es2015.1500e08545ce2bba8b08.js" type="module"></script><script src="main-es2015.b7cc63bcb231857865ed.js" type="module"></script><script src="main-es5.b7cc63bcb231857865ed.js" nomodule defer></script></body>
+<script src="runtime-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills-es2015.js" type="module"></script><script src="styles-es2015.js" type="module"></script><script src="styles-es5.js" nomodule defer></script><script src="vendor-es2015.js" type="module"></script><script src="vendor-es5.js" nomodule defer></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule defer></script></body>
 </html>
